@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:orientation="vertical"
+    android:textAlignment="gravity"
+    tools:context=".LoginSignUpActivity">
+
+    <Button
+        android:id="@+id/btnChat"
+        android:layout_width="300dp"
+        android:layout_height="20dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="250dp"
+        android:layout_marginBottom="10dp"
+        android:layout_weight="1"
+        android:background="@drawable/my_button"
+        android:gravity="center"
+        android:text="Chat"
+        android:fontFamily="@font/poppins"
+        android:textAllCaps="false"
+        android:textColor="#18A1CC"
+        android:textSize="40dp" />
+
+    <Button
+        android:id="@+id/btnScheduler"
+        android:layout_width="300dp"
+        android:layout_height="20dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_weight="1"
+        android:background="@drawable/my_button"
+        android:gravity="center"
+        android:text="Scheduler"
+        android:fontFamily="@font/poppins"
+        android:textColor="#18A1CC"
+        android:textAllCaps="false"
+        android:textSize="40dp" />
+
+    <Button
+        android:id="@+id/btnSettings"
+        android:layout_width="300dp"
+        android:layout_height="20dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="200dp"
+        android:layout_weight="1"
+        android:background="@drawable/my_button"
+        android:gravity="center"
+        android:text="Settings"
+        android:fontFamily="@font/poppins"
+        android:textColor="#18A1CC"
+        android:textAllCaps="false"
+        android:textSize="40dp" />
+
+</LinearLayout>

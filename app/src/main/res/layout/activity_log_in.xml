@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:orientation="vertical"
+    android:textAlignment="gravity"
+    tools:context=".LoginSignUpActivity">
+
+    <EditText
+        android:id="@+id/Email"
+        android:layout_width="300dp"
+        android:layout_height="20dp"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:background="@drawable/my_button"
+        android:gravity="center"
+        android:fontFamily="@font/poppins"
+        android:textAllCaps="false"
+        android:textColor="#18A1CC"
+        android:textSize="30dp"
+        android:ems="10"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="250dp"
+        android:hint="Email"/>
+
+    <EditText
+        android:id="@+id/Password"
+        android:layout_width="300dp"
+        android:layout_height="20dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_weight="1"
+        android:background="@drawable/my_button"
+        android:gravity="center"
+        android:fontFamily="@font/poppins"
+        android:textAllCaps="false"
+        android:textColor="#18A1CC"
+        android:textSize="30dp"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:hint="Password"/>
+
+    <Button
+        android:id="@+id/forgotPassword"
+        android:layout_width="300dp"
+        android:layout_height="20dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_weight="1"
+        android:background="@drawable/my_button"
+        android:gravity="center"
+        android:text="forgot password"
+        android:fontFamily="@font/poppins"
+        android:textAllCaps="false"
+        android:textColor="#18A1CC"
+        android:textSize="25dp"
+        android:ems="10" />
+
+    <Button
+        android:id="@+id/Login"
+        android:layout_width="280dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="70dp"
+        android:layout_weight="1"
+        android:background="@drawable/create_account_btn"
+        android:gravity="center"
+        android:text="Log in"
+        android:fontFamily="@font/poppins"
+        android:textAllCaps="false"
+        android:textColor="#F2F2F2"
+        android:textSize="30dp" />
+
+</LinearLayout>
