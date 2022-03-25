@@ -18,9 +18,9 @@
         android:layout_marginBottom="10dp"
         android:layout_weight="1"
         android:background="@drawable/my_button"
+        android:fontFamily="@font/poppins"
         android:gravity="center"
         android:text="Add a Task"
-        android:fontFamily="@font/poppins"
         android:textAllCaps="false"
         android:textColor="#18A1CC"
         android:textSize="40dp" />
