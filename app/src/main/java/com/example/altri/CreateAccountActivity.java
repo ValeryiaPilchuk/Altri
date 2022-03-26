@@ -1,7 +1,10 @@
 package com.example.altri;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -10,6 +13,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -19,6 +23,8 @@ import com.parse.SignUpCallback;
 
 import androidx.annotation.Nullable;
 
+import java.util.Calendar;
+
 public class CreateAccountActivity extends Activity {
 
     public static final String TAG = "CreateAccountActivity";
@@ -26,11 +32,15 @@ public class CreateAccountActivity extends Activity {
 
     private EditText etFirstName;
     private EditText etLastName;
-    private EditText etDateofBirth;
     private EditText etEmail;
     private EditText etPassword;
 
+    private Button btnDateOfBirth;
+
     private String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+    //private String dateofbirthPattern = "(0?[1-9]|1[012])/(0?[1-9]|[12][0-9]|3[01])/((?:19|20)[0-9][0-9])";
+
+    private DatePickerDialog.OnDateSetListener mDateSetListener;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,11 +54,37 @@ public class CreateAccountActivity extends Activity {
 
         etFirstName = findViewById(R.id.FirstName);
         etLastName = findViewById(R.id.LastName);
-        etDateofBirth = findViewById(R.id.DateofBirth);
         etEmail = findViewById(R.id.EmailSignup);
         etPassword = findViewById(R.id.PasswordSignup);
 
+        btnDateOfBirth = findViewById(R.id.btnDateOfBirth);
+
         Intent newAccount = new Intent(this, RolePickActivity.class);
+
+        btnDateOfBirth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Calendar cal = Calendar.getInstance();
+                int year = cal.get(Calendar.YEAR);
+                int month = cal.get(Calendar.MONTH);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog = new DatePickerDialog(CreateAccountActivity.this, android.R.style.Theme_Holo_Dialog_MinWidth, mDateSetListener, year, month, day);
+
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+                dialog.show();
+            }
+        });
+
+        mDateSetListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                month += 1;
+                String date = month + "/" + day + "/" + year;
+                btnDateOfBirth.setText(date);
+            }
+        };
 
         createAccount.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,8 +96,8 @@ public class CreateAccountActivity extends Activity {
                 else if (TextUtils.isEmpty(etLastName.getText())){
                     etLastName.setError("Last Name is required!");
                 }
-                else if (TextUtils.isEmpty(etDateofBirth.getText())){
-                    etDateofBirth.setError("Date of Birth is required!");
+                else if (TextUtils.isEmpty(btnDateOfBirth.getText())){
+                    btnDateOfBirth.setError("Date of Birth is required!");
                 }
                 else if (TextUtils.isEmpty(etEmail.getText())){
                     etEmail.setError("Email is required!");
@@ -88,6 +124,7 @@ public class CreateAccountActivity extends Activity {
 
                 user.put("firstname",etFirstName.getText().toString());
                 user.put("lastname",etLastName.getText().toString());
+                user.put("dateofbirth",btnDateOfBirth.getText().toString());
                 user.setUsername(etEmail.getText().toString());
                 user.setPassword(etPassword.getText().toString());
 

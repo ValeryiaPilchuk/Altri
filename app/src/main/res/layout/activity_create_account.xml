@@ -45,8 +45,8 @@
         android:textColor="#18A1CC"
         android:textSize="30dp" />
 
-    <EditText
-        android:id="@+id/DateofBirth"
+    <Button
+        android:id="@+id/btnDateOfBirth"
         android:layout_width="300dp"
         android:layout_height="20dp"
         android:layout_gravity="center"

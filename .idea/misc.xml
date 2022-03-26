@@ -36,6 +36,7 @@
         <entry key="app/src/main/res/layout/activity_settings.xml" value="0.15277099609375" />
         <entry key="app/src/main/res/layout/activity_task_menu.xml" value="0.115625" />
         <entry key="app/src/main/res/layout/popup_color_change.xml" value="0.24072265624999997" />
+        <entry key="app/src/main/res/layout/popup_date.xml" value="0.357342529296875" />
       </map>
     </option>
   </component>

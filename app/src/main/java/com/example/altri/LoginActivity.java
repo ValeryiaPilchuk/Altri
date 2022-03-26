@@ -87,9 +87,10 @@ public class LoginActivity extends Activity {
                     Toast.makeText(LoginActivity.this, "Incorrect username or password!", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                ParseUser currentUser = ParseUser.getCurrentUser();
 
                 goRolePickActivity();
-                Toast.makeText(LoginActivity.this, "Success", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "Welcome Back " + currentUser.getString("firstname"), Toast.LENGTH_SHORT).show();
             }
         });
 
