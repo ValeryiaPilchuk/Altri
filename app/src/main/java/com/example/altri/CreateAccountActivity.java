@@ -6,13 +6,12 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-
 import android.widget.Button;
+<<<<<<< HEAD
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -20,8 +19,12 @@ import android.widget.Toast;
 import com.parse.ParseUser;
 import com.parse.ParseException;
 import com.parse.SignUpCallback;
+=======
+>>>>>>> addb28b12f1db3175749024f369ffe7926e5a116
 
-import androidx.annotation.Nullable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import java.util.Calendar;
 
@@ -30,6 +33,7 @@ public class CreateAccountActivity extends Activity {
     public static final String TAG = "CreateAccountActivity";
     private Button createAccount;
 
+<<<<<<< HEAD
     private EditText etFirstName;
     private EditText etLastName;
     private EditText etEmail;
@@ -42,16 +46,17 @@ public class CreateAccountActivity extends Activity {
 
     private DatePickerDialog.OnDateSetListener mDateSetListener;
 
+=======
+>>>>>>> addb28b12f1db3175749024f369ffe7926e5a116
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ParseUser.getCurrentUser().logOut();
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_create_account);
 
-        createAccount = findViewById(R.id.CreateAccount);
 
+<<<<<<< HEAD
         etFirstName = findViewById(R.id.FirstName);
         etLastName = findViewById(R.id.LastName);
         etEmail = findViewById(R.id.EmailSignup);
@@ -145,34 +150,21 @@ public class CreateAccountActivity extends Activity {
                 //Log.i(TAG, "onClick create account button");
                 //startActivity(newAccount);
                 //finish();
-            }
-        });
+=======
 
-    }
+        createAccount = findViewById(R.id.CreateAccount);
 
-    /*
-    private void addDataToDatabase(String firstName, String lastName, String dateofbirth, String email, String password) {
-
-        ParseObject user = new ParseObject("User");
-
-        user.put("firstname", firstName);
-        user.put("lastname", lastName);
-        user.put("dateofbirth", dateofbirth);
-        user.put("email", email);
-        user.put("password", password);
-
-        user.saveInBackground(new SaveCallback() {
+        Intent newAccount = new Intent(this, SettingsActivity.class);
+        createAccount.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void done(ParseException e) {
-                if (e != null){
-                    Log.e(TAG, "Issue with SignUp", e);
-                    Toast.makeText(CreateAccountActivity.this, "Issue with SignUp!", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                Toast.makeText(CreateAccountActivity.this, "SignUp Successful!", Toast.LENGTH_SHORT).show();
+            public void onClick(View view) {
+                Log.i(TAG, "onClick create account button");
+                startActivity(newAccount);
+                finish();
+>>>>>>> addb28b12f1db3175749024f369ffe7926e5a116
             }
         });
-    }
 
-     */
+
+    }
 }
