@@ -10,7 +10,7 @@
     tools:context=".LoginSignUpActivity">
 
     <EditText
-        android:id="@+id/FirstName"
+        android:id="@+id/etTaskName"
         android:layout_width="300dp"
         android:layout_height="20dp"
         android:layout_gravity="center"
@@ -28,7 +28,7 @@
         android:textSize="30dp" />
 
     <EditText
-        android:id="@+id/LastName"
+        android:id="@+id/etTaskDescription"
         android:layout_width="300dp"
         android:layout_height="20dp"
         android:layout_gravity="center"
@@ -45,8 +45,8 @@
         android:textColor="#18A1CC"
         android:textSize="30dp" />
 
-    <EditText
-        android:id="@+id/DateofBirth"
+    <Button
+        android:id="@+id/btnTaskImage"
         android:layout_width="300dp"
         android:layout_height="20dp"
         android:layout_gravity="center"
@@ -64,8 +64,8 @@
         android:textColor="#18A1CC"
         android:textSize="30dp" />
 
-    <EditText
-        android:id="@+id/EmailSignup"
+    <Button
+        android:id="@+id/btnTaskDate"
         android:layout_width="300dp"
         android:layout_height="20dp"
         android:layout_gravity="center"
@@ -76,32 +76,32 @@
         android:ems="10"
         android:fontFamily="@font/poppins"
         android:gravity="center"
-        android:hint="Time/Date?"
-        android:singleLine="true"
-        android:textAllCaps="false"
-        android:textColor="#18A1CC"
-        android:textSize="30dp" />
-
-    <EditText
-        android:id="@+id/PasswordSignup"
-        android:layout_width="300dp"
-        android:layout_height="20dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:layout_weight="1"
-        android:background="@drawable/blue_button"
-        android:ems="10"
-        android:fontFamily="@font/poppins"
-        android:gravity="center"
-        android:hint="Repeat?"
+        android:hint="Date"
         android:singleLine="true"
         android:textAllCaps="false"
         android:textColor="#18A1CC"
         android:textSize="30dp" />
 
     <Button
-        android:id="@+id/CreateAccount"
+        android:id="@+id/btnTaskTime"
+        android:layout_width="300dp"
+        android:layout_height="20dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_weight="1"
+        android:background="@drawable/blue_button"
+        android:ems="10"
+        android:fontFamily="@font/poppins"
+        android:gravity="center"
+        android:hint="Time"
+        android:singleLine="true"
+        android:textAllCaps="false"
+        android:textColor="#18A1CC"
+        android:textSize="30dp" />
+
+    <Button
+        android:id="@+id/btnAddTask"
         android:layout_width="280dp"
         android:layout_height="60dp"
         android:layout_gravity="center"

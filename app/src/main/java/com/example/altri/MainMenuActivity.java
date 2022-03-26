@@ -29,6 +29,15 @@ public class MainMenuActivity extends Activity {
         btnSettings = findViewById(R.id.btnSettings);
 
         Intent settings = new Intent(this, SettingsActivity.class);
+        Intent task = new Intent(this, TaskMenuActivity.class);
+
+        btnScheduler.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(task);
+                finish();
+            }
+        });
 
         btnSettings.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -10,7 +10,7 @@
     tools:context=".LoginSignUpActivity">
 
     <Button
-        android:id="@+id/btnChangePasssword"
+        android:id="@+id/btnChangePassword"
         android:layout_width="300dp"
         android:layout_height="20dp"
         android:layout_gravity="center"
