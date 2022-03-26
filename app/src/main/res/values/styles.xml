@@ -13,4 +13,9 @@
         <item name="android:focusable">true</item>
         <item name="android:clickable">true</item>
     </style>
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+    <item name="colorPrimary">@color/design_default_color_on_primary</item>
+    <item name="colorPrimaryDark">@color/design_default_color_on_secondary</item>
+    <item name="colorAccent">@color/design_default_color_primary_variant</item>
+    </style>
 </resources>

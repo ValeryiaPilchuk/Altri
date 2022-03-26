@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item
+        android:id="@+id/action_bot"
+        android:title="Bot"
+        app:showAsAction="always"
+        android:icon="@drawable/selector_bot"
+        />
+
+    <item
+        android:id="@+id/action_home"
+        android:icon="@drawable/selector_home"
+        android:title="Home"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_scheduler"
+        android:icon="@drawable/selector_tasks"
+        android:title="Scheduler"
+        app:showAsAction="always" />
+</menu>

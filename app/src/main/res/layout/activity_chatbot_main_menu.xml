@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:textAlignment="gravity"
+    android:background="#D6EAF8"
+    tools:context=".ChatbotMainMenuActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="230dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <Button
+                android:id="@+id/back_btn"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/back_btn" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="100dp"
+
+                android:text="Go back to main menu"
+                android:textSize="25dp"
+                />
+
+
+        </LinearLayout>
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="230dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/meet_altri" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="350dp"
+        android:layout_height="320dp"
+        android:layout_gravity="center"
+        android:background="@drawable/altri_bot">
+    </ImageView>
+
+    <Button
+    android:id="@+id/forgotPassword"
+    android:layout_width="300dp"
+    android:layout_height="65dp"
+    android:layout_gravity="center"
+    android:layout_marginBottom="20dp"
+    android:layout_marginTop="30dp"
+    android:background="@drawable/blue_button"
+    android:gravity="center"
+    android:text="Chat"
+    android:fontFamily="@font/poppins"
+    android:textAllCaps="false"
+    android:textColor="#18A1CC"
+    android:textSize="40dp"
+    android:ems="10" />
+
+
+</LinearLayout>
