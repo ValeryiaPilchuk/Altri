@@ -10,7 +10,7 @@
     tools:context=".LoginSignUpActivity">
 
     <Button
-        android:id="@+id/btnChangePasssword"
+        android:id="@+id/btnBlue"
         android:layout_width="300dp"
         android:layout_height="20dp"
         android:layout_gravity="center"
@@ -19,42 +19,42 @@
         android:layout_weight="1"
         android:background="@drawable/blue_button"
         android:gravity="center"
-        android:text="Change Password"
+        android:text="Blue"
         android:fontFamily="@font/poppins"
         android:textAllCaps="false"
         android:textColor="#18A1CC"
         android:textSize="40dp" />
 
     <Button
-        android:id="@+id/btnChangeColor"
+        android:id="@+id/btnYellow"
         android:layout_width="300dp"
         android:layout_height="20dp"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:layout_weight="1"
-        android:background="@drawable/blue_button"
-        android:gravity="center"
-        android:text="Change Color"
+        android:background="@drawable/yellow_button"
         android:fontFamily="@font/poppins"
-        android:textColor="#18A1CC"
+        android:gravity="center"
+        android:text="Yellow"
         android:textAllCaps="false"
+        android:textColor="#FFE5A4"
         android:textSize="40dp" />
 
     <Button
-        android:id="@+id/btnLogout"
+        android:id="@+id/btnRed"
         android:layout_width="300dp"
         android:layout_height="20dp"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="200dp"
         android:layout_weight="1"
-        android:background="@drawable/blue_button"
-        android:gravity="center"
-        android:text="Logout"
+        android:background="@drawable/red_button"
         android:fontFamily="@font/poppins"
-        android:textColor="#18A1CC"
+        android:gravity="center"
+        android:text="Red"
         android:textAllCaps="false"
+        android:textColor="#FF4F4F"
         android:textSize="40dp" />
 
 </LinearLayout>

@@ -10,7 +10,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 
-
 public class LoginSignUpActivity extends Activity {
 
     public static final String TAG = "LoginActivity";
@@ -47,8 +46,6 @@ public class LoginSignUpActivity extends Activity {
                 finish();
             }
         });
-
-
 
     }
 }

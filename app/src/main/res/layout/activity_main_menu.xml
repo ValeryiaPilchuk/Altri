@@ -4,29 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/settings_blue"
+    android:background="@drawable/main_menu"
     android:orientation="vertical"
     android:textAlignment="gravity"
     tools:context=".LoginSignUpActivity">
 
     <Button
-        android:id="@+id/btnChangePasssword"
+        android:id="@+id/btnChat"
         android:layout_width="300dp"
         android:layout_height="20dp"
         android:layout_gravity="center"
-        android:layout_marginTop="180dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginTop="250dp"
+        android:layout_marginBottom="10dp"
         android:layout_weight="1"
         android:background="@drawable/blue_button"
         android:gravity="center"
-        android:text="Change Password"
+        android:text="Chat"
         android:fontFamily="@font/poppins"
         android:textAllCaps="false"
         android:textColor="#18A1CC"
         android:textSize="40dp" />
 
     <Button
-        android:id="@+id/btnChangeColor"
+        android:id="@+id/btnScheduler"
         android:layout_width="300dp"
         android:layout_height="20dp"
         android:layout_gravity="center"
@@ -35,14 +35,14 @@
         android:layout_weight="1"
         android:background="@drawable/blue_button"
         android:gravity="center"
-        android:text="Change Color"
+        android:text="Scheduler"
         android:fontFamily="@font/poppins"
         android:textColor="#18A1CC"
         android:textAllCaps="false"
         android:textSize="40dp" />
 
     <Button
-        android:id="@+id/btnLogout"
+        android:id="@+id/btnSettings"
         android:layout_width="300dp"
         android:layout_height="20dp"
         android:layout_gravity="center"
@@ -51,7 +51,7 @@
         android:layout_weight="1"
         android:background="@drawable/blue_button"
         android:gravity="center"
-        android:text="Logout"
+        android:text="Settings"
         android:fontFamily="@font/poppins"
         android:textColor="#18A1CC"
         android:textAllCaps="false"
