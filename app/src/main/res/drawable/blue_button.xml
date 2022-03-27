@@ -4,6 +4,6 @@
         android:startColor="#EDF8FF"
         android:endColor="#EDF8FF"
         android:angle="90"/>
-    <corners android:radius= "8dp" />
+    <corners android:radius= "8dp" /> //curves of the button corners the higher the # the more round
     <stroke android:width="10px" android:color="#4FB6FF"  android:radius= "8dp"/>
 </shape>

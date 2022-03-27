@@ -22,6 +22,8 @@
         <activity android:name=".SettingsActivity" />
         <activity android:name=".AddTaskActivity" />
         <activity android:name=".ParseApplication" />
+        <activity android:name=".ChatbotActivity" />
+
 
         <activity
             android:name=".MainActivity"
