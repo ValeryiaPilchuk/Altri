@@ -26,6 +26,7 @@
             android:backgroundTint="@android:color/white"
             android:hint="Type a message..."
             android:padding="10dp"
+            android:textSize="15dp"
             android:singleLine="true" />
 
         <Button
@@ -37,6 +38,8 @@
             android:background="@drawable/blue_button"
             android:backgroundTint="#26A69A"
             android:text="Send"
+            android:gravity="center"
+            android:textSize="15dp"
             android:textColor="@android:color/white" />
 
     </LinearLayout>
