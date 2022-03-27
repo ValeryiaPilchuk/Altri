@@ -1,6 +1,5 @@
 package com.example.altri;
 
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +12,7 @@ import android.widget.Button;
 public class LoginSignUpActivity extends Activity {
 
     public static final String TAG = "LoginSignUpActivity";
+
     private Button btnLogin;
     private Button btnSignup;
 

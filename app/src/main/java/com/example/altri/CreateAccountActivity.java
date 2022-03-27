@@ -24,6 +24,8 @@ import com.parse.SignUpCallback;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+
+import java.util.Date;
 import java.util.Calendar;
 
 public class CreateAccountActivity extends Activity {
@@ -108,16 +110,7 @@ public class CreateAccountActivity extends Activity {
                     etPassword.setError("Password is required!");
                 }
 
-                /*
-                String firstName = etFirstName.getText().toString();
-                String lastName = etLastName.getText().toString();
-                String dateofbirth = etDateofBirth.getText().toString();
-                String email = etEmail.getText().toString();
-                String password = etPassword.getText().toString();
-                */
 
-                // calling method to add data to Firebase Firestore.
-                //addDataToDatabase(firstName, lastName, dateofbirth, email, password);
 
                 ParseUser user = new ParseUser();
 
