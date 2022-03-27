@@ -12,7 +12,7 @@ import android.widget.Button;
 
 public class LoginSignUpActivity extends Activity {
 
-    public static final String TAG = "LoginActivity";
+    public static final String TAG = "LoginSignUpActivity";
     private Button btnLogin;
     private Button btnSignup;
 
