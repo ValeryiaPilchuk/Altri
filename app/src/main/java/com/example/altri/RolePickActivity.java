@@ -27,13 +27,13 @@ public class RolePickActivity extends Activity {
             btnUser = findViewById(R.id.btnUser);
             btnEmployer = findViewById(R.id.btnEmployer);
 
-        Intent scheduler = new Intent(this, MainMenuActivity.class);
-        Intent taskMenu = new Intent(this, TaskMenuActivity.class);
+        Intent scheduler = new Intent(this, TaskMenuActivity.class);
+        Intent mainMenu = new Intent(this, MainMenuActivity.class);
         btnUser.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Log.i(TAG, "onClick login button");
-                    startActivity(scheduler);
+                    startActivity(mainMenu);
                     finish();
                 }
             });
@@ -49,7 +49,7 @@ public class RolePickActivity extends Activity {
             @Override
             public void onClick(View view) {
                 Log.i(TAG, "onClick login button");
-                startActivity(taskMenu);
+                startActivity(scheduler);
                 finish();
             }
         });

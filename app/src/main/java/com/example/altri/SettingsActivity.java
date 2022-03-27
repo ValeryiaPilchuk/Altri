@@ -5,8 +5,8 @@ import android.content.Intent;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.util.Log;
-import android.view.View;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -17,12 +17,11 @@ import com.parse.ParseUser;
 
 public class SettingsActivity extends Activity{
 
-
     private Button btnChat;
     public static final String TAG = "SettingsActivity";
-    private Button btnChangePassword;
     private Button btnChangeColor;
     private Button btnLogout;
+    private Button btnProfile;
 
     private Button btnBlue;
     private Button btnYellow;
@@ -37,13 +36,26 @@ public class SettingsActivity extends Activity{
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_settings);
-
-
-
+      
+        btnProfile = findViewById(R.id.btnProfile);
         btnChangeColor = findViewById(R.id.btnChangeColor);
         btnLogout = findViewById(R.id.btnLogout);
 
+        Intent profile = new Intent (this, ProfileActivity.class);
         Intent logout = new Intent(this, LoginSignUpActivity.class);
+
+        btnProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                startActivity(profile);
+                finish();
+
+                ParseUser currentUser = ParseUser.getCurrentUser();
+
+                Toast.makeText(SettingsActivity.this, currentUser.getString("firstname") + "'s Profile", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         btnChangeColor.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,8 +96,6 @@ public class SettingsActivity extends Activity{
         btnYellow = colorPopupView.findViewById(R.id.btnYellow);
         btnRed = colorPopupView.findViewById(R.id.btnRed);
 
-        Intent settings = new Intent(this, SettingsActivity.class);
-
         btnBlue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -97,7 +107,14 @@ public class SettingsActivity extends Activity{
             @Override
             public void onClick(View view) {
                 colorPopupView.setBackgroundResource(R.drawable.colorpick_yellow);
-                settingsView.setBackgroundResource(R.drawable.settings_yellow);
+                //settingsView.setBackgroundResource(R.drawable.settings_yellow);
+            }
+        });
+
+        btnRed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                colorPopupView.setBackgroundResource(R.drawable.colorpick_red);
             }
         });
 

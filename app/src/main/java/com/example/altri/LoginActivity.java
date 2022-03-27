@@ -30,17 +30,19 @@ public class LoginActivity extends Activity {
             super.onCreate(savedInstanceState);
             requestWindowFeature(Window.FEATURE_NO_TITLE);
             this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-            setContentView(R.layout.activity_log_in);
+            setContentView(R.layout.activity_login);
 
             if (ParseUser.getCurrentUser() != null){
                 goRolePickActivity();
             }
 
             btnLogin = findViewById(R.id.Login);
-            btnForgotPassword = findViewById(R.id.forgotPassword);
+            btnForgotPassword = findViewById(R.id.btnforgotPassword);
 
             etEmail = findViewById(R.id.EmailLogin);
             etPassword = findViewById(R.id.PasswordLogin);
+
+            Intent resetPassword = new Intent(LoginActivity.this, ResetPasswordActivity.class);
 
             btnLogin.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -53,6 +55,14 @@ public class LoginActivity extends Activity {
                     loginUser(username, password);
                 }
             });
+
+        btnForgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(resetPassword);
+                finish();
+            }
+        });
 
             /*
         Intent rolePicker = new Intent(this, RolePickActivity.class);

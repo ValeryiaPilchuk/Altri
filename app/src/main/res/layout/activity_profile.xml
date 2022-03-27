@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/register"
+    android:background="@drawable/profile"
     android:orientation="vertical"
     android:textAlignment="gravity"
     tools:context=".LoginSignUpActivity">
 
-    <EditText
-        android:id="@+id/etFirstNameSignup"
+    <Button
+        android:id="@+id/btnFirstNameProfile"
         android:layout_width="300dp"
         android:layout_height="20dp"
         android:layout_gravity="center"
@@ -27,8 +27,8 @@
         android:textColor="#18A1CC"
         android:textSize="30dp" />
 
-    <EditText
-        android:id="@+id/etLastNameSignup"
+    <Button
+        android:id="@+id/btnLastNameProfile"
         android:layout_width="300dp"
         android:layout_height="20dp"
         android:layout_gravity="center"
@@ -46,7 +46,7 @@
         android:textSize="30dp" />
 
     <Button
-        android:id="@+id/btnDateOfBirthSignup"
+        android:id="@+id/btnDateOfBirthProfile"
         android:layout_width="300dp"
         android:layout_height="20dp"
         android:layout_gravity="center"
@@ -64,8 +64,8 @@
         android:textColor="#18A1CC"
         android:textSize="30dp" />
 
-    <EditText
-        android:id="@+id/etEmailSignup"
+    <Button
+        android:id="@+id/btnEmailProfile"
         android:layout_width="300dp"
         android:layout_height="20dp"
         android:layout_gravity="center"
@@ -82,40 +82,41 @@
         android:textColor="#18A1CC"
         android:textSize="30dp" />
 
-    <EditText
-        android:id="@+id/etPasswordSignup"
+    <Button
+        android:id="@+id/btnTemp"
         android:layout_width="300dp"
         android:layout_height="20dp"
         android:layout_gravity="center"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:layout_weight="1"
-        android:background="@drawable/blue_button"
+        android:background="@drawable/create_account_btn"
         android:ems="10"
         android:fontFamily="@font/poppins"
         android:gravity="center"
-        android:hint="Password"
+        android:hint="Change Password"
         android:singleLine="true"
         android:textAllCaps="false"
-        android:textColor="#18A1CC"
-        android:textSize="30dp" />
+        android:textColor="#F2F2F2"
+        android:textSize="30dp"
+        android:visibility="invisible"/>
 
     <Button
-        android:id="@+id/btnCreateAccount"
-        android:layout_width="280dp"
-        android:layout_height="60dp"
+        android:id="@+id/btnChangePasswordProfile"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
         android:layout_gravity="center"
         android:layout_marginTop="50dp"
         android:layout_marginBottom="50dp"
         android:layout_weight="1"
         android:background="@drawable/create_account_btn"
         android:gravity="center"
-        android:text="Create Account"
+        android:text="Send Password Reset Link"
         android:fontFamily="@font/poppins"
         android:textAllCaps="false"
         android:textColor="#F2F2F2"
-        android:textSize="30dp" />
-
+        android:textSize="30dp"
+        />
 
 
 </LinearLayout>

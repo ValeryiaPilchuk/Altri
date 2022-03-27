@@ -10,7 +10,7 @@
     tools:context=".LoginSignUpActivity">
 
     <Button
-        android:id="@+id/btnChangePassword"
+        android:id="@+id/btnProfile"
         android:layout_width="300dp"
         android:layout_height="20dp"
         android:layout_gravity="center"
@@ -19,7 +19,7 @@
         android:layout_weight="1"
         android:background="@drawable/blue_button"
         android:gravity="center"
-        android:text="Change Password"
+        android:text="Profile"
         android:fontFamily="@font/poppins"
         android:textAllCaps="false"
         android:textColor="#18A1CC"
