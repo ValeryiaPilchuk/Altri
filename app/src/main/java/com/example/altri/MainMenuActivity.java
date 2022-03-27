@@ -3,6 +3,7 @@ package com.example.altri;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -30,6 +31,15 @@ public class MainMenuActivity extends Activity {
 
         Intent settings = new Intent(this, SettingsActivity.class);
         Intent task = new Intent(this, TaskMenuActivity.class);
+        Intent Chat = new Intent(this, ChatbotActivity.class); //move from here to chat
+
+        btnChat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(Chat);
+                finish();
+            }
+        });
 
         btnScheduler.setOnClickListener(new View.OnClickListener() {
             @Override
