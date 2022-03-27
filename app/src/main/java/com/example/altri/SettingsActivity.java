@@ -1,9 +1,12 @@
 package com.example.altri;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -14,7 +17,9 @@ import com.parse.ParseUser;
 
 public class SettingsActivity extends Activity{
 
-    public static final String TAG = "TaskMenuActivity";
+
+    private Button btnChat;
+    public static final String TAG = "SettingsActivity";
     private Button btnChangePassword;
     private Button btnChangeColor;
     private Button btnLogout;
@@ -32,6 +37,8 @@ public class SettingsActivity extends Activity{
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_settings);
+
+
 
         btnChangeColor = findViewById(R.id.btnChangeColor);
         btnLogout = findViewById(R.id.btnLogout);

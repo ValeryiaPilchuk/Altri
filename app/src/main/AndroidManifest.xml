@@ -29,6 +29,9 @@
         <activity android:name=".RolePickActivity" />
         <activity android:name=".SettingsActivity" />
         <activity android:name=".TaskMenuActivity" />
+        <activity android:name=".ChatbotActivity" />
+
+
         <activity
             android:name=".Main"
             android:theme="@style/Theme.AppCompat"
