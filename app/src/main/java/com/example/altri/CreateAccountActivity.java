@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-// HEAD
+
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -20,11 +20,10 @@ import android.widget.Toast;
 import com.parse.ParseUser;
 import com.parse.ParseException;
 import com.parse.SignUpCallback;
-//import java.text.ParseException;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
-//=======
-// addb28b12f1db3175749024f369ffe7926e5a116
+
 
 
 
@@ -35,7 +34,7 @@ public class CreateAccountActivity extends Activity {
     public static final String TAG = "CreateAccountActivity";
     private Button createAccount;
 
-// HEAD
+
     private EditText etFirstName;
     private EditText etLastName;
     private EditText etEmail;
@@ -44,7 +43,7 @@ public class CreateAccountActivity extends Activity {
     private Button btnDateOfBirth;
 
     private String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-    //private String dateofbirthPattern = "(0?[1-9]|1[012])/(0?[1-9]|[12][0-9]|3[01])/((?:19|20)[0-9][0-9])";
+
 
     private DatePickerDialog.OnDateSetListener mDateSetListener;
 
@@ -57,7 +56,7 @@ public class CreateAccountActivity extends Activity {
         setContentView(R.layout.activity_create_account);
 
 
-//HEAD
+
         etFirstName = findViewById(R.id.FirstName);
         etLastName = findViewById(R.id.LastName);
         etEmail = findViewById(R.id.EmailSignup);
@@ -115,16 +114,7 @@ public class CreateAccountActivity extends Activity {
                     etPassword.setError("Password is required!");
                 }
 
-                /*
-                String firstName = etFirstName.getText().toString();
-                String lastName = etLastName.getText().toString();
-                String dateofbirth = etDateofBirth.getText().toString();
-                String email = etEmail.getText().toString();
-                String password = etPassword.getText().toString();
-                */
 
-                // calling method to add data to Firebase Firestore.
-                //addDataToDatabase(firstName, lastName, dateofbirth, email, password);
 
                 ParseUser user = new ParseUser();
 
@@ -148,9 +138,7 @@ public class CreateAccountActivity extends Activity {
                     }
                 });
 
-                //Log.i(TAG, "onClick create account button");
-                //startActivity(newAccount);
-                //finish();
+
 
 
 
