@@ -14,6 +14,12 @@ public class Schedule extends ParseObject {
     public static final String KEY_TASK_DATE = "date";
     public static final String KEY_TASK_TIME = "time";
 
+ /*   public Schedule(String KEY_TASK_NAME, String KEY_TASK_DESCRIPTION, String KEY_USER, String KEY_TASK_DATE, String KEY_TASK_TIME) {
+        this.KEY_TASK_NAME = KEY_TASK_NAME;
+        this.KEY_TASK_DESCRIPTION = courseDescription;
+        this.courseDuration = courseDuration;
+    }
+*/
     public String getTaskName() {
         return getString(KEY_TASK_NAME);
     }

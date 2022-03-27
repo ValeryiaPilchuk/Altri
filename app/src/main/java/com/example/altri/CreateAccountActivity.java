@@ -6,12 +6,12 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-<<<<<<< HEAD
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -19,12 +19,6 @@ import android.widget.Toast;
 import com.parse.ParseUser;
 import com.parse.ParseException;
 import com.parse.SignUpCallback;
-=======
->>>>>>> addb28b12f1db3175749024f369ffe7926e5a116
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import java.util.Calendar;
 
@@ -33,7 +27,6 @@ public class CreateAccountActivity extends Activity {
     public static final String TAG = "CreateAccountActivity";
     private Button createAccount;
 
-<<<<<<< HEAD
     private EditText etFirstName;
     private EditText etLastName;
     private EditText etEmail;
@@ -46,8 +39,7 @@ public class CreateAccountActivity extends Activity {
 
     private DatePickerDialog.OnDateSetListener mDateSetListener;
 
-=======
->>>>>>> addb28b12f1db3175749024f369ffe7926e5a116
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,13 +48,13 @@ public class CreateAccountActivity extends Activity {
         setContentView(R.layout.activity_create_account);
 
 
-<<<<<<< HEAD
+
         etFirstName = findViewById(R.id.FirstName);
         etLastName = findViewById(R.id.LastName);
         etEmail = findViewById(R.id.EmailSignup);
         etPassword = findViewById(R.id.PasswordSignup);
-
         btnDateOfBirth = findViewById(R.id.btnDateOfBirth);
+        createAccount = findViewById(R.id.CreateAccount);
 
         Intent newAccount = new Intent(this, RolePickActivity.class);
 
@@ -150,21 +142,9 @@ public class CreateAccountActivity extends Activity {
                 //Log.i(TAG, "onClick create account button");
                 //startActivity(newAccount);
                 //finish();
-=======
 
-        createAccount = findViewById(R.id.CreateAccount);
 
-        Intent newAccount = new Intent(this, SettingsActivity.class);
-        createAccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.i(TAG, "onClick create account button");
-                startActivity(newAccount);
-                finish();
->>>>>>> addb28b12f1db3175749024f369ffe7926e5a116
             }
         });
-
-
     }
 }

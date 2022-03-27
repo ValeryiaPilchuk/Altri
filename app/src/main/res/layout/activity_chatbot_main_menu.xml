@@ -9,45 +9,11 @@
     android:background="#D6EAF8"
     tools:context=".ChatbotMainMenuActivity">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="230dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="2">
-
-            <Button
-                android:id="@+id/back_btn"
-                android:layout_width="50dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:layout_marginEnd="10dp"
-                android:background="@drawable/back_btn" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginEnd="100dp"
-
-                android:text="Go back to main menu"
-                android:textSize="25dp"
-                />
-
-
-        </LinearLayout>
-
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="230dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/meet_altri" />
-
-    </RelativeLayout>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="230dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/meet_altri" />
 
     <ImageView
         android:layout_width="350dp"
@@ -57,7 +23,7 @@
     </ImageView>
 
     <Button
-    android:id="@+id/forgotPassword"
+    android:id="@+id/chat_altri"
     android:layout_width="300dp"
     android:layout_height="65dp"
     android:layout_gravity="center"

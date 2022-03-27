@@ -7,7 +7,7 @@
     android:background="@drawable/scheduler"
     android:orientation="vertical"
     android:textAlignment="gravity"
-    tools:context=".LoginSignUpActivity">
+    tools:context=".TaskMenuActivity">
 
     <Button
         android:id="@+id/btnAddTask"

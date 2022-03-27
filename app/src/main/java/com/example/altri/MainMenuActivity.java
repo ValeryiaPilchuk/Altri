@@ -9,6 +9,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.altri.Fragment.ChatbotMainMenu;
 import com.parse.ParseUser;
 
 public class MainMenuActivity extends Activity {
@@ -30,6 +31,8 @@ public class MainMenuActivity extends Activity {
 
         Intent settings = new Intent(this, SettingsActivity.class);
         Intent task = new Intent(this, TaskMenuActivity.class);
+        Intent chat = new Intent(this, ChatbotMainMenuActivity.class);
+
 
         btnScheduler.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,6 +46,13 @@ public class MainMenuActivity extends Activity {
             @Override
             public void onClick(View view) {
                 startActivity(settings);
+                finish();
+            }
+        });
+        btnChat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(chat);
                 finish();
             }
         });

@@ -1,6 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:textAlignment="gravity"
+    android:background="#D6EAF8"
+    tools:context=".ChatbotMenu">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+        android:layout_width="350dp"
+        android:layout_height="320dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/altri_bot">
+    </ImageView>
+
+    <Button
+        android:id="@+id/speak_to_altri"
+        android:layout_width="370dp"
+        android:layout_height="65dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/blue_button"
+        android:gravity="center"
+        android:text="I want to speak to Altri"
+        android:fontFamily="@font/poppins"
+        android:textAllCaps="false"
+        android:textColor="#18A1CC"
+        android:textSize="30dp"
+        android:ems="10" />
+    <Button
+        android:id="@+id/text_to_altri"
+        android:layout_width="370dp"
+        android:layout_height="65dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/blue_button"
+        android:gravity="center"
+        android:text="I want to text with Altri"
+        android:fontFamily="@font/poppins"
+        android:textAllCaps="false"
+        android:textColor="#18A1CC"
+        android:textSize="30dp"
+        android:ems="10" />
+
+
+</LinearLayout>

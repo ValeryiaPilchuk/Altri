@@ -12,7 +12,6 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_marginTop="30dp"
         android:background="@drawable/register">
     </ImageView>
 
@@ -37,7 +36,7 @@
             android:singleLine="true"
             android:textAllCaps="false"
             android:textColor="#18A1CC"
-            android:textSize="30dp" />
+            android:textSize="25dp" />
 
         <EditText
             android:id="@+id/LastName"
@@ -55,7 +54,7 @@
             android:singleLine="true"
             android:textAllCaps="false"
             android:textColor="#18A1CC"
-            android:textSize="30dp" />
+            android:textSize="25dp" />
 
     <Button
         android:id="@+id/btnDateOfBirth"
@@ -92,7 +91,7 @@
             android:singleLine="true"
             android:textAllCaps="false"
             android:textColor="#18A1CC"
-            android:textSize="30dp" />
+            android:textSize="25dp" />
 
         <EditText
             android:id="@+id/PasswordSignup"
@@ -109,7 +108,7 @@
             android:singleLine="true"
             android:textAllCaps="false"
             android:textColor="#18A1CC"
-            android:textSize="30dp" />
+            android:textSize="25dp" />
     </LinearLayout>
 
     <Button

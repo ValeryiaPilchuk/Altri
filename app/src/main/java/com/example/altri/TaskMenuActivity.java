@@ -8,6 +8,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 
+import com.example.altri.Fragment.TasksFragment;
+
 public class TaskMenuActivity extends Activity{
 
         public static final String TAG = "TaskMenuActivity";
@@ -27,11 +29,19 @@ public class TaskMenuActivity extends Activity{
             btnCurrentTask = findViewById(R.id.btnCurrentTask);
 
             Intent addTask = new Intent(this, AddTaskActivity.class);
+            Intent editTask = new Intent(this, MainActivity.class);
 
             btnAddTask.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     startActivity(addTask);
+                    finish();
+                }
+            });
+            btnEditTask.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    startActivity(editTask);
                     finish();
                 }
             });

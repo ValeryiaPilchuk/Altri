@@ -7,7 +7,7 @@
     android:background="@drawable/main_menu"
     android:orientation="vertical"
     android:textAlignment="gravity"
-    tools:context=".LoginSignUpActivity">
+    tools:context=".MainMenuActivity">
 
     <Button
         android:id="@+id/btnChat"
