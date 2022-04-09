@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#D6EAF8"
+    tools:context=".Fragment.TasksFragment">
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:background="@drawable/new_back_btn"
+        android:src="@drawable/new_back_btn" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_messages"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="90dp"
+        tools:itemCount="20"
+        tools:listitem="@layout/task" />
+
+
+</RelativeLayout>

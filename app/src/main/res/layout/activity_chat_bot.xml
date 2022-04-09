@@ -6,6 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".LoginSignUpActivity">
 
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:background="@drawable/new_back_btn"
+        android:src="@drawable/new_back_btn" />
 
     <LinearLayout
         android:id="@+id/ll_layout_bar"
@@ -26,6 +34,7 @@
             android:backgroundTint="@android:color/white"
             android:hint="Type a message..."
             android:padding="10dp"
+            android:textSize="15dp"
             android:singleLine="true" />
 
         <Button
@@ -37,6 +46,8 @@
             android:background="@drawable/blue_button"
             android:backgroundTint="#26A69A"
             android:text="Send"
+            android:gravity="center"
+            android:textSize="15dp"
             android:textColor="@android:color/white" />
 
     </LinearLayout>
@@ -46,14 +57,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/ll_layout_bar"
-        android:layout_below="@+id/dark_divider"
         tools:itemCount="20"
+        android:layout_marginTop="75dp"
         tools:listitem="@layout/message_item" />
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:background="#42A5F5"
-        android:id="@+id/dark_divider"/>
-
 
 </RelativeLayout>

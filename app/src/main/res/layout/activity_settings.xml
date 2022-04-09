@@ -9,13 +9,22 @@
     android:textAlignment="gravity"
     tools:context=".LoginSignUpActivity">
 
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:background="@drawable/new_back_btn"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:src="@drawable/new_back_btn" />
+
     <Button
         android:id="@+id/btnProfile"
         android:layout_width="300dp"
         android:layout_height="20dp"
         android:layout_gravity="center"
         android:layout_marginTop="180dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="10dp"
         android:layout_weight="1"
         android:background="@drawable/blue_button"
         android:gravity="center"
@@ -23,7 +32,7 @@
         android:fontFamily="@font/poppins"
         android:textAllCaps="false"
         android:textColor="#18A1CC"
-        android:textSize="40dp" />
+        android:textSize="30dp" />
 
     <Button
         android:id="@+id/btnChangeColor"
@@ -39,15 +48,15 @@
         android:fontFamily="@font/poppins"
         android:textColor="#18A1CC"
         android:textAllCaps="false"
-        android:textSize="40dp" />
+        android:textSize="30dp" />
 
     <Button
         android:id="@+id/btnLogout"
         android:layout_width="300dp"
         android:layout_height="20dp"
         android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="200dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="150dp"
         android:layout_weight="1"
         android:background="@drawable/blue_button"
         android:gravity="center"

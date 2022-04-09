@@ -4,17 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/hello"
+    android:background="@drawable/background_puzzle"
     android:orientation="vertical"
     android:textAlignment="gravity"
     tools:context=".LoginSignUpActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/hello">
+    </ImageView>
 
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="300dp"
         android:layout_height="20dp"
         android:layout_gravity="center"
-        android:layout_marginTop="270dp"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="10dp"
         android:layout_weight="1"
         android:background="@drawable/blue_button"

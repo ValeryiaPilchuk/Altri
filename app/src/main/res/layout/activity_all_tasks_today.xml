@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="#D6EAF8"
+tools:context=".Fragment.TasksFragment">
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:background="@drawable/new_back_btn"
+        android:src="@drawable/new_back_btn" />
+
+    <TextView
+        android:id="@+id/date_on_top"
+        android:layout_width="match_parent"
+        android:layout_height="88dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/highlight"
+        android:fontFamily="@font/poppins"
+        android:gravity="center"
+        android:inputType="date"
+        android:textColor="@android:color/black"
+        android:textSize="35dp" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_messages"
+        android:layout_width="match_parent"
+        android:layout_height="528dp"
+        android:layout_below="@+id/date_on_top"
+        tools:itemCount="20"
+        tools:listitem="@layout/task" />
+
+    <Button
+        android:id="@+id/btnViewAll"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/rv_messages"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/round_box"
+        android:backgroundTint="#EAF7FD"
+        android:ems="10"
+        android:fontFamily="@font/poppins"
+        android:gravity="center"
+        android:hint="View All"
+        android:inputType="date"
+        android:singleLine="true"
+        android:textAllCaps="false"
+        android:textColor="#18A1CC"
+        android:textSize="30dp" />
+
+
+</RelativeLayout>

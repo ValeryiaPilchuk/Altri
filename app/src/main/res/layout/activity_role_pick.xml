@@ -7,7 +7,7 @@
     android:background="@drawable/role"
     android:orientation="vertical"
     android:textAlignment="gravity"
-    tools:context=".LoginSignUpActivity">
+    tools:context=".RolePickActivity">
 
     <Button
         android:id="@+id/btnCaregiver"

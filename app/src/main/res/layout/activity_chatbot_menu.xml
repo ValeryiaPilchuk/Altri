@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:textAlignment="gravity"
+    android:background="#D6EAF8"
+    tools:context=".ChatbotMenu">
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:background="@drawable/new_back_btn"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:src="@drawable/new_back_btn" />
+
+    <ImageView
+        android:layout_width="350dp"
+        android:layout_height="320dp"
+        android:layout_gravity="center"
+        android:background="@drawable/altri_bot">
+    </ImageView>
+
+    <Button
+        android:id="@+id/speak_to_altri"
+        android:layout_width="370dp"
+        android:layout_height="65dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/blue_button"
+        android:gravity="center"
+        android:text="I want to speak to Altri"
+        android:fontFamily="@font/poppins"
+        android:textAllCaps="false"
+        android:textColor="#18A1CC"
+        android:textSize="30dp"
+        android:ems="10" />
+    <Button
+        android:id="@+id/text_to_altri"
+        android:layout_width="370dp"
+        android:layout_height="65dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/blue_button"
+        android:gravity="center"
+        android:text="I want to text with Altri"
+        android:fontFamily="@font/poppins"
+        android:textAllCaps="false"
+        android:textColor="#18A1CC"
+        android:textSize="30dp"
+        android:ems="10" />
+
+    <Button
+        android:id="@+id/how_to_altri"
+        android:layout_width="370dp"
+        android:layout_height="65dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/blue_button"
+        android:gravity="center"
+        android:text="How do I use Altri"
+        android:fontFamily="@font/poppins"
+        android:textAllCaps="false"
+        android:textColor="#18A1CC"
+        android:textSize="30dp"
+        android:ems="10" />
+
+</LinearLayout>

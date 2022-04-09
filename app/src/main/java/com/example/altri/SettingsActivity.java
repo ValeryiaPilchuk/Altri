@@ -11,11 +11,13 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.parse.ParseUser;
 
 public class SettingsActivity extends Activity{
+
 
     private Button btnChat;
     public static final String TAG = "SettingsActivity";
@@ -27,6 +29,8 @@ public class SettingsActivity extends Activity{
     private Button btnYellow;
     private Button btnRed;
 
+    private ImageButton btnBack;
+
     private AlertDialog.Builder dialogBuilder;
     private AlertDialog dialog;
 
@@ -36,13 +40,26 @@ public class SettingsActivity extends Activity{
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_settings);
-      
+
         btnProfile = findViewById(R.id.btnProfile);
         btnChangeColor = findViewById(R.id.btnChangeColor);
         btnLogout = findViewById(R.id.btnLogout);
+        btnBack = findViewById(R.id.imageButton);
+
+        Intent logoutIntent = new Intent(this, LoginSignUpActivity.class);
+        Intent backIntent = new Intent(getApplicationContext(), MainMenuActivity.class);
 
         Intent profile = new Intent (this, ProfileActivity.class);
         Intent logout = new Intent(this, LoginSignUpActivity.class);
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.i(TAG, "onClick back");
+                startActivity(backIntent);
+                finish();
+            }
+        });
 
         btnProfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,7 +89,7 @@ public class SettingsActivity extends Activity{
                 ParseUser.logOut();
 
                 Toast.makeText(SettingsActivity.this, "Logging out", Toast.LENGTH_SHORT).show();
-                startActivity(logout);
+                startActivity(logoutIntent);
                 finish();
 
             }

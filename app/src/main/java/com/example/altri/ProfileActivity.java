@@ -3,10 +3,12 @@ package com.example.altri;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.parse.ParseException;
@@ -21,7 +23,7 @@ public class ProfileActivity extends Activity {
     private Button btnDateOfBirthProfile;
     private Button btnEmailProfile;
     private Button btnChangePassword;
-
+    private ImageButton btnBack;
     private Button btnDeleteAccount;
 
     @Override
@@ -36,6 +38,8 @@ public class ProfileActivity extends Activity {
         btnDateOfBirthProfile = findViewById(R.id.btnDateOfBirthProfile);
         btnEmailProfile = findViewById(R.id.btnEmailProfile);
         btnChangePassword = findViewById(R.id.btnChangePasswordProfile);
+        btnBack = findViewById(R.id.imageButton);
+
 
         //btnDeleteAccount = findViewById(R.id.btnDeleteAccount);
 
@@ -47,6 +51,16 @@ public class ProfileActivity extends Activity {
         btnEmailProfile.setText(currentUser.getUsername());
 
         Intent changePassword = new Intent(ProfileActivity.this, ResetPasswordActivity.class);
+        Intent backIntent = new Intent(getApplicationContext(), SettingsActivity.class);
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.i(TAG, "onClick back");
+                startActivity(backIntent);
+                finish();
+            }
+        });
 
         btnChangePassword.setOnClickListener(new View.OnClickListener() {
             @Override
