@@ -38,14 +38,18 @@ class ChatbotVoicenew : Activity() {
         setContentView(R.layout.activity_chat_voice_2) // i want the screen for speech 2 txt
 
         recyclerView()
-
         clickEvents()
 
         customMessage("Hello!, this is ${botlist[0]} speaking, how may I help you today? :)")
 
         btn_speak.setOnClickListener{
+
             askSpeechInput()
+            sendMessage()
+
+
         }
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -73,9 +77,9 @@ class ChatbotVoicenew : Activity() {
     }
 
     private fun clickEvents() {
-        btn_speak.setOnClickListener(){
-            sendMessage()
-        }
+       // btn_speak.setOnClickListener(){
+          //  sendMessage()
+      //  }
         et_message.setOnClickListener{
             GlobalScope.launch {
                 delay(1000)
