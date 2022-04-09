@@ -1,5 +1,7 @@
 package com.example.altri;
 
+import static androidx.constraintlayout.motion.utils.Oscillator.TAG;
+
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -15,6 +17,7 @@ import android.widget.Button;
 
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.parse.ParseUser;
@@ -41,8 +44,9 @@ public class CreateAccountActivity extends Activity {
 
     private String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
-
     private DatePickerDialog.OnDateSetListener mDateSetListener;
+
+    private ImageButton btnBack;
 
 
     @Override
@@ -53,7 +57,7 @@ public class CreateAccountActivity extends Activity {
         setContentView(R.layout.activity_create_account);
 
 
-
+        btnBack = findViewById(R.id.imageButton);
         etFirstName = findViewById(R.id.FirstName);
         etLastName = findViewById(R.id.LastName);
         etEmail = findViewById(R.id.EmailSignup);
@@ -61,7 +65,17 @@ public class CreateAccountActivity extends Activity {
         btnDateOfBirth = findViewById(R.id.btnDateOfBirth);
         createAccount = findViewById(R.id.CreateAccount);
 
-        Intent newAccount = new Intent(this, RolePickActivity.class);
+        Intent newAccountIntent = new Intent(this, RolePickActivity.class);
+        Intent backIntent = new Intent(getApplicationContext(), LoginSignUpActivity.class);
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.i(TAG, "onClick back");
+                startActivity(backIntent);
+                finish();
+            }
+        });
 
         btnDateOfBirth.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,45 +106,39 @@ public class CreateAccountActivity extends Activity {
             @Override
             public void onClick(View view) {
 
-                if(TextUtils.isEmpty(etFirstName.getText())){
+                if (TextUtils.isEmpty(etFirstName.getText())) {
                     etFirstName.setError("First Name is required!");
-                }
-                else if (TextUtils.isEmpty(etLastName.getText())){
+                } else if (TextUtils.isEmpty(etLastName.getText())) {
                     etLastName.setError("Last Name is required!");
-                }
-                else if (TextUtils.isEmpty(btnDateOfBirth.getText())){
+                } else if (TextUtils.isEmpty(btnDateOfBirth.getText())) {
                     btnDateOfBirth.setError("Date of Birth is required!");
-                }
-                else if (TextUtils.isEmpty(etEmail.getText())){
+                } else if (TextUtils.isEmpty(etEmail.getText())) {
                     etEmail.setError("Email is required!");
-                }
-                else if (!(etEmail.getText().toString().trim().matches(emailPattern))) {
+                } else if (!(etEmail.getText().toString().trim().matches(emailPattern))) {
                     etEmail.setError("Email format incorrect!");
-                }
-                else if (TextUtils.isEmpty(etPassword.getText())){
+                } else if (TextUtils.isEmpty(etPassword.getText())) {
                     etPassword.setError("Password is required!");
                 }
 
 
-
                 ParseUser user = new ParseUser();
 
-                user.put("firstname",etFirstName.getText().toString());
-                user.put("lastname",etLastName.getText().toString());
-                user.put("dateofbirth",btnDateOfBirth.getText().toString());
+                user.put("firstname", etFirstName.getText().toString());
+                user.put("lastname", etLastName.getText().toString());
+                user.put("dateofbirth", btnDateOfBirth.getText().toString());
                 user.setUsername(etEmail.getText().toString());
                 user.setPassword(etPassword.getText().toString());
 
                 user.signUpInBackground(new SignUpCallback() {
                     @Override
                     public void done(ParseException e) {
-                        if (e != null){
+                        if (e != null) {
                             Log.e(TAG, "Issue with SignUp", e);
                             Toast.makeText(CreateAccountActivity.this, "Issue with Sign Up!", Toast.LENGTH_SHORT).show();
                             return;
                         }
                         Toast.makeText(CreateAccountActivity.this, "Sign Up Successful!", Toast.LENGTH_SHORT).show();
-                        startActivity(newAccount);
+                        startActivity(newAccountIntent);
                         finish();
                     }
                 });

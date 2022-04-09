@@ -1,8 +1,11 @@
 package com.example.altri;
 
+import static androidx.constraintlayout.motion.utils.Oscillator.TAG;
+
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -14,6 +17,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -35,7 +39,7 @@ public class AddTaskActivity extends Activity {
     private Button btnTaskTime;
     private Button btnTaskImage;
     private Button btnAddTask;
-    private Spinner spinner;
+    private ImageButton btnBack;
 
     private DatePickerDialog.OnDateSetListener mDateSetListener;
     private TimePickerDialog.OnTimeSetListener mTimeSetListener;
@@ -49,11 +53,23 @@ public class AddTaskActivity extends Activity {
 
         etTaskName = findViewById(R.id.etTaskName);
         etTaskDescription = findViewById(R.id.etTaskDescription);
+        btnBack = findViewById(R.id.imageButton);
 
         btnTaskDate = findViewById(R.id.btnTaskDate);
         btnTaskTime = findViewById(R.id.btnTaskTime);
         btnTaskImage = findViewById(R.id.btnTaskImage);
         btnAddTask = findViewById(R.id.btnAddTask);
+
+        Intent backIntent = new Intent(getApplicationContext(), SchedulerMenuActivity.class);
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.i(TAG, "onClick back");
+                startActivity(backIntent);
+                finish();
+            }
+        });
 
         btnTaskDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,7 +99,7 @@ public class AddTaskActivity extends Activity {
         btnTaskTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                TimePickerDialog timePickerDialog = new TimePickerDialog(AddTaskActivity.this, android.R.style.Theme_Holo_Dialog_MinWidth, mTimeSetListener , 12, 0, false);
+                TimePickerDialog timePickerDialog = new TimePickerDialog(AddTaskActivity.this, android.R.style.Theme_Holo_Dialog_MinWidth, mTimeSetListener, 12, 0, false);
 
                 timePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 timePickerDialog.show();
@@ -107,9 +123,7 @@ public class AddTaskActivity extends Activity {
                     Date date = display24hours.parse(time);
                     SimpleDateFormat display12hours = new SimpleDateFormat("hh:mm aa");
                     btnTaskTime.setText(display12hours.format(date));
-                }
-
-                catch (java.text.ParseException e){
+                } catch (java.text.ParseException e) {
                     e.printStackTrace();
                 }
 
@@ -155,8 +169,7 @@ public class AddTaskActivity extends Activity {
                 if (e != null) {
                     Log.e(TAG, "error", e);
                     Toast.makeText(AddTaskActivity.this, "Failed to add task", Toast.LENGTH_SHORT).show();
-                }
-                else {
+                } else {
                     Toast.makeText(AddTaskActivity.this, "Task added!", Toast.LENGTH_SHORT).show();
                     etTaskName.setText("");
                     etTaskDescription.setText("");

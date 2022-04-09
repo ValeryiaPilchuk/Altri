@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.parse.ParseUser;
@@ -28,8 +29,11 @@ public class SettingsActivity extends Activity{
     private Button btnYellow;
     private Button btnRed;
 
+    private ImageButton btnBack;
+
     private AlertDialog.Builder dialogBuilder;
     private AlertDialog dialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +46,19 @@ public class SettingsActivity extends Activity{
 
         btnChangeColor = findViewById(R.id.btnChangeColor);
         btnLogout = findViewById(R.id.btnLogout);
+        btnBack = findViewById(R.id.imageButton);
 
-        Intent logout = new Intent(this, LoginSignUpActivity.class);
+        Intent logoutIntent = new Intent(this, LoginSignUpActivity.class);
+        Intent backIntent = new Intent(getApplicationContext(), MainMenuActivity.class);
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.i(TAG, "onClick back");
+                startActivity(backIntent);
+                finish();
+            }
+        });
 
         btnChangeColor.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,7 +75,7 @@ public class SettingsActivity extends Activity{
                 ParseUser.logOut();
 
                 Toast.makeText(SettingsActivity.this, "Logging out", Toast.LENGTH_SHORT).show();
-                startActivity(logout);
+                startActivity(logoutIntent);
                 finish();
 
             }

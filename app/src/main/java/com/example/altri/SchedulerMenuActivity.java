@@ -1,6 +1,5 @@
 package com.example.altri;
 
-
 import static androidx.constraintlayout.motion.utils.Oscillator.TAG;
 
 import android.app.Activity;
@@ -13,26 +12,31 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
+import com.example.altri.Fragment.TasksFragment;
 
-public class ChatbotMainMenuActivity extends Activity {
+public class SchedulerMenuActivity extends Activity {
 
+    public static final String TAG = "TaskMenuActivity";
+    private Button btnAddTask;
+    private Button btnEditTask;
+    private Button btnCurrentTask;
     private ImageButton btnBack;
-    private Button chat;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_chatbot_main_menu);
+        setContentView(R.layout.activity_task_menu);
 
-        chat = findViewById(R.id.chat_altri);
+        btnAddTask = findViewById(R.id.btnAddTask);
+        btnEditTask = findViewById(R.id.btnEditTask);
+        btnCurrentTask = findViewById(R.id.btnCurrentTask);
         btnBack = findViewById(R.id.imageButton);
 
-        Intent chatbotIntent = new Intent(this, ChatbotMenu.class);
+        Intent addTask = new Intent(this, AddTaskActivity.class);
+        Intent editTask = new Intent(this, MainActivity.class);
         Intent backIntent = new Intent(getApplicationContext(), MainMenuActivity.class);
 
         btnBack.setOnClickListener(new View.OnClickListener() {
@@ -44,11 +48,17 @@ public class ChatbotMainMenuActivity extends Activity {
             }
         });
 
-        chat.setOnClickListener(new View.OnClickListener() {
+        btnAddTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.i(TAG, "onClick to chatAltri");
-                startActivity(chatbotIntent);
+                startActivity(addTask);
+                finish();
+            }
+        });
+        btnEditTask.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(editTask);
                 finish();
             }
         });

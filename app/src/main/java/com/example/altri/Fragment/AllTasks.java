@@ -33,25 +33,21 @@ import java.util.List;
 import java.util.Calendar;
 
 
-public class TasksFragment extends Fragment {
+public class AllTasks extends Fragment {
 
     public static final String TAG = "Tasks";
 
     private RecyclerView tasksRV;
-    private TextView dateTV;
     protected TaskAdapter adapter;
     private List<Schedule> allTasks;
     private TaskAdapter taskAdapter;
     private ImageButton btnBack;
-    private ImageButton btnviewAll;
 
 
-    Date todaysDate = Calendar.getInstance().getTime();
-    SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
-
-    public TasksFragment(){
+    public AllTasks(){
 
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -66,9 +62,6 @@ public class TasksFragment extends Fragment {
 //        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 //        setContentView(R.layout.activity_display_all_tasks);
         btnBack = view.findViewById(R.id.imageButton);
-        tasksRV = view.findViewById(R.id.rv_messages);
-        TextView dateTV = (TextView) getView().findViewById(R.id.date_on_top);
-        dateTV.setText(formatter.format(todaysDate));
         allTasks = new ArrayList<>();
         adapter = new TaskAdapter(getContext(), allTasks);
 
@@ -98,8 +91,7 @@ public class TasksFragment extends Fragment {
         */
         ParseQuery<Schedule> query = ParseQuery.getQuery(Schedule.class);
         query.include(Schedule.KEY_USER);
-        query.setLimit(20);
-        query.whereEqualTo(Schedule.KEY_TASK_DATE, formatter.format(todaysDate));
+        query.setLimit(30);
         query.whereEqualTo(Schedule.KEY_USER, ParseUser.getCurrentUser());
         query.addDescendingOrder(Schedule.KEY_TASK_TIME);
         query.findInBackground(new FindCallback<Schedule>() {

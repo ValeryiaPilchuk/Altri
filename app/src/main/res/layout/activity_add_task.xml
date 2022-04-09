@@ -9,6 +9,16 @@
     android:textAlignment="gravity"
     tools:context=".LoginSignUpActivity">
 
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="80dp"
+        android:layout_height="50dp"
+        android:layout_weight="1"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:background="@drawable/new_back_btn"
+        android:src="@drawable/new_back_btn" />
+
     <EditText
         android:id="@+id/etTaskName"
         android:layout_width="300dp"
@@ -115,5 +125,6 @@
         android:textAllCaps="false"
         android:textColor="#F2F2F2"
         android:textSize="30dp" />
+
 
 </LinearLayout>

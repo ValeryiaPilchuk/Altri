@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.circularreveal.CircularRevealRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,23 +9,38 @@
     android:background="#D6EAF8"
     tools:context=".ChatbotMainMenuActivity">
 
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:background="@drawable/new_back_btn"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:src="@drawable/new_back_btn" />
+
     <ImageView
+        android:id="@+id/welcomeImg"
         android:layout_width="wrap_content"
         android:layout_height="230dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/meet_altri" />
 
     <ImageView
+        android:id="@+id/altriImg"
         android:layout_width="350dp"
         android:layout_height="320dp"
         android:layout_gravity="center"
+        android:layout_below="@id/welcomeImg"
+        android:layout_centerHorizontal="true"
         android:background="@drawable/altri_bot">
     </ImageView>
 
     <Button
     android:id="@+id/chat_altri"
+    android:layout_below="@id/altriImg"
     android:layout_width="300dp"
     android:layout_height="65dp"
+    android:layout_centerHorizontal="true"
     android:layout_gravity="center"
     android:layout_marginBottom="20dp"
     android:layout_marginTop="30dp"
@@ -39,4 +54,4 @@
     android:ems="10" />
 
 
-</LinearLayout>
+</com.google.android.material.circularreveal.CircularRevealRelativeLayout>

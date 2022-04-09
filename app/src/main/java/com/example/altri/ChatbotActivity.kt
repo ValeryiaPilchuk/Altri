@@ -2,14 +2,17 @@ package com.example.altri
 
 import android.app.Activity
 import android.os.Bundle
+import android.widget.ImageButton
 import android.view.Window
 import android.view.WindowManager
 import android.widget.Button
 import androidx.constraintlayout.widget.ConstraintLayout
 import android.content.Intent
+import android.media.Image
 import android.net.Uri
 import com.example.altri.data.Message
 import android.util.Log
+import android.widget.Toast
 import androidx.constraintlayout.motion.utils.Oscillator
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.altri.utils.BotResponse
@@ -33,6 +36,7 @@ class ChatbotActivity: Activity() {
         //this.window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         setContentView(R.layout.activity_chat_bot)
         //val background: ConstraintLayout = findViewById(R.id.)
+        val btnBack = findViewById<ImageButton>(R.id.imageButton)
 
         recyclerView()
 
@@ -40,8 +44,12 @@ class ChatbotActivity: Activity() {
 
         //val random = (0..0).random() //choose to always speak to altri
         customMessage("Hello!, this is ${botlist[0]} speaking, how may I help you today? :)") //first msg in recyclerview
-
+        btnBack.setOnClickListener{
+            val intent = Intent(this,ChatbotMenu::class.java)
+            startActivity(intent)
+        }
     }
+
 
     private fun clickEvents() {
         btn_send.setOnClickListener(){

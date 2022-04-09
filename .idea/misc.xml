@@ -35,21 +35,24 @@
         <entry key="..\:/Users/valer/AndroidStudioProjects/Altri/app/src/main/res/font/poppins.xml" value="0.28489583333333335" />
         <entry key="..\:/Users/valer/AndroidStudioProjects/Altri/app/src/main/res/layout/acitivty_login.xml" value="0.2969543147208122" />
         <entry key="..\:/Users/valer/AndroidStudioProjects/Altri/app/src/main/res/layout/activity_account.xml" value="0.22916666666666666" />
-        <entry key="..\:/Users/valer/AndroidStudioProjects/Altri/app/src/main/res/layout/activity_create_account.xml" value="0.2546875" />
-        <entry key="..\:/Users/valer/AndroidStudioProjects/Altri/app/src/main/res/layout/activity_add_task.xml" value="0.2546875" />
-        <entry key="..\:/Users/valer/AndroidStudioProjects/Altri/app/src/main/res/layout/activity_all_tasks.xml" value="0.14427083333333332" />
+        <entry key="..\:/Users/valer/AndroidStudioProjects/Altri/app/src/main/res/layout/activity_add_task.xml" value="0.268" />
+        <entry key="..\:/Users/valer/AndroidStudioProjects/Altri/app/src/main/res/layout/activity_all_tasks.xml" value="0.268" />
         <entry key="..\:/Users/valer/AndroidStudioProjects/Altri/app/src/main/res/layout/activity_chat_bot.xml" value="0.2546875" />
-        <entry key="..\:/Users/valer/AndroidStudioProjects/Altri/app/src/main/res/layout/activity_chatbot_main_menu.xml" value="0.2546875" />
+        <entry key="..\:/Users/valer/AndroidStudioProjects/Altri/app/src/main/res/layout/activity_chatbot_main_menu.xml" value="0.2" />
         <entry key="..\:/Users/valer/AndroidStudioProjects/Altri/app/src/main/res/layout/activity_chatbot_menu.xml" value="0.2" />
         <entry key="..\:/Users/valer/AndroidStudioProjects/Altri/app/src/main/res/layout/activity_create_account.xml" value="0.3" />
         <entry key="..\:/Users/valer/AndroidStudioProjects/Altri/app/src/main/res/layout/activity_display_all_tasks.xml" value="0.2546875" />
         <entry key="..\:/Users/valer/AndroidStudioProjects/Altri/app/src/main/res/layout/activity_display_task.xml" value="0.2546875" />
         <entry key="..\:/Users/valer/AndroidStudioProjects/Altri/app/src/main/res/layout/activity_log_in.xml" value="0.14427083333333332" />
         <entry key="..\:/Users/valer/AndroidStudioProjects/Altri/app/src/main/res/layout/activity_login.xml" value="0.14427083333333332" />
+        <entry key="..\:/Users/valer/AndroidStudioProjects/Altri/app/src/main/res/layout/activity_login_signup.xml" value="0.13055555555555556" />
         <entry key="..\:/Users/valer/AndroidStudioProjects/Altri/app/src/main/res/layout/activity_main.xml" value="0.17753623188405798" />
+        <entry key="..\:/Users/valer/AndroidStudioProjects/Altri/app/src/main/res/layout/activity_main_menu.xml" value="0.13055555555555556" />
+        <entry key="..\:/Users/valer/AndroidStudioProjects/Altri/app/src/main/res/layout/activity_main_screen.xml" value="0.13055555555555556" />
         <entry key="..\:/Users/valer/AndroidStudioProjects/Altri/app/src/main/res/layout/activity_role_pick.xml" value="0.2546875" />
         <entry key="..\:/Users/valer/AndroidStudioProjects/Altri/app/src/main/res/layout/activity_settings.xml" value="0.2546875" />
         <entry key="..\:/Users/valer/AndroidStudioProjects/Altri/app/src/main/res/layout/activity_task_menu.xml" value="0.14427083333333332" />
+        <entry key="..\:/Users/valer/AndroidStudioProjects/Altri/app/src/main/res/layout/activity_view_all_tasks.xml" value="0.2546875" />
         <entry key="..\:/Users/valer/AndroidStudioProjects/Altri/app/src/main/res/layout/fragment_chat_main_menu.xml" value="0.2546875" />
         <entry key="..\:/Users/valer/AndroidStudioProjects/Altri/app/src/main/res/layout/message_item.xml" value="0.2546875" />
         <entry key="..\:/Users/valer/AndroidStudioProjects/Altri/app/src/main/res/layout/popup_color_change.xml" value="0.2546875" />
