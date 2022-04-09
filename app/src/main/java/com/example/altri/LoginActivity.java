@@ -21,28 +21,28 @@ import com.parse.LogInCallback;
 
 public class LoginActivity extends Activity {
 
-        public static final String TAG = "LoginActivity";
-        private Button btnLogin;
-        private Button btnForgotPassword;
+    public static final String TAG = "LoginActivity";
+    private Button btnLogin;
+    private Button btnForgotPassword;
 
-        private EditText etEmail;
-        private EditText etPassword;
+    private EditText etEmail;
+    private EditText etPassword;
 
     private ImageButton btnBack;
 
     @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            requestWindowFeature(Window.FEATURE_NO_TITLE);
-            this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-            setContentView(R.layout.activity_log_in);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        setContentView(R.layout.activity_login);
 
-            if (ParseUser.getCurrentUser() != null){
-                goRolePickActivity();
-            }
+        if (ParseUser.getCurrentUser() != null) {
+            goRolePickActivity();
+        }
 
-            btnLogin = findViewById(R.id.Login);
-            btnForgotPassword = findViewById(R.id.forgotPassword);
+        btnLogin = findViewById(R.id.Login);
+        btnForgotPassword = findViewById(R.id.forgotPassword);
 
         etEmail = findViewById(R.id.EmailLogin);
         etPassword = findViewById(R.id.PasswordLogin);
@@ -59,19 +59,19 @@ public class LoginActivity extends Activity {
             }
         });
 
-            Intent resetPassword = new Intent(LoginActivity.this, ResetPasswordActivity.class);
+        Intent resetPassword = new Intent(LoginActivity.this, ResetPasswordActivity.class);
 
-            btnLogin.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Log.i(TAG, "onClick Login Button");
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i(TAG, "onClick Login Button");
 
-                    String username = etEmail.getText().toString();
-                    String password = etPassword.getText().toString();
+                String username = etEmail.getText().toString();
+                String password = etPassword.getText().toString();
 
-                    loginUser(username, password);
-                }
-            });
+                loginUser(username, password);
+            }
+        });
 
         btnForgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
