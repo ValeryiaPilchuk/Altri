@@ -31,7 +31,7 @@
         <activity android:name=".SettingsActivity" />
         <activity android:name=".TaskMenuActivity" />
         <activity android:name=".ChatbotActivity" />
-        <activity android:name=".ChatbotVoice" />
+        <activity android:name=".ChatbotVoicenew" />
 
 
 

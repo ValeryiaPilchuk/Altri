@@ -27,7 +27,7 @@ public class ChatbotMenu extends AppCompatActivity {
         Button voice = findViewById(R.id.speak_to_altri);
 
         Intent chatbot = new Intent(this, ChatbotActivity.class);
-        Intent chatvoice = new Intent(this, ChatbotVoice.class);
+        Intent chatvoice = new Intent(this, ChatbotVoicenew.class);
 
 
         chat.setOnClickListener(new View.OnClickListener() {
