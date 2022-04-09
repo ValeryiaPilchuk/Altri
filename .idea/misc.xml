@@ -3,6 +3,35 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+
+         //<<<<<<< Anthony
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1265" />
+        <entry key="app/src/main/res/drawable/blue_button.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/create_account_btn.xml" value="0.1265" />
+        <entry key="app/src/main/res/drawable/gradient.xml" value="0.1265" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1265" />
+        <entry key="app/src/main/res/drawable/my_button.xml" value="0.1265" />
+        <entry key="app/src/main/res/drawable/red_button.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/yellow_button.xml" value="0.2275802612304687" />
+        <entry key="app/src/main/res/layout/activity_add_task.xml" value="0.1140625" />
+        <entry key="app/src/main/res/layout/activity_change_password.xml" value="0.17695770263671876" />
+        <entry key="app/src/main/res/layout/activity_create_account.xml" value="0.1813552856445313" />
+        <entry key="app/src/main/res/layout/activity_log_in.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_login_signup.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.115625" />
+        <entry key="app/src/main/res/layout/activity_main_menu.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_main_screen.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_profile.xml" value="0.21433715820312502" />
+        <entry key="app/src/main/res/layout/activity_reset_password.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_role_pick.xml" value="0.115625" />
+        <entry key="app/src/main/res/layout/activity_settings.xml" value="0.15277099609375" />
+        <entry key="app/src/main/res/layout/activity_task_menu.xml" value="0.115625" />
+        <entry key="app/src/main/res/layout/popup_color_change.xml" value="0.34186706542968753" />
+        <entry key="app/src/main/res/layout/popup_date.xml" value="0.357342529296875" />
+        <entry key="app/src/main/res/layout/test.xml" value="0.1" />
+//=======
+//>>>>>>> master
+
         <entry key="..\:/Users/ferpa/Desktop/Altri/Altri/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.232" />
         <entry key="..\:/Users/ferpa/Desktop/Altri/Altri/app/src/main/res/drawable/ic_launcher_background.xml" value="0.232" />
         <entry key="..\:/Users/ferpa/Desktop/Altri/Altri/app/src/main/res/drawable/my_button.xml" value="0.232" />
@@ -52,6 +81,7 @@
         <entry key="..\:/Users/valer/AndroidStudioProjects/Altri/app/src/main/res/layout/activity_role_pick.xml" value="0.2546875" />
         <entry key="..\:/Users/valer/AndroidStudioProjects/Altri/app/src/main/res/layout/activity_settings.xml" value="0.2546875" />
         <entry key="..\:/Users/valer/AndroidStudioProjects/Altri/app/src/main/res/layout/activity_task_menu.xml" value="0.14427083333333332" />
+
         <entry key="..\:/Users/valer/AndroidStudioProjects/Altri/app/src/main/res/layout/activity_view_all_tasks.xml" value="0.2546875" />
         <entry key="..\:/Users/valer/AndroidStudioProjects/Altri/app/src/main/res/layout/fragment_chat_main_menu.xml" value="0.2546875" />
         <entry key="..\:/Users/valer/AndroidStudioProjects/Altri/app/src/main/res/layout/message_item.xml" value="0.2546875" />

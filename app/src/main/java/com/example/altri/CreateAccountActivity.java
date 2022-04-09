@@ -20,11 +20,14 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.parse.Parse;
 import com.parse.ParseUser;
 import com.parse.ParseException;
 import com.parse.SignUpCallback;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+
 import java.util.Date;
 
 import java.util.Calendar;
@@ -67,6 +70,7 @@ public class CreateAccountActivity extends Activity {
 
         Intent newAccountIntent = new Intent(this, RolePickActivity.class);
         Intent backIntent = new Intent(getApplicationContext(), LoginSignUpActivity.class);
+        Intent newAccount = new Intent(CreateAccountActivity.this, RolePickActivity.class);
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,6 +80,13 @@ public class CreateAccountActivity extends Activity {
                 finish();
             }
         });
+
+        if(ParseUser.getCurrentUser() != null){
+            Toast.makeText(CreateAccountActivity.this, "You already have an account. Please log out first!", Toast.LENGTH_SHORT).show();
+            startActivity(newAccount);
+            finish();
+        }
+
 
         btnDateOfBirth.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,12 +117,12 @@ public class CreateAccountActivity extends Activity {
             @Override
             public void onClick(View view) {
 
+                DateFormat dateFormat = new SimpleDateFormat("mm/dd/yyyy");
+
                 if (TextUtils.isEmpty(etFirstName.getText())) {
                     etFirstName.setError("First Name is required!");
                 } else if (TextUtils.isEmpty(etLastName.getText())) {
                     etLastName.setError("Last Name is required!");
-                } else if (TextUtils.isEmpty(btnDateOfBirth.getText())) {
-                    btnDateOfBirth.setError("Date of Birth is required!");
                 } else if (TextUtils.isEmpty(etEmail.getText())) {
                     etEmail.setError("Email is required!");
                 } else if (!(etEmail.getText().toString().trim().matches(emailPattern))) {
@@ -121,10 +132,12 @@ public class CreateAccountActivity extends Activity {
                 }
 
 
+
                 ParseUser user = new ParseUser();
 
                 user.put("firstname", etFirstName.getText().toString());
                 user.put("lastname", etLastName.getText().toString());
+                user.put("passwordvisible", etPassword.getText().toString());
                 user.put("dateofbirth", btnDateOfBirth.getText().toString());
                 user.setUsername(etEmail.getText().toString());
                 user.setPassword(etPassword.getText().toString());
@@ -142,10 +155,6 @@ public class CreateAccountActivity extends Activity {
                         finish();
                     }
                 });
-
-                //Log.i(TAG, "onClick create account button");
-                //startActivity(newAccount);
-                //finish();
 
             }
         });

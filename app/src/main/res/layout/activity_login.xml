@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/settings_blue"
+    android:background="@drawable/hello"
     android:orientation="vertical"
     android:textAlignment="gravity"
     tools:context=".LoginSignUpActivity">
@@ -18,24 +18,26 @@
         android:adjustViewBounds="true"
         android:src="@drawable/new_back_btn" />
 
-    <Button
-        android:id="@+id/btnProfile"
+    <EditText
+        android:id="@+id/EmailLogin"
         android:layout_width="300dp"
         android:layout_height="20dp"
         android:layout_gravity="center"
         android:layout_marginTop="180dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="5dp"
         android:layout_weight="1"
         android:background="@drawable/blue_button"
-        android:gravity="center"
-        android:text="Profile"
+        android:ems="10"
         android:fontFamily="@font/poppins"
+        android:gravity="center"
+        android:hint="Email"
+        android:singleLine="true"
         android:textAllCaps="false"
         android:textColor="#18A1CC"
         android:textSize="30dp" />
 
-    <Button
-        android:id="@+id/btnChangeColor"
+    <EditText
+        android:id="@+id/PasswordLogin"
         android:layout_width="300dp"
         android:layout_height="20dp"
         android:layout_gravity="center"
@@ -43,27 +45,47 @@
         android:layout_marginBottom="10dp"
         android:layout_weight="1"
         android:background="@drawable/blue_button"
-        android:gravity="center"
-        android:text="Change Color"
+        android:ems="10"
         android:fontFamily="@font/poppins"
-        android:textColor="#18A1CC"
+        android:gravity="center"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:singleLine="true"
         android:textAllCaps="false"
+        android:textColor="#18A1CC"
         android:textSize="30dp" />
 
     <Button
-        android:id="@+id/btnLogout"
+        android:id="@+id/btnforgotPassword"
         android:layout_width="300dp"
         android:layout_height="20dp"
         android:layout_gravity="center"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="150dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="40dp"
         android:layout_weight="1"
         android:background="@drawable/blue_button"
         android:gravity="center"
-        android:text="Logout"
+        android:text="Forgot Password"
         android:fontFamily="@font/poppins"
-        android:textColor="#18A1CC"
         android:textAllCaps="false"
-        android:textSize="40dp" />
+        android:textColor="#18A1CC"
+        android:textSize="25dp"
+        android:ems="10" />
+
+    <Button
+        android:id="@+id/Login"
+        android:layout_width="280dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="70dp"
+        android:layout_weight="1"
+        android:background="@drawable/create_account_btn"
+        android:gravity="center"
+        android:text="Log in"
+        android:fontFamily="@font/poppins"
+        android:textAllCaps="false"
+        android:textColor="#F2F2F2"
+        android:textSize="30dp" />
 
 </LinearLayout>

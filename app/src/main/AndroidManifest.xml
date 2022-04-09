@@ -25,6 +25,10 @@
         <activity android:name=".MainActivity"
             android:theme="@style/Theme.AppCompat"/>
         <activity android:name=".MainMenuActivity" />
+        <activity android:name=".SettingsActivity" />
+        <activity android:name=".AddTaskActivity" />
+        <activity android:name=".ProfileActivity" />
+        <activity android:name=".ResetPasswordActivity" />
         <activity android:name=".ParseApplication" />
         <activity android:name=".RolePickActivity" />
         <activity android:name=".SettingsActivity" />
