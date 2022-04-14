@@ -22,7 +22,6 @@ public class SchedulerMenuActivity extends Activity {
     private Button btnCurrentTask;
     private ImageButton btnBack;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +36,7 @@ public class SchedulerMenuActivity extends Activity {
 
         Intent addTask = new Intent(this, AddTaskActivity.class);
         Intent editTask = new Intent(this, MainActivity.class);
+        Intent currentTask = new Intent(this, CurrentTaskActivity.class);
         Intent backIntent = new Intent(getApplicationContext(), MainMenuActivity.class);
 
         btnBack.setOnClickListener(new View.OnClickListener() {
@@ -55,10 +55,19 @@ public class SchedulerMenuActivity extends Activity {
                 finish();
             }
         });
+
         btnEditTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(editTask);
+                finish();
+            }
+        });
+
+        btnCurrentTask.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(currentTask);
                 finish();
             }
         });

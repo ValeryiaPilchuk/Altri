@@ -50,11 +50,11 @@
         android:layout_marginBottom="180dp"
         android:layout_weight="1"
         android:background="@drawable/blue_button"
-        android:gravity="center"
-        android:text="User"
         android:fontFamily="@font/poppins"
-        android:textColor="#18A1CC"
+        android:gravity="center"
+        android:hint="User"
         android:textAllCaps="false"
+        android:textColor="#18A1CC"
         android:textSize="40dp" />
 
 </LinearLayout>

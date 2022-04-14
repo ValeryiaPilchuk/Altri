@@ -12,6 +12,8 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import com.parse.ParseUser;
+
 public class RolePickActivity extends Activity {
 
     public static final String TAG = "RolePickActivity";
@@ -29,6 +31,9 @@ public class RolePickActivity extends Activity {
         btnCaregiver = findViewById(R.id.btnCaregiver);
         btnUser = findViewById(R.id.btnUser);
         btnEmployer = findViewById(R.id.btnEmployer);
+
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        btnUser.setText(currentUser.getString("firstname"));
 
         Intent scheduler = new Intent(this, MainMenuActivity.class);
         Intent taskMenu = new Intent(this, SchedulerMenuActivity.class);
@@ -50,6 +55,7 @@ public class RolePickActivity extends Activity {
                 finish();
             }
         });
+
         btnCaregiver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

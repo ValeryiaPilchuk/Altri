@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/settings_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/settings_blue"
@@ -27,12 +28,12 @@
         android:layout_marginBottom="10dp"
         android:layout_weight="1"
         android:background="@drawable/blue_button"
+        android:fontFamily="@font/poppins"
         android:gravity="center"
         android:text="Profile"
-        android:fontFamily="@font/poppins"
         android:textAllCaps="false"
         android:textColor="#18A1CC"
-        android:textSize="30dp" />
+        android:textSize="40dp" />
 
     <Button
         android:id="@+id/btnChangeColor"
@@ -43,12 +44,12 @@
         android:layout_marginBottom="10dp"
         android:layout_weight="1"
         android:background="@drawable/blue_button"
+        android:fontFamily="@font/poppins"
         android:gravity="center"
         android:text="Change Color"
-        android:fontFamily="@font/poppins"
-        android:textColor="#18A1CC"
         android:textAllCaps="false"
-        android:textSize="30dp" />
+        android:textColor="#18A1CC"
+        android:textSize="40dp" />
 
     <Button
         android:id="@+id/btnLogout"

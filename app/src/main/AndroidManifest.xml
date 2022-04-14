@@ -13,9 +13,11 @@
         android:label="@string/app_name"
         android:name=".ParseApplication"
         android:roundIcon="@mipmap/ic_launcher_round"
+        android:requestLegacyExternalStorage="true"
         android:supportsRtl="true"
         android:theme="@style/Theme.Altri">
-        <activity android:name=".AddTaskActivity" />
+        <activity android:name=".AddTaskActivity"
+            android:theme="@style/Theme.AppCompat.Light"/>
         <activity android:name=".ChatbotMainMenuActivity"
             android:theme="@style/Theme.AppCompat"/>
         <activity android:name=".ChatbotMenu"
@@ -27,16 +29,14 @@
             android:theme="@style/Theme.AppCompat"/>
         <activity android:name=".MainMenuActivity" />
         <activity android:name=".SettingsActivity" />
-        <activity android:name=".AddTaskActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".ResetPasswordActivity" />
         <activity android:name=".ParseApplication" />
         <activity android:name=".RolePickActivity" />
-        <activity android:name=".SettingsActivity" />
         <activity android:name=".SchedulerMenuActivity" />
         <activity android:name=".ChatbotActivity" />
-        <activity android:name=".ChatbotVoicenew" />
-
+        <activity android:name=".ChatbotVoiceNew" />
+        <activity android:name=".CurrentTaskActivity" />
 
 
         <activity

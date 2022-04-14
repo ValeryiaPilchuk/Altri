@@ -9,6 +9,14 @@
     android:textAlignment="gravity"
     tools:context=".LoginSignUpActivity">
 
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:background="@drawable/new_back_btn"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:src="@drawable/new_back_btn" />
 
     <ImageView
         android:layout_width="match_parent"
@@ -37,7 +45,7 @@
             android:singleLine="true"
             android:textAllCaps="false"
             android:textColor="#18A1CC"
-            android:textSize="25dp" />
+            android:textSize="30dp" />
 
         <EditText
             android:id="@+id/LastName"
@@ -55,7 +63,7 @@
             android:singleLine="true"
             android:textAllCaps="false"
             android:textColor="#18A1CC"
-            android:textSize="25dp" />
+            android:textSize="30dp" />
 
     <Button
         android:id="@+id/btnDateOfBirth"
@@ -92,7 +100,7 @@
             android:singleLine="true"
             android:textAllCaps="false"
             android:textColor="#18A1CC"
-            android:textSize="25dp" />
+            android:textSize="30dp" />
 
         <EditText
             android:id="@+id/PasswordSignup"
@@ -109,7 +117,7 @@
             android:singleLine="true"
             android:textAllCaps="false"
             android:textColor="#18A1CC"
-            android:textSize="25dp" />
+            android:textSize="30dp" />
     </LinearLayout>
 
     <Button

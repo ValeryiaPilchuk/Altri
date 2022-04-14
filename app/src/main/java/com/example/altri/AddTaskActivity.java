@@ -22,6 +22,7 @@ import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
@@ -36,8 +37,8 @@ public class AddTaskActivity extends Activity {
     private EditText etTaskName;
     private EditText etTaskDescription;
     private Button btnTaskDate;
-    private Button btnTaskTime;
-    private Button btnTaskImage;
+    private Button btnTaskStartTime;
+    private Button btnTaskImageVideo;
     private Button btnAddTask;
     private ImageButton btnBack;
 
@@ -56,8 +57,8 @@ public class AddTaskActivity extends Activity {
         btnBack = findViewById(R.id.imageButton);
 
         btnTaskDate = findViewById(R.id.btnTaskDate);
-        btnTaskTime = findViewById(R.id.btnTaskTime);
-        btnTaskImage = findViewById(R.id.btnTaskImage);
+        btnTaskStartTime = findViewById(R.id.btnTaskStartTime);
+        btnTaskImageVideo = findViewById(R.id.btnTaskImageVideo);
         btnAddTask = findViewById(R.id.btnAddTask);
 
         Intent backIntent = new Intent(getApplicationContext(), SchedulerMenuActivity.class);
@@ -68,6 +69,17 @@ public class AddTaskActivity extends Activity {
                 Log.i(TAG, "onClick back");
                 startActivity(backIntent);
                 finish();
+            }
+        });
+
+        btnTaskImageVideo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ImagePicker.with(AddTaskActivity.this)
+                        .crop()	    			//Crop image(Optional), Check Customization for more option
+                        .compress(1024)			//Final image size will be less than 1 MB(Optional)
+                        .maxResultSize(1080, 1080)	//Final image resolution will be less than 1080 x 1080(Optional)
+                        .start();
             }
         });
 
@@ -91,12 +103,21 @@ public class AddTaskActivity extends Activity {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                 month += 1;
-                String date = month + "/" + day + "/" + year;
-                btnTaskDate.setText(date);
+
+                if (month < 10) {
+                    String date = "0" + month + "/" + day + "/" + year;
+                    btnTaskDate.setText(date);
+                }
+
+                else {
+                    String date = month + "/" + day + "/" + year;
+                    btnTaskDate.setText(date);
+                }
+
             }
         };
 
-        btnTaskTime.setOnClickListener(new View.OnClickListener() {
+        btnTaskStartTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 TimePickerDialog timePickerDialog = new TimePickerDialog(AddTaskActivity.this, android.R.style.Theme_Holo_Dialog_MinWidth, mTimeSetListener, 12, 0, false);
@@ -122,7 +143,7 @@ public class AddTaskActivity extends Activity {
                 try {
                     Date date = display24hours.parse(time);
                     SimpleDateFormat display12hours = new SimpleDateFormat("hh:mm aa");
-                    btnTaskTime.setText(display12hours.format(date));
+                    btnTaskStartTime.setText(display12hours.format(date));
                 } catch (java.text.ParseException e) {
                     e.printStackTrace();
                 }
@@ -137,7 +158,7 @@ public class AddTaskActivity extends Activity {
 
                 ParseUser currentUser = ParseUser.getCurrentUser();
 
-                saveSchedule(etTaskName.getText().toString(), etTaskDescription.getText().toString(), btnTaskDate.getText().toString(), btnTaskTime.getText().toString(), currentUser);
+                saveSchedule(etTaskName.getText().toString(), etTaskDescription.getText().toString(), btnTaskDate.getText().toString(), btnTaskStartTime.getText().toString(), currentUser);
 
             }
         });
@@ -164,7 +185,7 @@ public class AddTaskActivity extends Activity {
                     etTaskName.setText("");
                     etTaskDescription.setText("");
                     btnTaskDate.setText("");
-                    btnTaskTime.setText("");
+                    btnTaskStartTime.setText("");
                 }
             }
         });

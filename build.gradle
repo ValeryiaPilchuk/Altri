@@ -30,3 +30,9 @@ ext {
     designSupportVersion = '1.0.0'
     recyclerViewVersion = '1.0.0'
 }
+
+allprojects {
+    repositories {
+        maven { url "https://jitpack.io" }
+    }
+}

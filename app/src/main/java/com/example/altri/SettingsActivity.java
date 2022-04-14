@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.util.Log;
@@ -12,7 +13,10 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import androidx.core.content.ContextCompat;
 
 import com.parse.ParseUser;
 
@@ -99,11 +103,14 @@ public class SettingsActivity extends Activity{
 
     private void changeColor(){
 
+        View settingsView;
+        View mainmenuView;
+
+        settingsView = findViewById(R.id.settings_layout);
+        mainmenuView = findViewById(R.id.main_menu_layout);
+
         dialogBuilder = new AlertDialog.Builder(this);
         final View colorPopupView = getLayoutInflater().inflate(R.layout.popup_color_change, null);
-
-        final View settingsView = getLayoutInflater().inflate(R.layout.activity_settings, null);
-        //View background = findViewById(R.layout.activity_settings);
 
         dialogBuilder.setView(colorPopupView);
         dialog = dialogBuilder.create();
@@ -117,6 +124,15 @@ public class SettingsActivity extends Activity{
             @Override
             public void onClick(View view) {
                 colorPopupView.setBackgroundResource(R.drawable.colorpick_blue);
+
+                settingsView.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.settings_blue));
+                btnProfile.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.blue_button));
+                btnProfile.setTextColor(Color.parseColor("#18A1CC"));
+                btnChangeColor.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.blue_button));
+                btnChangeColor.setTextColor(Color.parseColor("#18A1CC"));
+                btnLogout.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.blue_button));
+                btnLogout.setTextColor(Color.parseColor("#18A1CC"));
+                //dialog.dismiss();
             }
         });
 
@@ -124,6 +140,17 @@ public class SettingsActivity extends Activity{
             @Override
             public void onClick(View view) {
                 colorPopupView.setBackgroundResource(R.drawable.colorpick_yellow);
+
+                settingsView.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.settings_yellow));
+                btnProfile.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.yellow_button));
+                btnProfile.setTextColor(Color.parseColor("#CC6E18"));
+                btnChangeColor.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.yellow_button));
+                btnChangeColor.setTextColor(Color.parseColor("#CC6E18"));
+                btnLogout.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.yellow_button));
+                btnLogout.setTextColor(Color.parseColor("#CC6E18"));
+
+                //settings.setBackgroundResource(R.drawable.colorpick_yellow);
+                //dialog.dismiss();
                 //settingsView.setBackgroundResource(R.drawable.settings_yellow);
             }
         });
@@ -132,6 +159,15 @@ public class SettingsActivity extends Activity{
             @Override
             public void onClick(View view) {
                 colorPopupView.setBackgroundResource(R.drawable.colorpick_red);
+
+                settingsView.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.settings_red));
+                btnProfile.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.red_button));
+                btnProfile.setTextColor(Color.parseColor("#CC184E"));
+                btnChangeColor.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.red_button));
+                btnChangeColor.setTextColor(Color.parseColor("#CC184E"));
+                btnLogout.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.red_button));
+                btnLogout.setTextColor(Color.parseColor("#CC184E"));
+                //dialog.dismiss();
             }
         });
 

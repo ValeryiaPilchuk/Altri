@@ -28,7 +28,7 @@ import kotlinx.coroutines.*
 
 
 
-class ChatbotVoicenew : Activity() {
+class ChatbotVoiceNew : Activity() {
     private lateinit var adapter: MessagingAdapter
     private val botlist = listOf("Altri")
     private val RQ_SPEECH_REC = 102 //request code for later

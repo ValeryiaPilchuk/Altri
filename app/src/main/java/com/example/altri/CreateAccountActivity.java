@@ -87,7 +87,6 @@ public class CreateAccountActivity extends Activity {
             finish();
         }
 
-
         btnDateOfBirth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -130,8 +129,6 @@ public class CreateAccountActivity extends Activity {
                 } else if (TextUtils.isEmpty(etPassword.getText())) {
                     etPassword.setError("Password is required!");
                 }
-
-
 
                 ParseUser user = new ParseUser();
 

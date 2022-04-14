@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 public class ChatbotMenu extends AppCompatActivity {
 
@@ -31,7 +30,7 @@ public class ChatbotMenu extends AppCompatActivity {
         chat = findViewById(R.id.text_to_altri);
 
         Intent chatbotIntent = new Intent(this, ChatbotActivity.class);
-        Intent chatvoice = new Intent(this, ChatbotVoicenew.class);
+        Intent chatvoice = new Intent(this, ChatbotVoiceNew.class);
         Intent backIntent = new Intent(getApplicationContext(), ChatbotMainMenuActivity.class);
         Button voice = findViewById(R.id.speak_to_altri);
 

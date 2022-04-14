@@ -36,7 +36,7 @@
         android:background="@drawable/yellow_button"
         android:fontFamily="@font/poppins"
         android:gravity="center"
-        android:text="Orange"
+        android:text="Yellow"
         android:textAllCaps="false"
         android:textColor="#CC6E18"
         android:textSize="40dp" />
