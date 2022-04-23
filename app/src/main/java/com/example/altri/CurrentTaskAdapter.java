@@ -16,12 +16,12 @@ import com.parse.ParseFile;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
+public class CurrentTaskAdapter extends RecyclerView.Adapter<CurrentTaskAdapter.ViewHolder> {
 
     private Context context;
     private List<Schedule> tasks;
 
-    public TaskAdapter(Context context, List<Schedule> tasks) {
+    public CurrentTaskAdapter(Context context, List<Schedule> tasks) {
         this.context = context;
         this.tasks = tasks;
     }
@@ -30,7 +30,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(context).inflate(R.layout.task,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.current_task,parent,false);
         return new ViewHolder(view);
     }
 
@@ -41,6 +41,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
 
     }
 
+
     @Override
     public int getItemCount() {
         return tasks.size();
@@ -48,19 +49,23 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
 
     class ViewHolder extends RecyclerView.ViewHolder{
 
-        private TextView messageTV;
-        private TextView timeTV;
-
+        private TextView tvTaskName;
+        private ImageView imTaskImage;
+        private TextView tvTaskTime;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            messageTV = itemView.findViewById(R.id.task_message);
-            timeTV = itemView.findViewById(R.id.time_of_event);
+            tvTaskName = itemView.findViewById(R.id.tvTaskName);
+            imTaskImage = itemView.findViewById(R.id.imTaskImage);
+            tvTaskTime = itemView.findViewById(R.id.tvTaskTime);
         }
 
         public void bind(Schedule task) {
-            messageTV.setText(task.getTaskName());
-            timeTV.setText(task.getTaskTime());
+            //messageTV.setText(task.getTaskName());
+            //timeTV.setText(task.getTaskTime());
+            tvTaskName.setText(task.getTaskName());
+            //  imTaskImage.setText(task.getTaskImage());
+            tvTaskTime.setText(task.getTaskTime());
         }
     }
 

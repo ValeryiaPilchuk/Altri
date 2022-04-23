@@ -33,27 +33,25 @@ tools:context=".Fragment.TasksFragment">
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_messages"
         android:layout_width="match_parent"
-        android:layout_height="528dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/date_on_top"
-        tools:itemCount="20"
+        android:layout_marginBottom="150dp"
         tools:listitem="@layout/task" />
 
     <Button
         android:id="@+id/btnViewAll"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_below="@+id/rv_messages"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/round_box"
         android:backgroundTint="#EAF7FD"
-        android:ems="10"
         android:fontFamily="@font/poppins"
         android:gravity="center"
-        android:hint="View All"
         android:inputType="date"
-        android:singleLine="true"
-        android:textAllCaps="false"
+        android:text="View All"
         android:textColor="#18A1CC"
         android:textSize="30dp" />
 

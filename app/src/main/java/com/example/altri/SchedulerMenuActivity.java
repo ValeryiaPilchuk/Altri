@@ -12,6 +12,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import com.example.altri.Fragment.CurrentTaskFragment;
 import com.example.altri.Fragment.TasksFragment;
 
 public class SchedulerMenuActivity extends Activity {
@@ -36,7 +37,9 @@ public class SchedulerMenuActivity extends Activity {
 
         Intent addTask = new Intent(this, AddTaskActivity.class);
         Intent editTask = new Intent(this, MainActivity.class);
-        Intent currentTask = new Intent(this, CurrentTaskActivity.class);
+        editTask.putExtra("Task", "edit");
+        Intent currentTask = new Intent(this, MainActivity.class);
+        currentTask.putExtra("Task", "current");
         Intent backIntent = new Intent(getApplicationContext(), MainMenuActivity.class);
 
         btnBack.setOnClickListener(new View.OnClickListener() {

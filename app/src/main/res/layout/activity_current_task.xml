@@ -7,60 +7,22 @@
     android:background="#D6EAF8"
     android:orientation="vertical"
     android:textAlignment="gravity"
-    tools:context=".LoginSignUpActivity">
+    tools:context=".Fragment.CurrentTaskFragment">
 
-    <TextView
-        android:id="@+id/tvTaskName"
-        android:layout_width="300dp"
-        android:layout_height="20dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="10dp"
-        android:layout_weight="1"
-        android:background="@drawable/blue_button"
-        android:fontFamily="@font/poppins"
-        android:gravity="center"
-        android:hint="Task Name"
-        android:textAllCaps="false"
-        android:textColor="#18A1CC"
-        android:textSize="40dp" />
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:adjustViewBounds="true"
+        android:background="@drawable/new_back_btn"
+        android:scaleType="fitCenter"
+        android:src="@drawable/new_back_btn" />
 
-    <ImageView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_task"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/hello"></ImageView>
-
-    <Button
-        android:id="@+id/btnCompleted"
-        android:layout_width="300dp"
-        android:layout_height="20dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="10dp"
-        android:layout_weight="1"
-        android:background="@drawable/blue_button"
-        android:fontFamily="@font/poppins"
-        android:gravity="center"
-        android:text="Completed"
-        android:textAllCaps="false"
-        android:textColor="#18A1CC"
-        android:textSize="40dp" />
-
-    <Button
-        android:id="@+id/btnSignUp"
-        android:layout_width="300dp"
-        android:layout_height="20dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="250dp"
-        android:layout_weight="1"
-        android:background="@drawable/blue_button"
-        android:gravity="center"
-        android:text="Change Time"
-        android:fontFamily="@font/poppins"
-        android:textColor="#18A1CC"
-        android:textAllCaps="false"
-        android:textSize="40dp" />
+        android:layout_height="match_parent"
+        tools:itemCount="1"
+        tools:listitem="@layout/current_task" />
 
 </LinearLayout>
