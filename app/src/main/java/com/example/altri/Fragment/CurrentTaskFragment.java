@@ -61,6 +61,9 @@ public class CurrentTaskFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Intent backIntent = new Intent(getApplicationContext(), SchedulerMenuActivity.class);
+
 //        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 //        setContentView(R.layout.activity_display_all_tasks);
         etTaskName = view.findViewById(R.id.tvTaskName);
@@ -70,17 +73,29 @@ public class CurrentTaskFragment extends Fragment {
  //       TextView dateTV = (TextView) getView().findViewById(R.id.date_on_top);
  //       dateTV.setText(formatter.format(todaysDate));
         allTasks = new ArrayList<>();
-        adapter = new CurrentTaskAdapter(getContext(), allTasks);
+        adapter = new CurrentTaskAdapter(getContext(), allTasks); /*, new CurrentTaskAdapter(){
+            @Override
+            public void onChangeTime(int position) {
+                Log.d(TAG, "iconTextViewOnClick at position "+position);
+
+            }
+            @Override
+            public void onCompleted(int position) {
+                Log.d(TAG, "iconTextViewOnClick at position "+position);
+            }
+
+        });
+*/
 
         tasksRV.setAdapter(adapter);
         tasksRV.setLayoutManager(new LinearLayoutManager(getContext()));
+
+
 
         queryPosts();
 
 //        String task = Integer.toString(allTasks.size());
 //        etTaskName.setText(task);
-
-        Intent backIntent = new Intent(getApplicationContext(), SchedulerMenuActivity.class);
 
         btnBack.setOnClickListener (new View.OnClickListener() {
             @Override
@@ -90,6 +105,7 @@ public class CurrentTaskFragment extends Fragment {
         });
 
     }
+
 
     public void queryPosts() {
         String dateFromData = Schedule.KEY_TASK_DATE;
