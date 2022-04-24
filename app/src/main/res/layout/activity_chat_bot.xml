@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#D6EAF8"
     tools:context=".LoginSignUpActivity">
 
     <ImageButton
@@ -57,8 +58,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/ll_layout_bar"
-        tools:itemCount="20"
         android:layout_marginTop="75dp"
+        tools:itemCount="20"
         tools:listitem="@layout/message_item" />
 
 </RelativeLayout>

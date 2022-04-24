@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".LoginSignUpActivity">
 
-
     <LinearLayout
         android:id="@+id/ll_layout_bar"
         android:layout_width="match_parent"

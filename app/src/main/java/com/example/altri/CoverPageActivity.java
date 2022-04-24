@@ -19,7 +19,7 @@ import android.view.WindowManager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class CoverPage extends Activity {
+public class CoverPageActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,13 +29,13 @@ public class CoverPage extends Activity {
         setContentView(R.layout.activity_cover_page);
         ConstraintLayout background= findViewById(R.id.coverPage);
 
-        Intent mainScreen = new Intent(this, LoginSignUpActivity.class);
+        Intent logInScreen = new Intent(this, PainPointActivity.class);
 
         background.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Log.i(TAG, "onClick screen");
-                startActivity(mainScreen);
+                startActivity(logInScreen);
                 finish();
             }
         });

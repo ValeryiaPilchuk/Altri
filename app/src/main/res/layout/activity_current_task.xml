@@ -9,6 +9,15 @@
     android:textAlignment="gravity"
     tools:context=".LoginSignUpActivity">
 
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:background="@drawable/new_back_btn"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:src="@drawable/new_back_btn" />
+
     <TextView
         android:id="@+id/tvTaskName"
         android:layout_width="300dp"
@@ -17,7 +26,6 @@
         android:layout_marginTop="20dp"
         android:layout_marginBottom="10dp"
         android:layout_weight="1"
-        android:background="@drawable/blue_button"
         android:fontFamily="@font/poppins"
         android:gravity="center"
         android:hint="Task Name"
@@ -26,15 +34,16 @@
         android:textSize="40dp" />
 
     <ImageView
+        android:id="@+id/ivTaskImage"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="341dp"
         android:layout_marginTop="30dp"
         android:background="@drawable/hello"></ImageView>
 
     <Button
         android:id="@+id/btnCompleted"
         android:layout_width="300dp"
-        android:layout_height="20dp"
+        android:layout_height="10dp"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="10dp"
@@ -48,19 +57,19 @@
         android:textSize="40dp" />
 
     <Button
-        android:id="@+id/btnSignUp"
+        android:id="@+id/btnChangeTime"
         android:layout_width="300dp"
         android:layout_height="20dp"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="250dp"
+        android:layout_marginBottom="10dp"
         android:layout_weight="1"
         android:background="@drawable/blue_button"
+        android:fontFamily="@font/poppins"
         android:gravity="center"
         android:text="Change Time"
-        android:fontFamily="@font/poppins"
-        android:textColor="#18A1CC"
         android:textAllCaps="false"
+        android:textColor="#18A1CC"
         android:textSize="40dp" />
 
 </LinearLayout>

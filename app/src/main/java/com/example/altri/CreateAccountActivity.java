@@ -107,8 +107,16 @@ public class CreateAccountActivity extends Activity {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                 month += 1;
-                String date = month + "/" + day + "/" + year;
-                btnDateOfBirth.setText(date);
+
+                if (month < 10) {
+                    String date = "0" + month + "/" + day + "/" + year;
+                    btnDateOfBirth.setText(date);
+                }
+
+                else {
+                    String date = month + "/" + day + "/" + year;
+                    btnDateOfBirth.setText(date);
+                }
             }
         };
 

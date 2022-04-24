@@ -37,7 +37,9 @@
         <activity android:name=".ChatbotActivity" />
         <activity android:name=".ChatbotVoiceNew" />
         <activity android:name=".CurrentTaskActivity" />
-
+        <activity android:name=".CoverPageActivity" />
+        <activity android:name=".PainPointActivity" />
+        <activity android:name=".SolutionActivity" />
 
 
         <activity

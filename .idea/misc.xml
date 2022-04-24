@@ -57,27 +57,33 @@
         <entry key="..\:/Users/valer/AndroidStudioProjects/Altri/app/src/main/res/menu/bottom_menu_nav.xml" value="0.2" />
         <entry key="..\:/Users/valer/AndroidStudioProjects/Altri/app/src/main/res/menu/menu_bottom_navigation.xml" value="0.2546875" />
         <entry key="app/src/main/res/drawable/red_button.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/send_round_box.xml" value="0.1285" />
         <entry key="app/src/main/res/layout/activity_add_task.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_all_tasks.xml" value="0.21433715820312504" />
         <entry key="app/src/main/res/layout/activity_all_tasks_today.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_chat_bot.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_chat_bot.xml" value="0.273972602739726" />
+        <entry key="app/src/main/res/layout/activity_chat_voice.xml" value="0.2006340579710145" />
         <entry key="app/src/main/res/layout/activity_chat_voice_2.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_chatbot_main_menu.xml" value="0.2006340579710145" />
         <entry key="app/src/main/res/layout/activity_chatbot_menu.xml" value="0.12360688956433637" />
         <entry key="app/src/main/res/layout/activity_cover_page.xml" value="0.31904029293336733" />
         <entry key="app/src/main/res/layout/activity_create_account.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_current_task.xml" value="0.1307830810546875" />
+        <entry key="app/src/main/res/layout/activity_current_task.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_login_signup.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main_menu.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main_screen.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_pain_points.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_profile.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_reset_password.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_role_pick.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_settings.xml" value="0.12360688956433637" />
+        <entry key="app/src/main/res/layout/activity_solutionn.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_task_menu.xml" value="0.1" />
         <entry key="app/src/main/res/layout/message_item.xml" value="0.1" />
         <entry key="app/src/main/res/layout/popup_color_change.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/popup_message.xml" value="0.1" />
         <entry key="app/src/main/res/layout/task.xml" value="0.36830291748046873" />
       </map>
     </option>
