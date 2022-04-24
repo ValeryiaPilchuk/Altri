@@ -1,5 +1,7 @@
 package com.example.altri;
 
+import static com.example.altri.MainActivity.TAG;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,15 +10,14 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.Toast;
-
-import com.parse.ParseUser;
+import android.widget.ImageButton;
 
 public class MainMenuActivity extends Activity {
 
     private Button btnChat;
     private Button btnScheduler;
     private Button btnSettings;
+    private ImageButton btnBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,15 +29,18 @@ public class MainMenuActivity extends Activity {
         btnChat = findViewById(R.id.btnChat);
         btnScheduler = findViewById(R.id.btnScheduler);
         btnSettings = findViewById(R.id.btnSettings);
+        btnBack = findViewById(R.id.imageButton);
 
         Intent settings = new Intent(this, SettingsActivity.class);
-        Intent task = new Intent(this, TaskMenuActivity.class);
-        Intent Chat = new Intent(this, ChatbotActivity.class); //move from here to chat
+        Intent task = new Intent(this, SchedulerMenuActivity.class);
+        Intent chat = new Intent(this, ChatbotMainMenuActivity.class);
+        Intent backIntent = new Intent(getApplicationContext(), RolePickActivity.class);
 
-        btnChat.setOnClickListener(new View.OnClickListener() {
+        btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(Chat);
+                Log.i(TAG, "onClick back");
+                startActivity(backIntent);
                 finish();
             }
         });
@@ -53,6 +57,13 @@ public class MainMenuActivity extends Activity {
             @Override
             public void onClick(View view) {
                 startActivity(settings);
+                finish();
+            }
+        });
+        btnChat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(chat);
                 finish();
             }
         });

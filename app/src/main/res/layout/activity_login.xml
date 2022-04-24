@@ -4,17 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/hello"
+    android:background="@drawable/background"
     android:orientation="vertical"
     android:textAlignment="gravity"
     tools:context=".LoginSignUpActivity">
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:background="@drawable/new_back_btn"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:src="@drawable/new_back_btn" />
 
     <EditText
         android:id="@+id/EmailLogin"
         android:layout_width="300dp"
         android:layout_height="20dp"
         android:layout_gravity="center"
-        android:layout_marginTop="250dp"
+        android:layout_marginTop="180dp"
         android:layout_marginBottom="5dp"
         android:layout_weight="1"
         android:background="@drawable/blue_button"
@@ -32,7 +41,7 @@
         android:layout_width="300dp"
         android:layout_height="20dp"
         android:layout_gravity="center"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:layout_weight="1"
         android:background="@drawable/blue_button"
@@ -47,21 +56,21 @@
         android:textSize="30dp" />
 
     <Button
-        android:id="@+id/btnforgotPassword"
+        android:id="@+id/forgotPassword"
         android:layout_width="300dp"
         android:layout_height="20dp"
         android:layout_gravity="center"
-        android:layout_marginBottom="20dp"
         android:layout_marginTop="40dp"
+        android:layout_marginBottom="20dp"
         android:layout_weight="1"
         android:background="@drawable/blue_button"
+        android:ems="10"
+        android:fontFamily="@font/poppins"
         android:gravity="center"
         android:text="Forgot Password"
-        android:fontFamily="@font/poppins"
         android:textAllCaps="false"
         android:textColor="#18A1CC"
-        android:textSize="25dp"
-        android:ems="10" />
+        android:textSize="30dp" />
 
     <Button
         android:id="@+id/Login"

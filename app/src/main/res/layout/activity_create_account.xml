@@ -4,49 +4,69 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/register"
+    android:background="@drawable/background_puzzle"
     android:orientation="vertical"
     android:textAlignment="gravity"
     tools:context=".LoginSignUpActivity">
 
-    <EditText
-        android:id="@+id/etFirstNameSignup"
-        android:layout_width="300dp"
-        android:layout_height="20dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="180dp"
-        android:layout_marginBottom="5dp"
-        android:layout_weight="1"
-        android:background="@drawable/blue_button"
-        android:ems="10"
-        android:fontFamily="@font/poppins"
-        android:gravity="center"
-        android:hint="First name"
-        android:singleLine="true"
-        android:textAllCaps="false"
-        android:textColor="#18A1CC"
-        android:textSize="30dp" />
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:background="@drawable/new_back_btn"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:src="@drawable/new_back_btn" />
 
-    <EditText
-        android:id="@+id/etLastNameSignup"
-        android:layout_width="300dp"
-        android:layout_height="20dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:layout_weight="1"
-        android:background="@drawable/blue_button"
-        android:ems="10"
-        android:fontFamily="@font/poppins"
-        android:gravity="center"
-        android:hint="Last Name"
-        android:singleLine="true"
-        android:textAllCaps="false"
-        android:textColor="#18A1CC"
-        android:textSize="30dp" />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@drawable/register">
+    </ImageView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="398dp"
+        android:layout_weight="4"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/FirstName"
+            android:layout_width="300dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/blue_button"
+            android:ems="10"
+            android:fontFamily="@font/poppins"
+            android:gravity="center"
+            android:hint="First name"
+            android:singleLine="true"
+            android:textAllCaps="false"
+            android:textColor="#18A1CC"
+            android:textSize="30dp" />
+
+        <EditText
+            android:id="@+id/LastName"
+            android:layout_width="300dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/blue_button"
+            android:ems="10"
+            android:fontFamily="@font/poppins"
+            android:gravity="center"
+            android:hint="Last Name"
+            android:singleLine="true"
+            android:textAllCaps="false"
+            android:textColor="#18A1CC"
+            android:textSize="30dp" />
 
     <Button
-        android:id="@+id/btnDateOfBirthSignup"
+        android:id="@+id/btnDateOfBirth"
         android:layout_width="300dp"
         android:layout_height="20dp"
         android:layout_gravity="center"
@@ -64,50 +84,49 @@
         android:textColor="#18A1CC"
         android:textSize="30dp" />
 
-    <EditText
-        android:id="@+id/etEmailSignup"
-        android:layout_width="300dp"
-        android:layout_height="20dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:layout_weight="1"
-        android:background="@drawable/blue_button"
-        android:ems="10"
-        android:fontFamily="@font/poppins"
-        android:gravity="center"
-        android:hint="Email"
-        android:singleLine="true"
-        android:textAllCaps="false"
-        android:textColor="#18A1CC"
-        android:textSize="30dp" />
+        <EditText
+            android:id="@+id/EmailSignup"
+            android:layout_width="300dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/blue_button"
+            android:ems="10"
+            android:fontFamily="@font/poppins"
+            android:gravity="center"
+            android:hint="Email"
+            android:singleLine="true"
+            android:textAllCaps="false"
+            android:textColor="#18A1CC"
+            android:textSize="30dp" />
 
-    <EditText
-        android:id="@+id/etPasswordSignup"
-        android:layout_width="300dp"
-        android:layout_height="20dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:layout_weight="1"
-        android:background="@drawable/blue_button"
-        android:ems="10"
-        android:fontFamily="@font/poppins"
-        android:gravity="center"
-        android:hint="Password"
-        android:singleLine="true"
-        android:textAllCaps="false"
-        android:textColor="#18A1CC"
-        android:textSize="30dp" />
+        <EditText
+            android:id="@+id/PasswordSignup"
+            android:layout_width="300dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/blue_button"
+            android:ems="10"
+            android:fontFamily="@font/poppins"
+            android:gravity="center"
+            android:hint="Password"
+            android:singleLine="true"
+            android:textAllCaps="false"
+            android:textColor="#18A1CC"
+            android:textSize="30dp" />
+    </LinearLayout>
 
     <Button
-        android:id="@+id/btnCreateAccount"
+        android:id="@+id/CreateAccount"
         android:layout_width="280dp"
-        android:layout_height="60dp"
+        android:layout_height="80dp"
         android:layout_gravity="center"
         android:layout_marginTop="50dp"
-        android:layout_marginBottom="50dp"
-        android:layout_weight="1"
+        android:layout_marginBottom="35dp"
         android:background="@drawable/create_account_btn"
         android:gravity="center"
         android:text="Create Account"
