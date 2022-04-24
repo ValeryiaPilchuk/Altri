@@ -5,16 +5,13 @@ import android.content.Intent
 import android.os.Bundle
 import android.speech.RecognizerIntent
 import android.speech.SpeechRecognizer
-import android.text.Editable
 import android.widget.Toast
-import androidx.databinding.adapters.TextViewBindingAdapter.setText
 import kotlinx.android.synthetic.main.activity_chat_voice_2.*
 import java.util.*
 import android.net.Uri
 import com.example.altri.data.Message
-import android.util.Log
-import androidx.constraintlayout.motion.utils.Oscillator
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.altri.adapter.MessagingAdapter
 import com.example.altri.utils.BotResponse
 import com.example.altri.utils.Constants.OPEN_GOOGLE
 import com.example.altri.utils.Constants.OPEN_SEARCH

@@ -20,7 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.altri.R;
 import com.example.altri.Schedule;
 import com.example.altri.SchedulerMenuActivity;
-import com.example.altri.CurrentTaskAdapter;
+import com.example.altri.adapter.CurrentTaskAdapter;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
@@ -70,8 +70,6 @@ public class CurrentTaskFragment extends Fragment {
         btnBack = view.findViewById(R.id.btnBack);
 
         tasksRV = view.findViewById(R.id.rv_task);
- //       TextView dateTV = (TextView) getView().findViewById(R.id.date_on_top);
- //       dateTV.setText(formatter.format(todaysDate));
         allTasks = new ArrayList<>();
         adapter = new CurrentTaskAdapter(getContext(), allTasks); /*, new CurrentTaskAdapter(){
             @Override
@@ -94,9 +92,6 @@ public class CurrentTaskFragment extends Fragment {
 
         queryPosts();
 
-//        String task = Integer.toString(allTasks.size());
-//        etTaskName.setText(task);
-
         btnBack.setOnClickListener (new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -109,18 +104,12 @@ public class CurrentTaskFragment extends Fragment {
 
     public void queryPosts() {
         String dateFromData = Schedule.KEY_TASK_DATE;
-        /*
-        char extra = '0';
-        if (dateFromData.length()< 10){
-            dateFromData = extra + dateFromData;
-        }
-        */
         ParseQuery<Schedule> query = ParseQuery.getQuery(Schedule.class);
         query.include(Schedule.KEY_USER);
         query.whereEqualTo(Schedule.KEY_TASK_DATE, formatter.format(todaysDate));
         query.whereEqualTo(Schedule.KEY_USER, ParseUser.getCurrentUser());
         query.orderByDescending(Schedule.KEY_TASK_TIME);
-        query.setLimit(10);
+        query.setLimit(1);
         query.findInBackground(new FindCallback<Schedule>() {
             @Override
             public void done(List<Schedule> tasks, ParseException e) {

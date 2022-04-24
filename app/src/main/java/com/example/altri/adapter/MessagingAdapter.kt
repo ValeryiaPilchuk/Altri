@@ -1,4 +1,4 @@
-package com.example.altri
+package com.example.altri.adapter
 import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +9,6 @@ import com.example.altri.data.Message
 import com.example.altri.utils.Constants.SEND_ID
 import com.example.altri.utils.Constants.RECEIVE_ID
 import kotlinx.android.synthetic.main.message_item.view.*
-import org.w3c.dom.Text
 
 class MessagingAdapter: RecyclerView.Adapter<MessagingAdapter.MessageViewHolder>() {
     var messagesList = mutableListOf<Message>()

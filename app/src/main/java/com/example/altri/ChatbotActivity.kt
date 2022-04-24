@@ -5,22 +5,17 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import androidx.databinding.adapters.TextViewBindingAdapter.setText
 import java.util.*
 import android.speech.tts.TextToSpeech
 
-import android.view.View
-
-import android.widget.EditText
 import android.widget.ImageButton
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.altri.adapter.MessagingAdapter
 import com.example.altri.data.Message
 import com.example.altri.utils.BotResponse
 import com.example.altri.utils.Constants
 import com.example.altri.utils.Time
 import kotlinx.android.synthetic.main.activity_chat_bot.*
-import kotlinx.android.synthetic.main.activity_chat_voice.*
 import kotlinx.coroutines.*
 
 

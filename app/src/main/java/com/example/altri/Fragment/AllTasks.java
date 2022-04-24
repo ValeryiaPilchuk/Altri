@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,17 +19,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.altri.R;
 import com.example.altri.Schedule;
 import com.example.altri.SchedulerMenuActivity;
-import com.example.altri.TaskAdapter;
+import com.example.altri.adapter.TaskAdapter;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Calendar;
 
 
 public class AllTasks extends Fragment {

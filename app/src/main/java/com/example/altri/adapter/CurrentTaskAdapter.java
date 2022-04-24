@@ -1,6 +1,9 @@
-package com.example.altri;
+package com.example.altri.adapter;
+
+import static com.parse.Parse.getApplicationContext;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,13 +13,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.view.menu.MenuView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.altri.R;
 import com.example.altri.Schedule;
-import com.parse.ParseFile;
+import com.example.altri.SchedulerMenuActivity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CurrentTaskAdapter extends RecyclerView.Adapter<CurrentTaskAdapter.ViewHolder> {
@@ -67,6 +69,7 @@ public class CurrentTaskAdapter extends RecyclerView.Adapter<CurrentTaskAdapter.
             tvTaskTime = itemView.findViewById(R.id.tvTaskTime);
             btnChangeTime = itemView.findViewById(R.id.btnChangeTime);
             btnCompleted = itemView.findViewById(R.id.btnCompleted);
+            Intent inspiration = new Intent(getApplicationContext(), SchedulerMenuActivity.class);
 
 
             this.listener = listener;
@@ -78,6 +81,7 @@ public class CurrentTaskAdapter extends RecyclerView.Adapter<CurrentTaskAdapter.
                 @Override
                 public void onClick(View v) {
                     Log.d("msg", "Completed button clicked");
+
                 }
             });
 
