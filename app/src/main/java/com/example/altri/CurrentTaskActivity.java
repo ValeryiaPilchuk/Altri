@@ -1,7 +1,5 @@
 package com.example.altri;
 
-import static android.media.CamcorderProfile.get;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.TimePickerDialog;
@@ -19,28 +17,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
-import androidx.recyclerview.widget.LinearLayoutManager;
-
-import com.example.altri.Fragment.TasksFragment;
-import com.parse.FindCallback;
-import com.parse.ParseException;
-import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
 public class CurrentTaskActivity extends Activity {
 
     public static final String TAG = "CurrentTaskActivity";
-    protected TaskAdapter adapter;
-    private List<Schedule> allTasks;
-
-    Date todaysDate = Calendar.getInstance().getTime();
-    SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
 
     private TextView etTaskName;
     private ImageView ivTaskImage;
@@ -65,7 +49,6 @@ public class CurrentTaskActivity extends Activity {
         setContentView(R.layout.activity_current_task);
 
         etTaskName = findViewById(R.id.tvTaskName);
-        ivTaskImage = findViewById(R.id.ivTaskImage);
 
         ivTaskImage.setImageResource(R.drawable.empty_media);
         //ivTaskImage.setImageDrawable(R.drawable.empty_media);
@@ -77,16 +60,7 @@ public class CurrentTaskActivity extends Activity {
 
         Schedule schedule = new Schedule();
 
-        allTasks = new ArrayList<>();
-        adapter = new TaskAdapter(getApplicationContext(), allTasks);
-
-        queryPosts();
-
-        String task = Integer.toString(allTasks.size());
-        etTaskName.setText(task);
-
-
-        etTaskName.setText(schedule.getTaskName());
+        //etTaskName.setText("yees");
 
         Intent backIntent = new Intent(getApplicationContext(), SchedulerMenuActivity.class);
 
@@ -114,31 +88,6 @@ public class CurrentTaskActivity extends Activity {
 
                 etTaskName.setText("No Current Task");
 
-    public void queryPosts() {
-        String dateFromData = Schedule.KEY_TASK_DATE;
-        ParseQuery<Schedule> query = ParseQuery.getQuery(Schedule.class);
-        query.include(Schedule.KEY_USER);
-        query.setLimit(20);
-        query.whereEqualTo(Schedule.KEY_TASK_DATE, formatter.format(todaysDate));
-        query.whereEqualTo(Schedule.KEY_USER, ParseUser.getCurrentUser());
-        query.addDescendingOrder(Schedule.KEY_TASK_TIME);
-        query.findInBackground(new FindCallback<Schedule>() {
-            @Override
-            public void done(List<Schedule> tasks, ParseException e) {
-                if(e != null){
-                    Log.e(TAG, "Issues with getting posts", e);
-                    return;
-                }
-                for (Schedule task: tasks){
-                    //TODO: add correct logging later
-                    //Log.i(TAG, "Post: " + task.getDescription()+"username: " + task.getUser().getUsername());
-                }
-
-                allTasks.addAll(tasks);
-                adapter.notifyDataSetChanged();
-            }
-        });
-    }
             }
         });
 
