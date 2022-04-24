@@ -20,7 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.altri.R;
 import com.example.altri.Schedule;
 import com.example.altri.SchedulerMenuActivity;
-import com.example.altri.TaskAdapter;
+import com.example.altri.CurrentTaskAdapter;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
@@ -33,23 +33,20 @@ import java.util.List;
 import java.util.Calendar;
 
 
-public class TasksFragment extends Fragment {
+public class CurrentTaskFragment extends Fragment {
 
     public static final String TAG = "Tasks";
 
     private RecyclerView tasksRV;
-    private TextView dateTV;
-    protected TaskAdapter adapter;
+    protected CurrentTaskAdapter adapter;
     private List<Schedule> allTasks;
-    private TaskAdapter taskAdapter;
     private ImageButton btnBack;
-    private ImageButton btnviewAll;
-
+    private TextView etTaskName;
 
     Date todaysDate = Calendar.getInstance().getTime();
     SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
 
-    public TasksFragment(){
+    public CurrentTaskFragment(){
 
     }
 
@@ -58,27 +55,47 @@ public class TasksFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        return inflater.inflate(R.layout.activity_all_tasks_today, container, false);
+        return inflater.inflate(R.layout.activity_current_task, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Intent backIntent = new Intent(getApplicationContext(), SchedulerMenuActivity.class);
+
 //        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 //        setContentView(R.layout.activity_display_all_tasks);
-        btnBack = view.findViewById(R.id.imageButton);
-        tasksRV = view.findViewById(R.id.rv_messages);
-        TextView dateTV = (TextView) getView().findViewById(R.id.date_on_top);
-        dateTV.setText(formatter.format(todaysDate));
+        etTaskName = view.findViewById(R.id.tvTaskName);
+        btnBack = view.findViewById(R.id.btnBack);
+
+        tasksRV = view.findViewById(R.id.rv_task);
+ //       TextView dateTV = (TextView) getView().findViewById(R.id.date_on_top);
+ //       dateTV.setText(formatter.format(todaysDate));
         allTasks = new ArrayList<>();
-        adapter = new TaskAdapter(getContext(), allTasks);
+        adapter = new CurrentTaskAdapter(getContext(), allTasks); /*, new CurrentTaskAdapter(){
+            @Override
+            public void onChangeTime(int position) {
+                Log.d(TAG, "iconTextViewOnClick at position "+position);
+
+            }
+            @Override
+            public void onCompleted(int position) {
+                Log.d(TAG, "iconTextViewOnClick at position "+position);
+            }
+
+        });
+*/
 
         tasksRV.setAdapter(adapter);
         tasksRV.setLayoutManager(new LinearLayoutManager(getContext()));
 
+
+
         queryPosts();
 
-        Intent backIntent = new Intent(getApplicationContext(), SchedulerMenuActivity.class);
+//        String task = Integer.toString(allTasks.size());
+//        etTaskName.setText(task);
 
         btnBack.setOnClickListener (new View.OnClickListener() {
             @Override
@@ -88,6 +105,7 @@ public class TasksFragment extends Fragment {
         });
 
     }
+
 
     public void queryPosts() {
         String dateFromData = Schedule.KEY_TASK_DATE;

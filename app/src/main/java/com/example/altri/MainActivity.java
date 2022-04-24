@@ -24,6 +24,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.altri.Fragment.ChatbotMainMenu;
+import com.example.altri.Fragment.CurrentTaskFragment;
 import com.example.altri.Fragment.TasksFragment;
 import com.example.altri.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -47,9 +48,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Fragment fragment;
-        fragment = new TasksFragment();
-        fragmentManager.beginTransaction().replace(R.id.flFragment, fragment).commit();
+        Fragment fragmentTask;
+        Fragment fragmentCurrent;
+        fragmentTask = new TasksFragment();
+        fragmentCurrent = new CurrentTaskFragment();
+
+        String task = getIntent().getStringExtra("Task");
+
+        if (task.equals("current")){
+            fragmentManager.beginTransaction().replace(R.id.flFragment, fragmentCurrent).commit();
+        }
+        if (task.equals("edit")){
+            fragmentManager.beginTransaction().replace(R.id.flFragment, fragmentTask).commit();
+        }
+
         /*
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
 

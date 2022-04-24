@@ -29,6 +29,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
         View view = LayoutInflater.from(context).inflate(R.layout.task,parent,false);
         return new ViewHolder(view);
     }
@@ -49,6 +50,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
 
         private TextView messageTV;
         private TextView timeTV;
+
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

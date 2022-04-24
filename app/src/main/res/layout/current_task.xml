@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#D6EAF8"
+    tools:context=".Fragment.CurrentTaskFragment">
+
+
+    <TextView
+        android:id="@+id/tvTaskTime"
+        android:layout_width="match_parent"
+        android:layout_height="88dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/highlight"
+        android:fontFamily="@font/poppins"
+        android:gravity="center"
+        android:inputType="date"
+        android:textColor="@android:color/black"
+        android:textSize="35dp" />
+
+
+    <TextView
+        android:id="@+id/tvTaskName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="110dp"
+        android:background="@drawable/roundish_box"
+        android:backgroundTint="#EDF8FF"
+        android:fontFamily="@font/poppins"
+        android:paddingLeft="10dp"
+        android:paddingTop="5dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="5dp"
+        android:text="10 pm - 11:30 pm"
+        android:textColor="#188BCC"
+        android:textSize="25dp" />
+
+    <ImageView
+        android:id="@+id/imTaskImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="170dp" />
+
+    <Button
+        android:id="@+id/btnCompleted"
+        android:layout_width="280dp"
+        android:layout_height="60dp"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="400dp"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/create_account_btn"
+        android:fontFamily="@font/poppins"
+        android:gravity="center"
+        android:text="Completed"
+        android:textAllCaps="false"
+        android:textColor="#F2F2F2"
+        android:textSize="30dp" />
+
+    <Button
+        android:id="@+id/btnChangeTime"
+        android:layout_width="280dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="480dp"
+        android:layout_marginBottom="40dp"
+        android:layout_weight="1"
+        android:background="@drawable/create_account_btn"
+        android:gravity="center"
+        android:text="Change Time"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/poppins"
+        android:textAllCaps="false"
+        android:textColor="#F2F2F2"
+        android:textSize="30dp" />
+
+</RelativeLayout>

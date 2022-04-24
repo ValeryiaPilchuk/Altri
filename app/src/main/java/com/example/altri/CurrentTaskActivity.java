@@ -49,7 +49,6 @@ public class CurrentTaskActivity extends Activity {
         setContentView(R.layout.activity_current_task);
 
         etTaskName = findViewById(R.id.tvTaskName);
-        ivTaskImage = findViewById(R.id.ivTaskImage);
 
         ivTaskImage.setImageResource(R.drawable.empty_media);
         //ivTaskImage.setImageDrawable(R.drawable.empty_media);
