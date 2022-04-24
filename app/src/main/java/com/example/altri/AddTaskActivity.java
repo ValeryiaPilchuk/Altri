@@ -3,12 +3,16 @@ package com.example.altri;
 import static androidx.constraintlayout.motion.utils.Oscillator.TAG;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.provider.OpenableColumns;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -39,6 +43,7 @@ public class AddTaskActivity extends Activity {
     private Button btnTaskDate;
     private Button btnTaskStartTime;
     private Button btnTaskImageVideo;
+    private Button btnRepeat;
     private Button btnAddTask;
     private ImageButton btnBack;
 
@@ -54,11 +59,12 @@ public class AddTaskActivity extends Activity {
 
         etTaskName = findViewById(R.id.etTaskName);
         etTaskDescription = findViewById(R.id.etTaskDescription);
-        btnBack = findViewById(R.id.imageButton);
 
+        btnBack = findViewById(R.id.imageButton);
         btnTaskDate = findViewById(R.id.btnTaskDate);
         btnTaskStartTime = findViewById(R.id.btnTaskStartTime);
         btnTaskImageVideo = findViewById(R.id.btnTaskImageVideo);
+        btnRepeat = findViewById(R.id.btnRepeat);
         btnAddTask = findViewById(R.id.btnAddTask);
 
         Intent backIntent = new Intent(getApplicationContext(), SchedulerMenuActivity.class);
@@ -80,6 +86,7 @@ public class AddTaskActivity extends Activity {
                         .compress(1024)			//Final image size will be less than 1 MB(Optional)
                         .maxResultSize(1080, 1080)	//Final image resolution will be less than 1080 x 1080(Optional)
                         .start();
+
             }
         });
 
@@ -152,6 +159,37 @@ public class AddTaskActivity extends Activity {
             }
         };
 
+        btnRepeat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                final String[] fonts = {"Every Day", "Every Week", "Every Month", "Every Year"};
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(AddTaskActivity.this);
+                builder.setTitle("Select how often to repeat the task");
+                builder.setItems(fonts, new DialogInterface.OnClickListener() {@
+                        Override
+                public void onClick(DialogInterface dialog, int which) {
+                    if ("Every Day".equals(fonts[which])) {
+                        btnRepeat.setText("Every Day");
+                        //Toast.makeText(AddTaskActivity.this, "you nailed it", Toast.LENGTH_SHORT).show();
+                    } else if ("Every Week".equals(fonts[which])) {
+                        btnRepeat.setText("Every Week");
+                        //Toast.makeText(AddTaskActivity.this, "you cracked it", Toast.LENGTH_SHORT).show();
+                    } else if ("Every Month".equals(fonts[which])) {
+                        btnRepeat.setText("Every Month");
+                        //Toast.makeText(AddTaskActivity.this, "you hacked it", Toast.LENGTH_SHORT).show();
+                    } else if ("Every Year".equals(fonts[which])) {
+                        btnRepeat.setText("Every Year");
+                        //Toast.makeText(AddTaskActivity.this, "you digged it", Toast.LENGTH_SHORT).show();
+                    }
+                    // the user clicked on colors[which]
+                }
+                });
+                builder.show();
+            }
+        });
+
         btnAddTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -159,6 +197,16 @@ public class AddTaskActivity extends Activity {
                 ParseUser currentUser = ParseUser.getCurrentUser();
 
                 saveSchedule(etTaskName.getText().toString(), etTaskDescription.getText().toString(), btnTaskDate.getText().toString(), btnTaskStartTime.getText().toString(), currentUser);
+
+                /*
+                if (btnRepeat.getText().toString().equals("Every Day")) {
+
+
+                    saveSchedule(etTaskName.getText().toString(), etTaskDescription.getText().toString(), btnTaskDate.getText().toString(), btnTaskStartTime.getText().toString(), currentUser);
+
+                }
+
+                 */
 
             }
         });

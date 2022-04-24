@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/colorpick_blue"
     android:orientation="vertical"
-    android:textAlignment="gravity"
-    tools:context=".LoginSignUpActivity">
+    android:textAlignment="gravity">
 
     <Button
         android:id="@+id/btnBlue"
@@ -46,8 +45,8 @@
         android:layout_width="300dp"
         android:layout_height="20dp"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="150dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="20dp"
         android:layout_weight="1"
         android:background="@drawable/red_button"
         android:fontFamily="@font/poppins"
@@ -56,6 +55,24 @@
         android:textAllCaps="false"
         android:textColor="#CC184E"
         android:textSize="40dp" />
+
+    <Button
+        android:id="@+id/btnGreen"
+        android:layout_width="300dp"
+        android:layout_height="20dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="150dp"
+        android:layout_weight="1"
+        android:background="@drawable/green_button"
+        android:fontFamily="@font/poppins"
+        android:gravity="center"
+        android:text="Green"
+        android:textAllCaps="false"
+        android:textColor="#009721"
+        android:textSize="40dp" />
+
+
 
 
 </LinearLayout>

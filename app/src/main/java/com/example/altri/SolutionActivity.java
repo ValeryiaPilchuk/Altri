@@ -19,17 +19,17 @@ import android.view.WindowManager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class Main extends Activity {
+public class SolutionActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_main_screen);
-        ConstraintLayout background= findViewById(R.id.mainScreen);
+        setContentView(R.layout.activity_solution);
+        ConstraintLayout background= findViewById(R.id.solution);
 
-        Intent logInScreen = new Intent(this, CoverPageActivity.class);
+        Intent logInScreen = new Intent(this, LoginSignUpActivity.class);
 
         background.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -76,8 +76,17 @@ public class LoginActivity extends Activity {
         btnForgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(resetPassword);
-                finish();
+
+                try {
+                    Toast.makeText(LoginActivity.this, "Email has been sent to change your password!", Toast.LENGTH_SHORT).show();
+                    ParseUser.requestPasswordReset(etEmail.getText().toString());
+
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+                //startActivity(resetPassword);
+                //finish();
             }
         });
 

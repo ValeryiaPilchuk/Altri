@@ -19,23 +19,23 @@ import android.view.WindowManager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class Main extends Activity {
+public class PainPointActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_main_screen);
-        ConstraintLayout background= findViewById(R.id.mainScreen);
+        setContentView(R.layout.activity_pain_points);
+        ConstraintLayout background= findViewById(R.id.painPoints);
 
-        Intent logInScreen = new Intent(this, CoverPageActivity.class);
+        Intent mainScreen = new Intent(this, SolutionActivity.class);
 
         background.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Log.i(TAG, "onClick screen");
-                startActivity(logInScreen);
+                startActivity(mainScreen);
                 finish();
             }
         });

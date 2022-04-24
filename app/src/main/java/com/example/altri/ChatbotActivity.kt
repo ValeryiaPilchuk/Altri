@@ -121,7 +121,7 @@ class ChatbotActivity : Activity(), TextToSpeech.OnInitListener{
                     }
                     Constants.OPEN_SEARCH ->{
                         val site = Intent(Intent.ACTION_VIEW)
-                        val searchTerm: String? = message.substringAfter("search")
+                        val searchTerm: String? = message.substringAfter("Search")
                         site.data = Uri.parse("https://www.google.com/search?&q=$searchTerm")
                         startActivity(site)
                     }
