@@ -18,7 +18,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.altri.MainActivity;
-import com.example.altri.MainMenuActivity;
 import com.example.altri.R;
 import com.example.altri.Schedule;
 import com.example.altri.SchedulerMenuActivity;
@@ -35,23 +34,17 @@ import java.util.List;
 import java.util.Calendar;
 
 
-public class TasksFragment extends Fragment {
+public class AllTasksFragment extends Fragment {
 
     public static final String TAG = "Tasks";
 
     private RecyclerView tasksRV;
-    private TextView dateTV;
     protected TaskAdapter adapter;
     private List<Schedule> allTasks;
     private TaskAdapter taskAdapter;
     private ImageButton btnBack;
-    private ImageButton btnviewAll;
 
-
-    Date todaysDate = Calendar.getInstance().getTime();
-    SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
-
-    public TasksFragment(){
+    public AllTasksFragment(){
 
     }
 
@@ -60,7 +53,7 @@ public class TasksFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        return inflater.inflate(R.layout.activity_all_tasks_today, container, false);
+        return inflater.inflate(R.layout.activity_all_tasks, container, false);
     }
 
     @Override
@@ -70,9 +63,6 @@ public class TasksFragment extends Fragment {
 //        setContentView(R.layout.activity_display_all_tasks);
         btnBack = view.findViewById(R.id.imageButton);
         tasksRV = view.findViewById(R.id.rv_messages);
-        btnviewAll = view.findViewById(R.id.btnViewAll);
-        TextView dateTV = (TextView) getView().findViewById(R.id.date_on_top);
-        dateTV.setText(formatter.format(todaysDate));
         allTasks = new ArrayList<>();
         adapter = new TaskAdapter(getContext(), allTasks);
 
@@ -81,9 +71,8 @@ public class TasksFragment extends Fragment {
 
         queryPosts();
 
-        Intent backIntent = new Intent(getApplicationContext(), SchedulerMenuActivity.class);
-        Intent allTasks = new Intent(getApplicationContext(), MainActivity.class);
-        allTasks.putExtra("Task", "all");
+        Intent backIntent = new Intent(getApplicationContext(), MainActivity.class);
+        backIntent.putExtra("Task", "edit");
 
         btnBack.setOnClickListener (new View.OnClickListener() {
             @Override
@@ -92,28 +81,15 @@ public class TasksFragment extends Fragment {
             }
         });
 
-        btnviewAll.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(allTasks);
-            }
-        });
     }
 
     public void queryPosts() {
-        String dateFromData = Schedule.KEY_TASK_DATE;
-        /*
-        char extra = '0';
-        if (dateFromData.length()< 10){
-            dateFromData = extra + dateFromData;
-        }
-        */
+
         ParseQuery<Schedule> query = ParseQuery.getQuery(Schedule.class);
         query.include(Schedule.KEY_USER);
-        query.whereEqualTo(Schedule.KEY_TASK_DATE, formatter.format(todaysDate));
         query.whereEqualTo(Schedule.KEY_USER, ParseUser.getCurrentUser());
         query.orderByDescending(Schedule.KEY_TASK_TIME);
-        query.setLimit(10);
+        query.setLimit(20);
         query.findInBackground(new FindCallback<Schedule>() {
             @Override
             public void done(List<Schedule> tasks, ParseException e) {

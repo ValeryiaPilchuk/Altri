@@ -23,6 +23,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.altri.Fragment.AllTasksFragment;
 import com.example.altri.Fragment.ChatbotMainMenu;
 import com.example.altri.Fragment.CurrentTaskFragment;
 import com.example.altri.Fragment.TasksFragment;
@@ -50,8 +51,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Fragment fragmentTask;
         Fragment fragmentCurrent;
+        Fragment fragmentAllTasks;
         fragmentTask = new TasksFragment();
         fragmentCurrent = new CurrentTaskFragment();
+        fragmentAllTasks = new AllTasksFragment();
+
 
         String task = getIntent().getStringExtra("Task");
 
@@ -61,31 +65,8 @@ public class MainActivity extends AppCompatActivity {
         if (task.equals("edit")){
             fragmentManager.beginTransaction().replace(R.id.flFragment, fragmentTask).commit();
         }
-
-        /*
-        bottomNavigationView = findViewById(R.id.bottomNavigationView);
-
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                Fragment fragment;
-                switch (menuItem.getItemId()) {
-                    case R.id.action_home:
-                        fragment = new TasksFragment();
-                        break;
-                    case R.id.action_bot:
-                        fragment = new ChatbotMainMenu();
-                        break;
-                    case R.id.action_scheduler:
-                    default:
-                        fragment = new TasksFragment();
-                        break;
-                }
-                fragmentManager.beginTransaction().replace(R.id.flFragment, fragment).commit();
-                return true;
-            }
-        });
-        bottomNavigationView.setSelectedItemId(R.id.action_home);
-        */
+        if (task.equals("all")){
+            fragmentManager.beginTransaction().replace(R.id.flFragment, fragmentAllTasks).commit();
+        }
     }
 }
