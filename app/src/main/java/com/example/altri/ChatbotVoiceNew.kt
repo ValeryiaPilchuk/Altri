@@ -13,6 +13,7 @@ import java.util.*
 import android.net.Uri
 import com.example.altri.data.Message
 import android.util.Log
+import android.widget.ImageButton
 import androidx.constraintlayout.motion.utils.Oscillator
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.altri.utils.BotResponse
@@ -36,6 +37,7 @@ class ChatbotVoiceNew : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat_voice_2) // i want the screen for speech 2 txt
+        val btnBack = findViewById<ImageButton>(R.id.imageButton)
 
         recyclerView()
         clickEvents()
@@ -49,6 +51,12 @@ class ChatbotVoiceNew : Activity() {
         }
         btn_sendd.setOnClickListener{
             sendMessage()
+        }
+
+        btn_send.setOnClickListener(){
+            sendMessage()
+
+
         }
 
     }
