@@ -2,14 +2,19 @@ package com.example.altri.Fragment;
 
 import static com.parse.Parse.getApplicationContext;
 
+import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.TimePicker;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,6 +22,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.altri.CurrentTaskActivity;
 import com.example.altri.R;
 import com.example.altri.Schedule;
 import com.example.altri.SchedulerMenuActivity;
@@ -43,6 +49,10 @@ public class CurrentTaskFragment extends Fragment {
     private ImageButton btnBack;
     private TextView etTaskName;
 
+    private Button btnChangeTime;
+
+    private TimePickerDialog.OnTimeSetListener mTimeSetListener;
+
     Date todaysDate = Calendar.getInstance().getTime();
     SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
 
@@ -67,9 +77,12 @@ public class CurrentTaskFragment extends Fragment {
 //        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 //        setContentView(R.layout.activity_display_all_tasks);
         etTaskName = view.findViewById(R.id.tvTaskName);
+        btnChangeTime = view.findViewById(R.id.btnChangeTime);
+
         btnBack = view.findViewById(R.id.btnBack);
 
         tasksRV = view.findViewById(R.id.rv_task);
+
         allTasks = new ArrayList<>();
         adapter = new CurrentTaskAdapter(getContext(), allTasks); /*, new CurrentTaskAdapter(){
             @Override
@@ -84,11 +97,8 @@ public class CurrentTaskFragment extends Fragment {
 
         });
 */
-
         tasksRV.setAdapter(adapter);
         tasksRV.setLayoutManager(new LinearLayoutManager(getContext()));
-
-
 
         queryPosts();
 
@@ -98,6 +108,40 @@ public class CurrentTaskFragment extends Fragment {
                 startActivity(backIntent);
             }
         });
+
+        btnChangeTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                TimePickerDialog timePickerDialog = new TimePickerDialog(getActivity(), android.R.style.Theme_Holo_Dialog_MinWidth, mTimeSetListener, 12, 0, false);
+
+                timePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                timePickerDialog.show();
+
+            }
+        });
+
+        mTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker timePicker, int hourOfDay, int minute) {
+
+                int hour = hourOfDay;
+                int min = minute;
+
+                String time = hour + ":" + min;
+
+                SimpleDateFormat display24hours = new SimpleDateFormat("HH:mm");
+
+                try {
+                    Date date = display24hours.parse(time);
+                    SimpleDateFormat display12hours = new SimpleDateFormat("hh:mm aa");
+                } catch (java.text.ParseException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+        };
 
     }
 
