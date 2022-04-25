@@ -45,9 +45,10 @@ class ChatbotVoiceNew : Activity() {
         btn_speak.setOnClickListener{
 
             askSpeechInput()
+
+        }
+        btn_sendd.setOnClickListener{
             sendMessage()
-
-
         }
 
     }
