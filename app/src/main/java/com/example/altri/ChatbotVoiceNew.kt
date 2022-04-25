@@ -9,6 +9,7 @@ import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_chat_voice_2.*
 import java.util.*
 import android.net.Uri
+import android.widget.ImageButton
 import com.example.altri.data.Message
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.altri.adapter.MessagingAdapter
@@ -33,6 +34,7 @@ class ChatbotVoiceNew : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat_voice_2) // i want the screen for speech 2 txt
+        val btnBack = findViewById<ImageButton>(R.id.imageButton)
 
         recyclerView()
         clickEvents()
@@ -45,6 +47,11 @@ class ChatbotVoiceNew : Activity() {
             sendMessage()
 
 
+        }
+
+        btnBack.setOnClickListener{
+            val intent = Intent(this,ChatbotMenu::class.java)
+            startActivity(intent)
         }
 
     }

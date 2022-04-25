@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -44,7 +45,7 @@ public class TasksFragment extends Fragment {
     private List<Schedule> allTasks;
     private TaskAdapter taskAdapter;
     private ImageButton btnBack;
-    private ImageButton btnviewAll;
+    private Button btnviewAll;
 
 
     Date todaysDate = Calendar.getInstance().getTime();
