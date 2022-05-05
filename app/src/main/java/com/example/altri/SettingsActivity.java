@@ -32,6 +32,7 @@ public class SettingsActivity extends Activity{
     private Button btnBlue;
     private Button btnYellow;
     private Button btnRed;
+    private Button btnGreen;
 
     private ImageButton btnBack;
 
@@ -119,6 +120,7 @@ public class SettingsActivity extends Activity{
         btnBlue = colorPopupView.findViewById(R.id.btnBlue);
         btnYellow = colorPopupView.findViewById(R.id.btnYellow);
         btnRed = colorPopupView.findViewById(R.id.btnRed);
+        btnGreen = colorPopupView.findViewById(R.id.btnGreen);
 
         btnBlue.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -167,6 +169,22 @@ public class SettingsActivity extends Activity{
                 btnChangeColor.setTextColor(Color.parseColor("#CC184E"));
                 btnLogout.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.red_button));
                 btnLogout.setTextColor(Color.parseColor("#CC184E"));
+                //dialog.dismiss();
+            }
+        });
+
+        btnGreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                colorPopupView.setBackgroundResource(R.drawable.colorpick_green);
+
+                settingsView.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.settings_green));
+                btnProfile.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.green_button));
+                btnProfile.setTextColor(Color.parseColor("#009721"));
+                btnChangeColor.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.green_button));
+                btnChangeColor.setTextColor(Color.parseColor("#009721"));
+                btnLogout.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.green_button));
+                btnLogout.setTextColor(Color.parseColor("#009721"));
                 //dialog.dismiss();
             }
         });

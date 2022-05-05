@@ -13,6 +13,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.provider.OpenableColumns;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -112,8 +113,16 @@ public class AddTaskActivity extends Activity {
                 month += 1;
 
                 if (month < 10) {
-                    String date = "0" + month + "/" + day + "/" + year;
-                    btnTaskDate.setText(date);
+
+                    if (day < 10) {
+                        String date = "0" + month + "/" + "0" + day + "/" + year;
+                        btnTaskDate.setText(date);
+                    }
+                    else {
+                        String date = "0" + month + "/" + day + "/" + year;
+                        btnTaskDate.setText(date);
+                    }
+
                 }
 
                 else {
@@ -127,6 +136,7 @@ public class AddTaskActivity extends Activity {
         btnTaskStartTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 TimePickerDialog timePickerDialog = new TimePickerDialog(AddTaskActivity.this, android.R.style.Theme_Holo_Dialog_MinWidth, mTimeSetListener, 12, 0, false);
 
                 timePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -196,17 +206,15 @@ public class AddTaskActivity extends Activity {
 
                 ParseUser currentUser = ParseUser.getCurrentUser();
 
-                saveSchedule(etTaskName.getText().toString(), etTaskDescription.getText().toString(), btnTaskDate.getText().toString(), btnTaskStartTime.getText().toString(), currentUser);
-
-                /*
-                if (btnRepeat.getText().toString().equals("Every Day")) {
-
-
-                    saveSchedule(etTaskName.getText().toString(), etTaskDescription.getText().toString(), btnTaskDate.getText().toString(), btnTaskStartTime.getText().toString(), currentUser);
-
+                if (TextUtils.isEmpty(etTaskName.getText())) {
+                    etTaskName.setError("Task Name is required!");
+                } else if (TextUtils.isEmpty(btnTaskDate.getText())) {
+                    btnTaskDate.setError("Task Date is required!");
+                } else if (TextUtils.isEmpty(btnTaskStartTime.getText())) {
+                    btnTaskStartTime.setError("Task Start Time is required!");
                 }
 
-                 */
+                saveSchedule(etTaskName.getText().toString(), etTaskDescription.getText().toString(), btnTaskDate.getText().toString(), btnTaskStartTime.getText().toString(), currentUser);
 
             }
         });
@@ -215,6 +223,14 @@ public class AddTaskActivity extends Activity {
 
     private void saveSchedule(String taskName, String taskDescription, String taskDate, String taskTime, ParseUser currentUser) {
         Schedule schedule = new Schedule();
+
+        try {
+            SimpleDateFormat date12Format = new SimpleDateFormat("hh:mm aa");
+            SimpleDateFormat date24Format = new SimpleDateFormat("HH:mm");
+            schedule.setTaskTimeNumber(date24Format.format(date12Format.parse(taskTime)).replace(":", ""));
+        } catch (java.text.ParseException e) {
+            e.printStackTrace();
+        }
 
         schedule.setTaskName(taskName);
         schedule.setTaskDescription(taskDescription);

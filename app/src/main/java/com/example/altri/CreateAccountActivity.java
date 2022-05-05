@@ -130,6 +130,8 @@ public class CreateAccountActivity extends Activity {
                     etFirstName.setError("First Name is required!");
                 } else if (TextUtils.isEmpty(etLastName.getText())) {
                     etLastName.setError("Last Name is required!");
+                } else if (TextUtils.isEmpty(btnDateOfBirth.getText())) {
+                    btnDateOfBirth.setError("Date of Birth is required!");
                 } else if (TextUtils.isEmpty(etEmail.getText())) {
                     etEmail.setError("Email is required!");
                 } else if (!(etEmail.getText().toString().trim().matches(emailPattern))) {

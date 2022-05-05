@@ -51,7 +51,7 @@ public class RolePickActivity extends Activity {
             @Override
             public void onClick(View view) {
                 Log.i(TAG, "onClick login button");
-                startActivity(scheduler);
+                startActivity(taskMenu);
                 finish();
             }
         });

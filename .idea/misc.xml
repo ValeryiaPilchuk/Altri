@@ -81,6 +81,7 @@
         <entry key="app/src/main/res/layout/activity_settings.xml" value="0.12360688956433637" />
         <entry key="app/src/main/res/layout/activity_solutionn.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_task_menu.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/current_task.xml" value="0.1" />
         <entry key="app/src/main/res/layout/message_item.xml" value="0.1" />
         <entry key="app/src/main/res/layout/popup_color_change.xml" value="0.1" />
         <entry key="app/src/main/res/layout/popup_message.xml" value="0.1" />

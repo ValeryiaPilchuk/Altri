@@ -27,7 +27,10 @@ import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.Calendar;
@@ -42,7 +45,6 @@ public class AllTasks extends Fragment {
     private List<Schedule> allTasks;
     private TaskAdapter taskAdapter;
     private ImageButton btnBack;
-
 
     public AllTasks(){
 
@@ -69,6 +71,7 @@ public class AllTasks extends Fragment {
         tasksRV.setLayoutManager(new LinearLayoutManager(getContext()));
 
         queryPosts();
+        sortArrayList();
 
         Intent backIntent = new Intent(getApplicationContext(), SchedulerMenuActivity.class);
 
@@ -78,6 +81,29 @@ public class AllTasks extends Fragment {
                 startActivity(backIntent);
             }
         });
+
+    }
+
+    private void sortArrayList() {
+
+        Collections.sort(allTasks, new Comparator<Schedule>() {
+            @Override
+            public int compare(Schedule t1, Schedule t2) {
+
+                return t1.getTaskTimeNumber().compareTo(t2.getTaskTimeNumber());
+
+                //System.out.println(t1.getTaskTime().compareTo(t2.getTaskTime()));
+
+                //return t1.getTaskTime().compareTo(t2.getTaskTime());
+
+                //return LocalTime.parse(t1.getTaskTimeNumber()).compareTo(LocalTime.parse(t2.getTaskTimeNumber()));
+
+                //return t1.getTaskTime();
+            }
+        });
+
+        adapter = new TaskAdapter(getActivity(), allTasks);
+        adapter.notifyDataSetChanged();
 
     }
 
@@ -93,7 +119,6 @@ public class AllTasks extends Fragment {
         query.include(Schedule.KEY_USER);
         query.setLimit(30);
         query.whereEqualTo(Schedule.KEY_USER, ParseUser.getCurrentUser());
-        query.addDescendingOrder(Schedule.KEY_TASK_TIME);
         query.findInBackground(new FindCallback<Schedule>() {
             @Override
             public void done(List<Schedule> tasks, ParseException e) {
@@ -101,15 +126,37 @@ public class AllTasks extends Fragment {
                     Log.e(TAG, "Issues with getting posts", e);
                     return;
                 }
+                /*
                 for (Schedule task: tasks){
                     //TODO: add correct logging later
                     //Log.i(TAG, "Post: " + task.getDescription()+"username: " + task.getUser().getUsername());
                 }
 
+                 */
+
                 allTasks.addAll(tasks);
                 adapter.notifyDataSetChanged();
             }
         });
+
+        /*
+        Collections.sort(allTasks, new Comparator<Schedule>() {
+            @Override
+            public int compare(Schedule t1, Schedule t2) {
+                //SimpleDateFormat displayFormat = new SimpleDateFormat("HH:mm");
+                //SimpleDateFormat parseFormat = new SimpleDateFormat("hh:mm a");
+                //Date date1 = parseFormat.parse(t1.getTaskTime());
+                //Date date2 = parseFormat.parse(t2.getTaskTime());
+
+                System.out.println(t1.getTaskTime().compareTo(t2.getTaskTime()));
+
+                return t1.getTaskTime().compareTo(t2.getTaskTime());
+
+                //return t1.getTaskTime();
+            }
+        });
+         */
+
     }
 
 }

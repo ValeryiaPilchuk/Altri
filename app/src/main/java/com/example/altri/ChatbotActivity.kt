@@ -112,7 +112,6 @@ class ChatbotActivity : Activity(), TextToSpeech.OnInitListener{
                 adapter.insertMessage(Message(response, Constants.RECEIVE_ID, timeStamp))
                 rv_messages.scrollToPosition(adapter.itemCount - 1) //take us down all the way to the last message in order to stay up to date
 
-
                 when(response){
                     Constants.OPEN_GOOGLE ->{
                         val site = Intent(Intent.ACTION_VIEW)

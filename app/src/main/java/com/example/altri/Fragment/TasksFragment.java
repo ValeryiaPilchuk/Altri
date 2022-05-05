@@ -101,7 +101,7 @@ public class TasksFragment extends Fragment {
         query.include(Schedule.KEY_USER);
         query.whereEqualTo(Schedule.KEY_TASK_DATE, formatter.format(todaysDate));
         query.whereEqualTo(Schedule.KEY_USER, ParseUser.getCurrentUser());
-        query.orderByDescending(Schedule.KEY_TASK_TIME);
+        query.orderByAscending(Schedule.KEY_TASK_TIME_NUMBER);
         query.setLimit(10);
         query.findInBackground(new FindCallback<Schedule>() {
             @Override

@@ -29,7 +29,7 @@ public class Main extends Activity {
         setContentView(R.layout.activity_main_screen);
         ConstraintLayout background= findViewById(R.id.mainScreen);
 
-        Intent logInScreen = new Intent(this, CoverPageActivity.class);
+        Intent logInScreen = new Intent(this, LoginSignUpActivity.class);
 
         background.setOnClickListener(new View.OnClickListener() {
             @Override
