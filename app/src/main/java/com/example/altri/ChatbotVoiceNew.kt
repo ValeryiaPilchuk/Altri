@@ -53,11 +53,11 @@ class ChatbotVoiceNew : Activity() {
             sendMessage()
         }
 
-        btn_send.setOnClickListener(){
-            sendMessage()
+        //btn_send.setOnClickListener(){
+          //  sendMessage()
 
 
-        }
+       // }
 
     }
 
@@ -86,9 +86,9 @@ class ChatbotVoiceNew : Activity() {
     }
 
     private fun clickEvents() {
-       // btn_speak.setOnClickListener(){
-          //  sendMessage()
-      //  }
+        // btn_speak.setOnClickListener(){
+        //  sendMessage()
+        //  }
         et_message.setOnClickListener{
             GlobalScope.launch {
                 delay(1000)
@@ -133,11 +133,17 @@ class ChatbotVoiceNew : Activity() {
 
                 when(response){
                     OPEN_GOOGLE ->{
+                        delay(2000)
+                        setContentView(R.layout.warning_page) //grab warning page to display
+                        delay(2000)
                         val site = Intent(Intent.ACTION_VIEW)
                         site.data = Uri.parse("https://www.google.com/")
                         startActivity(site)
                     }
                     OPEN_SEARCH ->{
+                        delay(2000)
+                        setContentView(R.layout.warning_page) //grab warning page to display
+                        delay(2000)
                         val site = Intent(Intent.ACTION_VIEW)
                         val searchTerm: String? = message.substringAfter("search")
                         site.data = Uri.parse("https://www.google.com/search?&q=$searchTerm")
