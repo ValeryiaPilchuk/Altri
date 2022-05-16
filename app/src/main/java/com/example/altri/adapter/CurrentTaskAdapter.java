@@ -132,13 +132,21 @@ public class CurrentTaskAdapter extends RecyclerView.Adapter<CurrentTaskAdapter.
 
                     Log.d("msg", "ChangeTime button clicked");
                     Log.d("msg", String.valueOf(timeNumber));
+                    String timeNumberString = timeNumber;
                     Integer newTimeNumber =  Integer.parseInt(timeNumber) + 100;
+                    if(newTimeNumber.toString().length() < 4){
+                        timeNumberString = "0"+ newTimeNumber.toString();
+                    }
+                    else{
+                        timeNumberString = newTimeNumber.toString();
+
+                    }
                     String newTime = time;
                     try {
                         Date dateTime = dateFormat.parse(newTime);
                         dateTime.setTime(dateTime.getTime() + TimeUnit.HOURS.toMillis(1));
                         newTime = dateFormat.format(dateTime);
-                        updateData(taskName, timeNumber, newTimeNumber, newTime);
+                        updateData(taskName, timeNumber, timeNumberString, newTime);
                         Log.d("msg", newTime);
                     } catch (java.text.ParseException e) {
                         e.printStackTrace();
@@ -214,7 +222,7 @@ public class CurrentTaskAdapter extends RecyclerView.Adapter<CurrentTaskAdapter.
     }
 
 
-    private void updateData(String taskName, String timeNumber, Integer newTimeNumber, String newTime) {
+    private void updateData(String taskName, String timeNumber, String newTimeNumber, String newTime) {
 
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Schedule");
 
@@ -252,7 +260,7 @@ public class CurrentTaskAdapter extends RecyclerView.Adapter<CurrentTaskAdapter.
                                 // to the object which we get from its id.
                                 // on below line we are adding our data
                                 // with their key value in our object.
-                                object.put("timeNumber", newTimeNumber.toString());
+                                object.put("timeNumber", newTimeNumber);
                                 object.put("time", newTime);
 
                                 // after adding new data then we are

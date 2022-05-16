@@ -50,8 +50,7 @@ public class CurrentTaskActivity extends Activity {
 
         etTaskName = findViewById(R.id.tvCurrentTaskName);
 
-        ivTaskImage.setImageResource(R.drawable.empty_media);
-        //ivTaskImage.setImageDrawable(R.drawable.empty_media);
+//        ivTaskImage.setImageResource(R.drawable.empty_media);
 
         btnBack = findViewById(R.id.imageButton);
 

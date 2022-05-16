@@ -6,7 +6,7 @@ object Constants {
 
     const val OPEN_GOOGLE = "Opening Google..."
     const val OPEN_SEARCH = "Searching..."
-    const val ADD_TASK = "Sure, Let's help fill out the information!"
-    const val SETTINGS_NAV = "Ok, Taking you to settings."
-    const val TASK_NAV = "Lets take a look at your tasks!"
+    const val ADD_TASK = "Sure, let's help fill out the information!"
+    const val SETTINGS_NAV = "Ok, taking you to settings."
+    const val TASK_NAV = "Lets take a look at your current task!"
 }

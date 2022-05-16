@@ -29,7 +29,6 @@ object BotResponse {
                     1 -> "Hi!"
                     2 -> "Hola!"
                     else -> "error"
-
                 }
             }
 
@@ -40,9 +39,7 @@ object BotResponse {
                     1 -> "I'm feeling kind of hungry..."
                     2 -> "I'm feeling fantastic! How about you?"
                     else -> "error"
-
                 }
-
             }
 
             message.contains("flip") && message.contains("coin") ->{
@@ -80,19 +77,15 @@ object BotResponse {
 
             message.contains("add") && message.contains("task")->{
                 ADD_TASK
-                //"what is the name of your task?"
-               // val task_name: String? = message
-
             }
-            (message.contains("show") || message.contains("what") ) && message.contains("tasks") ->{
+
+            (message.contains("show") || message.contains("what") ) && message.contains("task") ->{
                 TASK_NAV
             }
 
             message.contains("settings") ->{
                 SETTINGS_NAV
             }
-
-
 
             else -> {
                 when (random){ // if the user gives a response it doesnt know

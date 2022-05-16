@@ -11,6 +11,7 @@ import androidx.databinding.adapters.TextViewBindingAdapter.setText
 import kotlinx.android.synthetic.main.activity_chat_voice_2.*
 import java.util.*
 import android.net.Uri
+import android.speech.tts.TextToSpeech
 import com.example.altri.data.Message
 import android.util.Log
 import android.widget.ImageButton
@@ -18,10 +19,15 @@ import androidx.constraintlayout.motion.utils.Oscillator
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.altri.adapter.MessagingAdapter
 import com.example.altri.utils.BotResponse
+import com.example.altri.utils.Constants
 import com.example.altri.utils.Constants.OPEN_GOOGLE
 import com.example.altri.utils.Constants.OPEN_SEARCH
 import com.example.altri.utils.Constants.RECEIVE_ID
 import com.example.altri.utils.Constants.SEND_ID
+import com.example.altri.utils.Constants.ADD_TASK
+import com.example.altri.utils.Constants.SETTINGS_NAV
+import com.example.altri.utils.Constants.TASK_NAV
+
 import com.example.altri.utils.Time
 import kotlinx.android.synthetic.main.activity_chat_bot.*
 import kotlinx.android.synthetic.main.activity_chat_voice_2.et_message
@@ -30,7 +36,8 @@ import kotlinx.coroutines.*
 
 
 
-class ChatbotVoiceNew : Activity() {
+class ChatbotVoiceNew : Activity(), TextToSpeech.OnInitListener{
+    private var tts: TextToSpeech? = null
     private lateinit var adapter: MessagingAdapter
     private val botlist = listOf("Altri")
     private val RQ_SPEECH_REC = 102 //request code for later
@@ -38,28 +45,31 @@ class ChatbotVoiceNew : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat_voice_2) // i want the screen for speech 2 txt
-        val btnBack = findViewById<ImageButton>(R.id.imageButton)
+        val btnBack = findViewById<ImageButton>(R.id.btnBack)
 
+        tts = TextToSpeech(this, this)
         recyclerView()
         clickEvents()
 
-        customMessage("Hello!, this is ${botlist[0]} speaking, how may I help you today? :)")
+        customMessage("Hello, this is ${botlist[0]} speaking, how may I help you today? :)")
+
 
         btn_speak.setOnClickListener{
-
             askSpeechInput()
-
         }
+
         btn_sendd.setOnClickListener{
             sendMessage()
         }
 
-        //btn_send.setOnClickListener(){
-          //  sendMessage()
+        btnBack.setOnClickListener{
+            val intent = Intent(this,ChatbotMenu::class.java)
+            startActivity(intent)
+        }
+    }
 
-
-       // }
-
+    private fun speak(text: String) {
+        tts!!.speak(text, TextToSpeech.QUEUE_FLUSH, null, "")
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -114,7 +124,6 @@ class ChatbotVoiceNew : Activity() {
             et_message.setText("")
             adapter.insertMessage(Message(message, SEND_ID, timeStamp))
             rv_messages.scrollToPosition(adapter.itemCount - 1)
-
             botResponse(message)
         }
     }
@@ -127,7 +136,7 @@ class ChatbotVoiceNew : Activity() {
 
             withContext(Dispatchers.Main){
                 val response = BotResponse.basicResponses(message)
-
+                speak(response)
                 adapter.insertMessage(Message(response, RECEIVE_ID, timeStamp))
                 rv_messages.scrollToPosition(adapter.itemCount - 1) //take us down all the way to the last message in order to stay up to date
 
@@ -149,6 +158,18 @@ class ChatbotVoiceNew : Activity() {
                         val searchTerm: String? = message.substringAfter("search")
                         site.data = Uri.parse("https://www.google.com/search?&q=$searchTerm")
                         startActivity(site)
+                    }
+                    ADD_TASK ->{
+                        delay(2000)
+                        navigate("add_task")
+                    }
+                    SETTINGS_NAV ->{
+                        delay(2000)
+                        navigate("settings")
+                    }
+                    TASK_NAV ->{
+                        delay(2000)
+                        navigate("task")
                     }
                 }
             }
@@ -173,9 +194,40 @@ class ChatbotVoiceNew : Activity() {
             withContext(Dispatchers.Main){
                 val timeStamp = Time.timeStamp()
                 adapter.insertMessage(Message(message, RECEIVE_ID, timeStamp))
-
+                speak(message)
                 rv_messages.scrollToPosition(adapter.itemCount - 1) //take us down all the way to the last message in order to stay up to date
             }
+        }
+    }
+
+
+    fun navigate(whatDo : String){
+        val addActivityIntent = Intent(this, AddTaskActivity::class.java)
+        val settingsIntent = Intent(this, SettingsActivity::class.java)
+        val taskIntent = Intent(this, CurrentTaskActivity::class.java)
+
+
+        if (whatDo == "add_task") {
+            startActivity(addActivityIntent)
+        }
+        if (whatDo == "settings") {
+            startActivity(settingsIntent)
+        }
+        if (whatDo == "task") {
+            startActivity(taskIntent)
+        }
+    }
+
+    override fun onInit(status: Int) {
+        if (status == TextToSpeech.SUCCESS) {
+            // set US English as language for tts
+            val result = tts!!.setLanguage(Locale.getDefault())
+
+            if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                Log.e("TTS","The Language specified is not supported!")
+            }
+        } else {
+            Log.e("TTS", "Initilization Failed!")
         }
     }
 

@@ -32,7 +32,7 @@ import java.util.Comparator;
 import java.util.List;
 
 
-public class AllTasks extends Fragment {
+public class AllTasksTodayFragment extends Fragment {
 
     public static final String TAG = "Tasks";
 
@@ -42,7 +42,7 @@ public class AllTasks extends Fragment {
     private TaskAdapter taskAdapter;
     private ImageButton btnBack;
 
-    public AllTasks(){
+    public AllTasksTodayFragment(){
 
     }
 

@@ -90,7 +90,6 @@ public class CurrentTaskFragment extends Fragment {
     public void queryPosts() {
         String dateFromData = Schedule.KEY_TASK_DATE;
 
-
         SimpleDateFormat dateFormat = new SimpleDateFormat("HHmm");
         Calendar calendar = Calendar.getInstance();
 
@@ -98,10 +97,12 @@ public class CurrentTaskFragment extends Fragment {
 
         ParseQuery<Schedule> query = ParseQuery.getQuery(Schedule.class);
         query.include(Schedule.KEY_USER);
+        query.orderByAscending(Schedule.KEY_TASK_TIME_NUMBER);
         query.whereEqualTo(Schedule.KEY_TASK_DATE, formatter.format(todaysDate));
         query.whereEqualTo(Schedule.KEY_USER, ParseUser.getCurrentUser());
         query.whereGreaterThanOrEqualTo(Schedule.KEY_TASK_TIME_NUMBER, dateFormat.format(calendar.getTime()));
         query.whereEqualTo(Schedule.KEY_TASK_COMPLETED, "no");
+
         query.getFirstInBackground(new GetCallback<Schedule>() {
             @Override
             public void done(Schedule task, ParseException e) {

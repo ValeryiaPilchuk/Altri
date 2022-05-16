@@ -20,8 +20,8 @@ tools:context=".Fragment.TasksFragment">
     <TextView
         android:id="@+id/date_on_top"
         android:layout_width="match_parent"
-        android:layout_height="88dp"
-        android:layout_marginTop="50dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="70dp"
         android:background="@drawable/highlight"
         android:fontFamily="@font/poppins"
         android:gravity="center"
