@@ -94,16 +94,16 @@ public class LoginActivity extends Activity {
                     etEmail.setError("Email format incorrect!");
                 }
 
-                    try {
-                        Toast.makeText(LoginActivity.this, "Email has been sent to change your password!", Toast.LENGTH_SHORT).show();
-                        ParseUser.requestPasswordReset(etEmail.getText().toString());
+                try {
+                    Toast.makeText(LoginActivity.this, "Email has been sent to change your password!", Toast.LENGTH_SHORT).show();
+                    ParseUser.requestPasswordReset(etEmail.getText().toString());
 
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                    }
-
+                } catch (ParseException e) {
+                    e.printStackTrace();
                 }
-            });
+
+            }
+        });
 
     }
 

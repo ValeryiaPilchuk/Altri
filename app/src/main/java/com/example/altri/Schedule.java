@@ -1,6 +1,7 @@
 package com.example.altri;
 
 import com.parse.ParseClassName;
+import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
@@ -15,13 +16,15 @@ public class Schedule extends ParseObject {
     public static final String KEY_TASK_TIME = "time";
     public static final String KEY_TASK_TIME_NUMBER = "timeNumber";
     public static final String KEY_TASK_COMPLETED = "completed";
+    public static final String KEY_IMAGE = "image";
 
- /*   public Schedule(String KEY_TASK_NAME, String KEY_TASK_DESCRIPTION, String KEY_USER, String KEY_TASK_DATE, String KEY_TASK_TIME) {
-        this.KEY_TASK_NAME = KEY_TASK_NAME;
-        this.KEY_TASK_DESCRIPTION = courseDescription;
-        this.courseDuration = courseDuration;
-    }
-*/
+
+    /*   public Schedule(String KEY_TASK_NAME, String KEY_TASK_DESCRIPTION, String KEY_USER, String KEY_TASK_DATE, String KEY_TASK_TIME) {
+           this.KEY_TASK_NAME = KEY_TASK_NAME;
+           this.KEY_TASK_DESCRIPTION = courseDescription;
+           this.courseDuration = courseDuration;
+       }
+   */
     public String getTaskName() {
         return getString(KEY_TASK_NAME);
     }
@@ -54,8 +57,8 @@ public class Schedule extends ParseObject {
         put(KEY_TASK_TIME, taskTime);
     }
 
-    public Integer getTaskTimeNumber() {
-        return getInt(KEY_TASK_TIME_NUMBER);
+    public String getTaskTimeNumber() {
+        return getString(KEY_TASK_TIME_NUMBER);
     }
 
     public void setTaskTimeNumber(String taskTimeNumber) {
@@ -74,4 +77,11 @@ public class Schedule extends ParseObject {
         return getString(KEY_TASK_COMPLETED);
     }
 
+    public ParseFile getImage(){
+        return getParseFile(KEY_IMAGE);
+    }
+
+    public void setImage(ParseFile parseFile){
+        put(KEY_IMAGE, parseFile);
+    }
 }

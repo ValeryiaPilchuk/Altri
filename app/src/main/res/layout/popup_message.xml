@@ -1,37 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#D6EAF8"
-    android:orientation="vertical"
-    android:textAlignment="gravity">
+    android:background="@drawable/background_puzzle">
 
-    <EditText
-        android:id="@+id/etCompletedMessage"
-        android:layout_width="300dp"
-        android:layout_height="542dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="15dp"
-        android:layout_weight="1"
-        android:background="@drawable/blue_button"
-        android:fontFamily="@font/poppins"
-        android:gravity="center"
-        android:text="Completed Eat Breakfast"
-        android:textAllCaps="false"
-        android:textColor="#18A1CC"
-        android:textSize="40dp" />
-
-    <EditText
+    <TextView
         android:id="@+id/etMotivateMessage"
-        android:layout_width="300dp"
-        android:layout_height="542dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="15dp"
-        android:layout_weight="1"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:padding="80dp"
         android:background="@drawable/blue_button"
         android:fontFamily="@font/poppins"
         android:gravity="center"
@@ -41,4 +23,4 @@
         android:textSize="40dp" />
 
 
-</LinearLayout>
+</RelativeLayout>

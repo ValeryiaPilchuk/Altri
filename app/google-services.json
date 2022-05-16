@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "14793975986",
+    "project_id": "altri-4fa22",
+    "storage_bucket": "altri-4fa22.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:14793975986:android:fa64f2c5579896cbf9c1ab",
+        "android_client_info": {
+          "package_name": "com.example.altri"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "14793975986-s7rce266iu2lofnojoqquh5o0hose72e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJ7D4PIxn4Cqjf5NgNCSd-PxwwEOwMudo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "14793975986-s7rce266iu2lofnojoqquh5o0hose72e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

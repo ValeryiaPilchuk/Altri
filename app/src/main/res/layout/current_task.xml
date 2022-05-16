@@ -20,7 +20,7 @@
         android:textSize="35dp" />
 
     <TextView
-        android:id="@+id/tvTaskName"
+        android:id="@+id/tvCurrentTaskName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -53,24 +53,26 @@
         android:paddingBottom="5dp"
         android:text="Now"
         android:textColor="#188BCC"
-        android:textSize="25dp" />
+        android:textSize="20dp" />
 
 
     <ImageView
         android:id="@+id/imTaskImage"
-        android:layout_width="match_parent"
-        android:layout_height="260dp"
-        android:layout_marginTop="250dp"
+        android:layout_width="220dp"
+        android:layout_height="220dp"
+        android:layout_below="@id/tvTaskDescription"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
         tools:src="@drawable/empty_media" />
 
     <Button
         android:id="@+id/btnCompleted"
         android:layout_width="280dp"
         android:layout_height="60dp"
+        android:layout_below="@id/imTaskImage"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
-        android:layout_marginTop="530dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/create_account_btn"
         android:fontFamily="@font/poppins"
         android:gravity="center"
@@ -83,15 +85,15 @@
         android:id="@+id/btnChangeTime"
         android:layout_width="280dp"
         android:layout_height="60dp"
+        android:layout_below="@id/btnCompleted"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
-        android:layout_marginTop="630dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginTop="40dp"
         android:layout_weight="1"
         android:background="@drawable/create_account_btn"
         android:fontFamily="@font/poppins"
         android:gravity="center"
-        android:text="Change Time"
+        android:text="Extend Time"
         android:textAllCaps="false"
         android:textColor="#F2F2F2"
         android:textSize="30dp" />

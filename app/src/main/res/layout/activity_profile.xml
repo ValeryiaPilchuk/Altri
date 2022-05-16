@@ -34,7 +34,7 @@
         android:singleLine="true"
         android:textAllCaps="false"
         android:textColor="#18A1CC"
-        android:textSize="30dp" />
+        android:textSize="25dp" />
 
     <Button
         android:id="@+id/btnLastNameProfile"
@@ -52,7 +52,7 @@
         android:singleLine="true"
         android:textAllCaps="false"
         android:textColor="#18A1CC"
-        android:textSize="30dp" />
+        android:textSize="25dp" />
 
     <Button
         android:id="@+id/btnDateOfBirthProfile"
@@ -71,7 +71,7 @@
         android:singleLine="true"
         android:textAllCaps="false"
         android:textColor="#18A1CC"
-        android:textSize="30dp" />
+        android:textSize="25dp" />
 
     <Button
         android:id="@+id/btnEmailProfile"
@@ -89,7 +89,7 @@
         android:singleLine="true"
         android:textAllCaps="false"
         android:textColor="#18A1CC"
-        android:textSize="30dp" />
+        android:textSize="25dp" />
 
     <Button
         android:id="@+id/btnTemp"
