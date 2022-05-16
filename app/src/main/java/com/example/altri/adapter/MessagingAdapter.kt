@@ -14,7 +14,6 @@ class MessagingAdapter: RecyclerView.Adapter<MessagingAdapter.MessageViewHolder>
     var messagesList = mutableListOf<Message>()
     //private TextView tv_message
 
-
     inner class MessageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         init {
             itemView.setOnClickListener{

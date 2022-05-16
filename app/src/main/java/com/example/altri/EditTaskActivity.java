@@ -1,9 +1,5 @@
 package com.example.altri;
 
-import static androidx.constraintlayout.motion.utils.Oscillator.TAG;
-
-import static com.parse.Parse.getApplicationContext;
-
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.AlertDialog;
@@ -12,15 +8,9 @@ import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.os.Environment;
-import android.provider.MediaStore;
-import android.provider.OpenableColumns;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -31,17 +21,15 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.example.altri.Notification.NotificationHelper;
 import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.parse.DeleteCallback;
 import com.parse.FindCallback;
-import com.parse.GetCallback;
 import com.parse.ParseException;
-import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
@@ -56,7 +44,7 @@ import java.util.List;
 public class EditTaskActivity extends Activity {
 
     public static final String TAG = "AddTaskActivity";
-    private EditText etTaskName;
+    private TextView etTaskName;
     private EditText etTaskDescription;
     private Button btnTaskDate;
     private Button btnTaskStartTime;
@@ -254,7 +242,7 @@ public class EditTaskActivity extends Activity {
                     btnTaskStartTime.setError("Task Start Time is required!");
                 }
 
-                Intent myIntent = new Intent(getApplicationContext(), NotifyService.class);
+                Intent myIntent = new Intent(getApplicationContext(), NotificationHelper.class);
                 AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
                 PendingIntent pendingIntent = PendingIntent.getService(EditTaskActivity.this, 0, myIntent, 0);
                 Calendar calendar = Calendar.getInstance();

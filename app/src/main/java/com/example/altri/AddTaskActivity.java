@@ -1,26 +1,18 @@
 package com.example.altri;
 
-import static androidx.constraintlayout.motion.utils.Oscillator.TAG;
-
-import static com.parse.Parse.getApplicationContext;
-
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.os.Environment;
-import android.provider.MediaStore;
-import android.provider.OpenableColumns;
+import android.os.SystemClock;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -31,17 +23,15 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.example.altri.Notification.AlertReceiver;
+import com.example.altri.Notification.NotificationHelper;
 import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.parse.DeleteCallback;
 import com.parse.FindCallback;
-import com.parse.GetCallback;
 import com.parse.ParseException;
-import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
@@ -52,6 +42,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class AddTaskActivity extends Activity {
 
@@ -79,12 +70,6 @@ public class AddTaskActivity extends Activity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_add_task);
 
-        String name = getIntent().getStringExtra("name");
-        String time = getIntent().getStringExtra("time");
-        String date = getIntent().getStringExtra("date");
-        String description = getIntent().getStringExtra("description");
-
-
         etTaskName = findViewById(R.id.etTaskName);
         etTaskDescription = findViewById(R.id.etTaskDescription);
 
@@ -95,12 +80,6 @@ public class AddTaskActivity extends Activity {
         btnRepeat = findViewById(R.id.btnRepeat);
         btnAddTask = findViewById(R.id.btnAddTask);
 
-        if(name != null && time != null){
-            etTaskName.setText(name);
-            btnTaskStartTime.setText(time);
-            btnTaskDate.setText(date);
-            etTaskDescription.setText(description);
-        }
 
         Intent backIntent = new Intent(getApplicationContext(), SchedulerMenuActivity.class);
 
@@ -251,30 +230,15 @@ public class AddTaskActivity extends Activity {
                     btnTaskStartTime.setError("Task Start Time is required!");
                 }
 
-                Intent myIntent = new Intent(getApplicationContext(), NotifyService.class);
-                AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-                PendingIntent pendingIntent = PendingIntent.getService(AddTaskActivity.this, 0, myIntent, 0);
-                Calendar calendar = Calendar.getInstance();
-                calendar.set(Calendar.SECOND, 0);
-                calendar.set(Calendar.MINUTE, 0);
-                calendar.set(Calendar.HOUR, 0);
-                calendar.set(Calendar.AM_PM, Calendar.AM);
-                calendar.add(Calendar.DAY_OF_MONTH, 1);
-                alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), 1000 * 60 * 60 * 24, pendingIntent);
+                saveSchedule(etTaskName.getText().toString(), etTaskDescription.getText().toString(),
+                        btnTaskDate.getText().toString(), btnTaskStartTime.getText().toString(), currentUser, photoFile);
 
-                if (name != null) {
-                    saveSchedule(etTaskName.getText().toString(), etTaskDescription.getText().toString(),
-                            btnTaskDate.getText().toString(), btnTaskStartTime.getText().toString(), currentUser, photoFile,name);
-                    deleteTask(etTaskName.getText().toString());
-                } else {
-                    saveSchedule(etTaskName.getText().toString(), etTaskDescription.getText().toString(),
-                            btnTaskDate.getText().toString(), btnTaskStartTime.getText().toString(), currentUser, photoFile, name);
-                }
             }
         });
     }
 
-    private void saveSchedule(String taskName, String taskDescription, String taskDate, String taskTime, ParseUser currentUser, File photoFile, String name) {
+    private void saveSchedule(String taskName, String taskDescription, String taskDate,
+                              String taskTime, ParseUser currentUser, File photoFile) {
         Schedule schedule = new Schedule();
 
         try {
@@ -299,12 +263,8 @@ public class AddTaskActivity extends Activity {
                     Log.e(TAG, "error", e);
                     Toast.makeText(AddTaskActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
                 } else {
-                    if(name != null){
-                        Toast.makeText(AddTaskActivity.this, "Task updated!", Toast.LENGTH_SHORT).show();
-                    }
-                    else {
-                        Toast.makeText(AddTaskActivity.this, "Task added!", Toast.LENGTH_SHORT).show();
-                    }
+                    Toast.makeText(AddTaskActivity.this, "Task added!", Toast.LENGTH_SHORT).show();
+
                     etTaskName.setText("");
                     etTaskDescription.setText("");
                     btnTaskDate.setText("");
@@ -313,41 +273,24 @@ public class AddTaskActivity extends Activity {
                 }
             }
         });
+        startAlarm(taskTime, taskDate);
     }
-    private void deleteTask(String taskName) {
-        // Configure Query with our query.
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("Schedule");
+    public void startAlarm(String tasktime, String taskdate) {
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(this, AlertReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
+        String fulldate = tasktime + " " + taskdate;
+        Calendar c = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm a MM/dd/yyyy", Locale.ENGLISH);
 
-        // adding a condition where our course name
-        // must be equal to the original course name
-        query.whereEqualTo("taskname", taskName);
-        query.include(Schedule.KEY_USER);
-        query.whereEqualTo(Schedule.KEY_USER, ParseUser.getCurrentUser());
-        query.whereEqualTo(Schedule.KEY_TASK_COMPLETED, "no");
+        try {
+            c.setTime(sdf.parse(fulldate));
+        } catch (java.text.ParseException e) {
+            e.printStackTrace();
+        }
 
-        // on below line we are finding the course with the course name.
-        query.findInBackground(new FindCallback<ParseObject>() {
-            @Override
-            public void done(List<ParseObject> objects, ParseException e) {
-                // if the error is null.
-                if (e == null) {
-                    // on below line we are getting the first course and
-                    // calling a delete method to delete this course.
-                    objects.get(0).deleteInBackground(new DeleteCallback() {
-                        @Override
-                        public void done(ParseException e) {
-                            // inside done method checking if the error is null or not.
-                            if (e == null) {
-                                // if the error is not null then we are displaying a toast message and opening our home activity.
-                                Toast.makeText(getApplicationContext(), "Task Deleted..", Toast.LENGTH_SHORT).show();
-                            } else {
-                                // if we get error we are displaying it in below line.
-                            }
-                        }
-                    });
-                }
-            }
-        });
+        alarmManager.setExact(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), pendingIntent);
+        Log.d("alarm", "alarm added" + c.getTimeInMillis());
+
     }
-
 }
