@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -21,8 +21,26 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_task"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:visibility="visible"
         tools:itemCount="1"
         tools:listitem="@layout/current_task" />
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/tvNoMore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200dp"
+        android:layout_below="@+id/rv_task"
+        android:background="@drawable/roundish_box"
+        android:backgroundTint="#EDF8FF"
+        android:fontFamily="@font/poppins"
+        android:padding="50dp"
+        android:text="No more tasks for today!"
+        android:textColor="#188BCC"
+        android:textSize="30dp" />
+
+
+</RelativeLayout>

@@ -8,11 +8,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,7 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.altri.R;
 import com.example.altri.Schedule;
 import com.example.altri.SchedulerMenuActivity;
-import com.example.altri.TaskAdapter;
+import com.example.altri.adapters.TaskAdapter;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
@@ -43,7 +45,7 @@ public class TasksFragment extends Fragment {
     private List<Schedule> allTasks;
     private TaskAdapter taskAdapter;
     private ImageButton btnBack;
-    private ImageButton btnviewAll;
+    private Button btnviewAll;
 
 
     Date todaysDate = Calendar.getInstance().getTime();
@@ -57,6 +59,7 @@ public class TasksFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
 
         return inflater.inflate(R.layout.activity_all_tasks_today, container, false);
     }
@@ -68,6 +71,7 @@ public class TasksFragment extends Fragment {
 //        setContentView(R.layout.activity_display_all_tasks);
         btnBack = view.findViewById(R.id.imageButton);
         tasksRV = view.findViewById(R.id.rv_messages);
+        btnviewAll = view.findViewById(R.id.btnViewAll);
         TextView dateTV = (TextView) getView().findViewById(R.id.date_on_top);
         dateTV.setText(formatter.format(todaysDate));
         allTasks = new ArrayList<>();
@@ -91,6 +95,8 @@ public class TasksFragment extends Fragment {
 
     public void queryPosts() {
         String dateFromData = Schedule.KEY_TASK_DATE;
+        SimpleDateFormat dateFormat = new SimpleDateFormat("HHmm");
+        Calendar calendar = Calendar.getInstance();
         /*
         char extra = '0';
         if (dateFromData.length()< 10){
@@ -100,8 +106,9 @@ public class TasksFragment extends Fragment {
         ParseQuery<Schedule> query = ParseQuery.getQuery(Schedule.class);
         query.include(Schedule.KEY_USER);
         query.whereEqualTo(Schedule.KEY_TASK_DATE, formatter.format(todaysDate));
+        query.whereGreaterThanOrEqualTo(Schedule.KEY_TASK_TIME_NUMBER, dateFormat.format(calendar.getTime()));
         query.whereEqualTo(Schedule.KEY_USER, ParseUser.getCurrentUser());
-        query.orderByDescending(Schedule.KEY_TASK_TIME);
+        query.orderByAscending(Schedule.KEY_TASK_TIME_NUMBER);
         query.setLimit(10);
         query.findInBackground(new FindCallback<Schedule>() {
             @Override
@@ -122,6 +129,5 @@ public class TasksFragment extends Fragment {
     }
 
 }
-
 
 

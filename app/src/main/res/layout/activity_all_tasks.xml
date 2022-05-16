@@ -17,15 +17,29 @@
         android:background="@drawable/new_back_btn"
         android:src="@drawable/new_back_btn" />
 
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_messages"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginEnd="20dp"
         android:layout_marginTop="90dp"
         tools:itemCount="20"
         tools:listitem="@layout/task" />
+    <Button
+        android:id="@+id/btnViewAll"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/round_box"
+        android:backgroundTint="#EAF7FD"
+        android:fontFamily="@font/poppins"
+        android:gravity="center"
+        android:inputType="date"
+        android:text="View All"
+        android:textColor="#18A1CC"
+        android:textSize="30dp" />
 
 
 </RelativeLayout>

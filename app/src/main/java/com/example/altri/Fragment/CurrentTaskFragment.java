@@ -8,20 +8,23 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.altri.Main;
 import com.example.altri.R;
 import com.example.altri.Schedule;
 import com.example.altri.SchedulerMenuActivity;
-import com.example.altri.CurrentTaskAdapter;
-import com.parse.FindCallback;
+import com.example.altri.adapters.CurrentTaskAdapter;
+import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
@@ -39,8 +42,9 @@ public class CurrentTaskFragment extends Fragment {
 
     private RecyclerView tasksRV;
     protected CurrentTaskAdapter adapter;
-    private List<Schedule> allTasks;
+    private List<Schedule> currentTask;
     private ImageButton btnBack;
+    private Button btnCompleted;
     private TextView etTaskName;
 
     Date todaysDate = Calendar.getInstance().getTime();
@@ -54,7 +58,7 @@ public class CurrentTaskFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
+        ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
         return inflater.inflate(R.layout.activity_current_task, container, false);
     }
 
@@ -64,38 +68,15 @@ public class CurrentTaskFragment extends Fragment {
 
         Intent backIntent = new Intent(getApplicationContext(), SchedulerMenuActivity.class);
 
-//        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-//        setContentView(R.layout.activity_display_all_tasks);
-        etTaskName = view.findViewById(R.id.tvTaskName);
         btnBack = view.findViewById(R.id.btnBack);
-
+        btnCompleted = view.findViewById(R.id.btnCompleted);
         tasksRV = view.findViewById(R.id.rv_task);
- //       TextView dateTV = (TextView) getView().findViewById(R.id.date_on_top);
- //       dateTV.setText(formatter.format(todaysDate));
-        allTasks = new ArrayList<>();
-        adapter = new CurrentTaskAdapter(getContext(), allTasks); /*, new CurrentTaskAdapter(){
-            @Override
-            public void onChangeTime(int position) {
-                Log.d(TAG, "iconTextViewOnClick at position "+position);
-
-            }
-            @Override
-            public void onCompleted(int position) {
-                Log.d(TAG, "iconTextViewOnClick at position "+position);
-            }
-
-        });
-*/
-
+        currentTask = new ArrayList<>();
+        adapter = new CurrentTaskAdapter(getContext(), currentTask);
         tasksRV.setAdapter(adapter);
         tasksRV.setLayoutManager(new LinearLayoutManager(getContext()));
 
-
-
         queryPosts();
-
-//        String task = Integer.toString(allTasks.size());
-//        etTaskName.setText(task);
 
         btnBack.setOnClickListener (new View.OnClickListener() {
             @Override
@@ -106,40 +87,37 @@ public class CurrentTaskFragment extends Fragment {
 
     }
 
-
     public void queryPosts() {
         String dateFromData = Schedule.KEY_TASK_DATE;
-        /*
-        char extra = '0';
-        if (dateFromData.length()< 10){
-            dateFromData = extra + dateFromData;
-        }
-        */
+
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("HHmm");
+        Calendar calendar = Calendar.getInstance();
+
+        System.out.println(dateFormat.format(calendar.getTime()));
+
         ParseQuery<Schedule> query = ParseQuery.getQuery(Schedule.class);
         query.include(Schedule.KEY_USER);
         query.whereEqualTo(Schedule.KEY_TASK_DATE, formatter.format(todaysDate));
         query.whereEqualTo(Schedule.KEY_USER, ParseUser.getCurrentUser());
-        query.orderByDescending(Schedule.KEY_TASK_TIME);
-        query.setLimit(10);
-        query.findInBackground(new FindCallback<Schedule>() {
+        query.whereGreaterThanOrEqualTo(Schedule.KEY_TASK_TIME_NUMBER, dateFormat.format(calendar.getTime()));
+        query.whereEqualTo(Schedule.KEY_TASK_COMPLETED, "no");
+        query.getFirstInBackground(new GetCallback<Schedule>() {
             @Override
-            public void done(List<Schedule> tasks, ParseException e) {
+            public void done(Schedule task, ParseException e) {
                 if(e != null){
-                    Log.e(TAG, "Issues with getting posts", e);
+                    Log.e(TAG, "Issues with getting task", e);
                     return;
                 }
-                for (Schedule task: tasks){
-                    //TODO: add correct logging later
-                    //Log.i(TAG, "Post: " + task.getDescription()+"username: " + task.getUser().getUsername());
-                }
 
-                allTasks.addAll(tasks);
+                currentTask.add(task);
                 adapter.notifyDataSetChanged();
+
             }
         });
+
     }
 
 }
-
 
 

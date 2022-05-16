@@ -34,7 +34,7 @@ public class MainMenuActivity extends Activity {
         Intent settings = new Intent(this, SettingsActivity.class);
         Intent task = new Intent(this, SchedulerMenuActivity.class);
         Intent chat = new Intent(this, ChatbotMainMenuActivity.class);
-        Intent backIntent = new Intent(getApplicationContext(), RolePickActivity.class);
+        Intent backIntent = new Intent(this, RolePickActivity.class);
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override

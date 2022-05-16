@@ -3,6 +3,7 @@ package com.example.altri;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -29,6 +30,8 @@ public class LoginActivity extends Activity {
     private EditText etPassword;
 
     private ImageButton btnBack;
+
+    private String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +72,14 @@ public class LoginActivity extends Activity {
                 String username = etEmail.getText().toString();
                 String password = etPassword.getText().toString();
 
+                if (TextUtils.isEmpty(etEmail.getText())) {
+                    etEmail.setError("Email is required!");
+                } else if (!(etEmail.getText().toString().trim().matches(emailPattern))) {
+                    etEmail.setError("Email format incorrect!");
+                } else if (TextUtils.isEmpty(etPassword.getText())) {
+                    etPassword.setError("Password is required!");
+                }
+
                 loginUser(username, password);
             }
         });
@@ -76,6 +87,12 @@ public class LoginActivity extends Activity {
         btnForgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                if (TextUtils.isEmpty(etEmail.getText())) {
+                    etEmail.setError("Email is required!");
+                } else if (!(etEmail.getText().toString().trim().matches(emailPattern))) {
+                    etEmail.setError("Email format incorrect!");
+                }
 
                 try {
                     Toast.makeText(LoginActivity.this, "Email has been sent to change your password!", Toast.LENGTH_SHORT).show();
@@ -85,29 +102,8 @@ public class LoginActivity extends Activity {
                     e.printStackTrace();
                 }
 
-                //startActivity(resetPassword);
-                //finish();
             }
         });
-
-            /*
-        Intent rolePicker = new Intent(this, RolePickActivity.class);
-            logIn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Log.i(TAG, "onClick login button");
-                    startActivity(rolePicker);
-                    finish();
-                }
-            });
-
-            btnForgotPassword.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                }
-            });
-            */
 
     }
 
@@ -137,5 +133,6 @@ public class LoginActivity extends Activity {
         startActivity(intent);
         finish();
     }
+
 
 }

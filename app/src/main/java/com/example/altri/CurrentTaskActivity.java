@@ -48,7 +48,7 @@ public class CurrentTaskActivity extends Activity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_current_task);
 
-        etTaskName = findViewById(R.id.tvTaskName);
+        etTaskName = findViewById(R.id.tvCurrentTaskName);
 
         ivTaskImage.setImageResource(R.drawable.empty_media);
         //ivTaskImage.setImageDrawable(R.drawable.empty_media);

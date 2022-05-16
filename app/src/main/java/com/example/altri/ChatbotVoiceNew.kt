@@ -5,24 +5,20 @@ import android.content.Intent
 import android.os.Bundle
 import android.speech.RecognizerIntent
 import android.speech.SpeechRecognizer
-import android.text.Editable
 import android.widget.Toast
-import androidx.databinding.adapters.TextViewBindingAdapter.setText
 import kotlinx.android.synthetic.main.activity_chat_voice_2.*
 import java.util.*
 import android.net.Uri
 import com.example.altri.data.Message
-import android.util.Log
 import android.widget.ImageButton
-import androidx.constraintlayout.motion.utils.Oscillator
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.altri.adapters.MessagingAdapter
 import com.example.altri.utils.BotResponse
 import com.example.altri.utils.Constants.OPEN_GOOGLE
 import com.example.altri.utils.Constants.OPEN_SEARCH
 import com.example.altri.utils.Constants.RECEIVE_ID
 import com.example.altri.utils.Constants.SEND_ID
 import com.example.altri.utils.Time
-import kotlinx.android.synthetic.main.activity_chat_bot.*
 import kotlinx.android.synthetic.main.activity_chat_voice_2.et_message
 import kotlinx.android.synthetic.main.activity_chat_voice_2.rv_messages
 import kotlinx.coroutines.*
@@ -53,11 +49,11 @@ class ChatbotVoiceNew : Activity() {
             sendMessage()
         }
 
-        btn_send.setOnClickListener(){
-            sendMessage()
-
-
+        btnBack.setOnClickListener{
+            val intent = Intent(this,ChatbotMenu::class.java)
+            startActivity(intent)
         }
+
 
     }
 

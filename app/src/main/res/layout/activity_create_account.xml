@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -19,14 +19,16 @@
         android:src="@drawable/new_back_btn" />
 
     <ImageView
+        android:id="@+id/register"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="@drawable/register">
-    </ImageView>
+        android:layout_height="210dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/register"></ImageView>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="398dp"
+        android:layout_below="@+id/register"
+        android:layout_height="match_parent"
         android:layout_weight="4"
         android:orientation="vertical">
 
@@ -45,7 +47,7 @@
             android:singleLine="true"
             android:textAllCaps="false"
             android:textColor="#18A1CC"
-            android:textSize="30dp" />
+            android:textSize="25dp" />
 
         <EditText
             android:id="@+id/LastName"
@@ -63,7 +65,7 @@
             android:singleLine="true"
             android:textAllCaps="false"
             android:textColor="#18A1CC"
-            android:textSize="30dp" />
+            android:textSize="25dp" />
 
     <Button
         android:id="@+id/btnDateOfBirth"
@@ -82,7 +84,7 @@
         android:singleLine="true"
         android:textAllCaps="false"
         android:textColor="#18A1CC"
-        android:textSize="30dp" />
+        android:textSize="25dp" />
 
         <EditText
             android:id="@+id/EmailSignup"
@@ -100,7 +102,7 @@
             android:singleLine="true"
             android:textAllCaps="false"
             android:textColor="#18A1CC"
-            android:textSize="30dp" />
+            android:textSize="25dp" />
 
         <EditText
             android:id="@+id/PasswordSignup"
@@ -117,24 +119,22 @@
             android:singleLine="true"
             android:textAllCaps="false"
             android:textColor="#18A1CC"
+            android:textSize="25dp" />
+
+        <Button
+            android:id="@+id/CreateAccount"
+            android:layout_width="280dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="35dp"
+            android:background="@drawable/create_account_btn"
+            android:gravity="center"
+            android:text="Create Account"
+            android:fontFamily="@font/poppins"
+            android:textAllCaps="false"
+            android:textColor="#F2F2F2"
             android:textSize="30dp" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/CreateAccount"
-        android:layout_width="280dp"
-        android:layout_height="80dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="35dp"
-        android:background="@drawable/create_account_btn"
-        android:gravity="center"
-        android:text="Create Account"
-        android:fontFamily="@font/poppins"
-        android:textAllCaps="false"
-        android:textColor="#F2F2F2"
-        android:textSize="30dp" />
-
-
-
-</LinearLayout>
+</RelativeLayout>

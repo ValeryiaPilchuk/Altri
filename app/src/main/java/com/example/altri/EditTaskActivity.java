@@ -53,7 +53,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-public class AddTaskActivity extends Activity {
+public class EditTaskActivity extends Activity {
 
     public static final String TAG = "AddTaskActivity";
     private EditText etTaskName;
@@ -63,6 +63,7 @@ public class AddTaskActivity extends Activity {
     private Button btnTaskImageVideo;
     private Button btnRepeat;
     private Button btnAddTask;
+    private Button btnDeleteTask;
     private ImageButton btnBack;
     private File photoFile;
     public String photoFileName = "photo.jpg";
@@ -77,7 +78,7 @@ public class AddTaskActivity extends Activity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_add_task);
+        setContentView(R.layout.activity_edit_task);
 
         String name = getIntent().getStringExtra("name");
         String time = getIntent().getStringExtra("time");
@@ -87,19 +88,21 @@ public class AddTaskActivity extends Activity {
 
         etTaskName = findViewById(R.id.etTaskName);
         etTaskDescription = findViewById(R.id.etTaskDescription);
-
+        btnDeleteTask = findViewById(R.id.btnDeleteTask);
         btnBack = findViewById(R.id.imageButton);
         btnTaskDate = findViewById(R.id.btnTaskDate);
         btnTaskStartTime = findViewById(R.id.btnTaskStartTime);
         btnTaskImageVideo = findViewById(R.id.btnTaskImageVideo);
         btnRepeat = findViewById(R.id.btnRepeat);
         btnAddTask = findViewById(R.id.btnAddTask);
+        btnDeleteTask = findViewById(R.id.btnDeleteTask);
 
-        if(name != null && time != null){
+        if(name != null && time != null && date != null){
             etTaskName.setText(name);
             btnTaskStartTime.setText(time);
             btnTaskDate.setText(date);
-            etTaskDescription.setText(description);
+            if(description != null)
+                etTaskDescription.setText(description);
         }
 
         Intent backIntent = new Intent(getApplicationContext(), SchedulerMenuActivity.class);
@@ -116,7 +119,7 @@ public class AddTaskActivity extends Activity {
         btnTaskImageVideo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ImagePicker.with(AddTaskActivity.this)
+                ImagePicker.with(EditTaskActivity.this)
                         .crop()	    			//Crop image(Optional), Check Customization for more option
                         .compress(1024)			//Final image size will be less than 1 MB(Optional)
                         .maxResultSize(1080, 1080)	//Final image resolution will be less than 1080 x 1080(Optional)
@@ -133,7 +136,7 @@ public class AddTaskActivity extends Activity {
                 int month = cal.get(Calendar.MONTH);
                 int day = cal.get(Calendar.DAY_OF_MONTH);
 
-                DatePickerDialog dialog = new DatePickerDialog(AddTaskActivity.this, android.R.style.Theme_Holo_Dialog_MinWidth, mDateSetListener, year, month, day);
+                DatePickerDialog dialog = new DatePickerDialog(EditTaskActivity.this, android.R.style.Theme_Holo_Dialog_MinWidth, mDateSetListener, year, month, day);
 
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
@@ -171,7 +174,7 @@ public class AddTaskActivity extends Activity {
             @Override
             public void onClick(View view) {
 
-                TimePickerDialog timePickerDialog = new TimePickerDialog(AddTaskActivity.this, android.R.style.Theme_Holo_Dialog_MinWidth, mTimeSetListener, 12, 0, false);
+                TimePickerDialog timePickerDialog = new TimePickerDialog(EditTaskActivity.this, android.R.style.Theme_Holo_Dialog_MinWidth, mTimeSetListener, 12, 0, false);
 
                 timePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 timePickerDialog.show();
@@ -209,7 +212,7 @@ public class AddTaskActivity extends Activity {
 
                 final String[] fonts = {"Never", "Every Day", "Every Week", "Every Month", "Every Year"};
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(AddTaskActivity.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(EditTaskActivity.this);
                 builder.setTitle("Select how often to repeat the task");
                 builder.setItems(fonts, new DialogInterface.OnClickListener() {@
                         Override
@@ -253,7 +256,7 @@ public class AddTaskActivity extends Activity {
 
                 Intent myIntent = new Intent(getApplicationContext(), NotifyService.class);
                 AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-                PendingIntent pendingIntent = PendingIntent.getService(AddTaskActivity.this, 0, myIntent, 0);
+                PendingIntent pendingIntent = PendingIntent.getService(EditTaskActivity.this, 0, myIntent, 0);
                 Calendar calendar = Calendar.getInstance();
                 calendar.set(Calendar.SECOND, 0);
                 calendar.set(Calendar.MINUTE, 0);
@@ -264,12 +267,15 @@ public class AddTaskActivity extends Activity {
 
                 if (name != null) {
                     saveSchedule(etTaskName.getText().toString(), etTaskDescription.getText().toString(),
-                            btnTaskDate.getText().toString(), btnTaskStartTime.getText().toString(), currentUser, photoFile,name);
-                    deleteTask(etTaskName.getText().toString());
-                } else {
-                    saveSchedule(etTaskName.getText().toString(), etTaskDescription.getText().toString(),
                             btnTaskDate.getText().toString(), btnTaskStartTime.getText().toString(), currentUser, photoFile, name);
+                    deleteTask(etTaskName.getText().toString(), name);
                 }
+            }
+        });
+        btnDeleteTask.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                deleteTask(etTaskName.getText().toString(), name);
             }
         });
     }
@@ -290,21 +296,16 @@ public class AddTaskActivity extends Activity {
         schedule.setTaskDate(taskDate);
         schedule.setTaskTime(taskTime);
         schedule.setUser(currentUser);
-  //      schedule.setImage(new ParseFile(photoFile));
+        //      schedule.setImage(new ParseFile(photoFile));
 
         schedule.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {
                 if (e != null) {
                     Log.e(TAG, "error", e);
-                    Toast.makeText(AddTaskActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(EditTaskActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
                 } else {
-                    if(name != null){
-                        Toast.makeText(AddTaskActivity.this, "Task updated!", Toast.LENGTH_SHORT).show();
-                    }
-                    else {
-                        Toast.makeText(AddTaskActivity.this, "Task added!", Toast.LENGTH_SHORT).show();
-                    }
+                    Toast.makeText(EditTaskActivity.this, "Task updated!", Toast.LENGTH_SHORT).show();
                     etTaskName.setText("");
                     etTaskDescription.setText("");
                     btnTaskDate.setText("");
@@ -314,12 +315,12 @@ public class AddTaskActivity extends Activity {
             }
         });
     }
-    private void deleteTask(String taskName) {
+    private void deleteTask(String taskName, String name) {
         // Configure Query with our query.
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Schedule");
 
         // adding a condition where our course name
-        // must be equal to the original course name
+        // must be equal to the original course
         query.whereEqualTo("taskname", taskName);
         query.include(Schedule.KEY_USER);
         query.whereEqualTo(Schedule.KEY_USER, ParseUser.getCurrentUser());
@@ -339,7 +340,11 @@ public class AddTaskActivity extends Activity {
                             // inside done method checking if the error is null or not.
                             if (e == null) {
                                 // if the error is not null then we are displaying a toast message and opening our home activity.
-                                Toast.makeText(getApplicationContext(), "Task Deleted..", Toast.LENGTH_SHORT).show();
+                                if(name == null)
+                                    Toast.makeText(getApplicationContext(), "Task Deleted..", Toast.LENGTH_SHORT).show();
+                                Intent backIntent = new Intent(getApplicationContext(), SchedulerMenuActivity.class);
+                                startActivity(backIntent);
+                                finish();
                             } else {
                                 // if we get error we are displaying it in below line.
                             }
