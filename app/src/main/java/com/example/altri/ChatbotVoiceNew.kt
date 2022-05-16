@@ -16,7 +16,7 @@ import android.util.Log
 import android.widget.ImageButton
 import androidx.constraintlayout.motion.utils.Oscillator
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.altri.adapters.MessagingAdapter
+import com.example.altri.adapter.MessagingAdapter
 import com.example.altri.utils.BotResponse
 import com.example.altri.utils.Constants.OPEN_GOOGLE
 import com.example.altri.utils.Constants.OPEN_SEARCH

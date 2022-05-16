@@ -22,7 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.altri.R;
 import com.example.altri.Schedule;
 import com.example.altri.SchedulerMenuActivity;
-import com.example.altri.adapters.TaskAdapter;
+import com.example.altri.adapter.TaskAdapter;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;

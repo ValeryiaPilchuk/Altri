@@ -23,7 +23,7 @@ import com.example.altri.Main;
 import com.example.altri.R;
 import com.example.altri.Schedule;
 import com.example.altri.SchedulerMenuActivity;
-import com.example.altri.adapters.CurrentTaskAdapter;
+import com.example.altri.adapter.CurrentTaskAdapter;
 import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
