@@ -53,6 +53,7 @@ class MessagingAdapter: RecyclerView.Adapter<MessagingAdapter.MessageViewHolder>
     override fun getItemCount(): Int {
         return messagesList.size
     }
+
     fun insertMessage(message: Message){
         this.messagesList.add(message)
         notifyItemInserted(messagesList.size)

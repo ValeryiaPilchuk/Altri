@@ -296,8 +296,6 @@ public class CurrentTaskAdapter extends RecyclerView.Adapter<CurrentTaskAdapter.
 
     public interface MyClickListener {
         void onChangeTime(int p);
-
         void onCompleted(int p);
-
     }
 }
