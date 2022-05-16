@@ -10,6 +10,7 @@ import android.widget.ImageButton
 import androidx.activity.result.contract.ActivityResultContracts
 //import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.altri.adapters.MessagingAdapter
 import com.example.altri.data.Message
 import com.example.altri.utils.BotResponse
 import com.example.altri.utils.Constants
