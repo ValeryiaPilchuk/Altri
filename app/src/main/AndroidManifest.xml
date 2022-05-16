@@ -51,7 +51,9 @@
         <activity android:name=".CoverPageActivity" />
         <activity android:name=".PainPointActivity" />
         <activity android:name=".SolutionActivity" />
-        <activity android:name=".EditTaskActivity" />
+        <activity android:name=".EditTaskActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+
 
         <activity
             android:name=".Main"

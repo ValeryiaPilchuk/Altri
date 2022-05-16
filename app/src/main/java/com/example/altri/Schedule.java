@@ -5,6 +5,8 @@ import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
+import java.io.File;
+
 
 @ParseClassName("Schedule")
 public class Schedule extends ParseObject {
