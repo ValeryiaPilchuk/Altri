@@ -20,7 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.altri.R;
 import com.example.altri.Schedule;
 import com.example.altri.SchedulerMenuActivity;
-import com.example.altri.adapters.TaskAdapter;
+import com.example.altri.adapter.TaskAdapter;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
@@ -52,13 +52,14 @@ public class AllTasks extends Fragment {
         // Inflate the layout for this fragment
         ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
 
-        return inflater.inflate(R.layout.activity_all_tasks, container, false);
+        return inflater.inflate(R.layout.activity_all_tasks_today, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+//        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+//        setContentView(R.layout.activity_display_all_tasks);
         btnBack = view.findViewById(R.id.imageButton);
         allTasks = new ArrayList<>();
         adapter = new TaskAdapter(getContext(), allTasks);
