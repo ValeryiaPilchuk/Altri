@@ -204,8 +204,8 @@ class ChatbotVoiceNew : Activity(), TextToSpeech.OnInitListener{
     fun navigate(whatDo : String){
         val addActivityIntent = Intent(this, AddTaskActivity::class.java)
         val settingsIntent = Intent(this, SettingsActivity::class.java)
-        val taskIntent = Intent(this, CurrentTaskActivity::class.java)
-
+        val taskIntent = Intent(this, MainActivity::class.java)
+        taskIntent.putExtra("Task", "current")
 
         if (whatDo == "add_task") {
             startActivity(addActivityIntent)

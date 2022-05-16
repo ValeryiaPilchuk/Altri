@@ -52,7 +52,7 @@ public class CurrentTaskActivity extends Activity {
 
 //        ivTaskImage.setImageResource(R.drawable.empty_media);
 
-        btnBack = findViewById(R.id.imageButton);
+        btnBack = findViewById(R.id.btnBack);
 
         btnCompleted = findViewById(R.id.btnCompleted);
         btnChangeTime = findViewById(R.id.btnChangeTime);

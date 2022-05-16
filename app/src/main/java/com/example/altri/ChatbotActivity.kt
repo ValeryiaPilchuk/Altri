@@ -1,10 +1,10 @@
 package com.example.altri
 
+//import androidx.constraintlayout.widget.ConstraintLayout
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.provider.AlarmClock.EXTRA_MESSAGE
 import android.speech.tts.TextToSpeech
 import android.util.Log
 import android.widget.ImageButton
@@ -23,7 +23,8 @@ import java.util.*
 import java.util.logging.Handler
 
 
-class ChatbotActivity : Activity(){
+class ChatbotActivity : Activity(), TextToSpeech.OnInitListener{
+    private var tts: TextToSpeech? = null
     private lateinit var adapter: MessagingAdapter
     private val botlist = listOf("Altri")
 
@@ -35,6 +36,7 @@ class ChatbotActivity : Activity(){
         setContentView(R.layout.activity_chat_bot)
         val btnBack = findViewById<ImageButton>(R.id.btnBack)
 
+        tts = TextToSpeech(this, this)
         recyclerView()
         clickEvents()
 
@@ -49,6 +51,11 @@ class ChatbotActivity : Activity(){
             startActivity(intent)
         }
     }
+
+    private fun speak(text: String) {
+        tts!!.speak(text, TextToSpeech.QUEUE_FLUSH, null, "")
+    }
+
 
     private fun clickEvents() {
         btn_send.setOnClickListener(){
@@ -78,6 +85,7 @@ class ChatbotActivity : Activity(){
         if(message.isNotEmpty()){
             et_message.setText("")
             adapter.insertMessage(Message(message, Constants.SEND_ID, timeStamp))
+            speak(message)
             rv_messages.scrollToPosition(adapter.itemCount - 1)
             botResponse(message)
         }
@@ -91,6 +99,7 @@ class ChatbotActivity : Activity(){
 
             withContext(Dispatchers.Main){
                 val response = BotResponse.basicResponses(message)
+                speak(response)
                 adapter.insertMessage(Message(response, Constants.RECEIVE_ID, timeStamp))
                 rv_messages.scrollToPosition(adapter.itemCount - 1) //take us down all the way to the last message in order to stay up to date
 
@@ -151,17 +160,31 @@ class ChatbotActivity : Activity(){
             withContext(Dispatchers.Main){
                 val timeStamp = Time.timeStamp()
                 adapter.insertMessage(Message(message, Constants.RECEIVE_ID, timeStamp))
+                speak(message)
                 rv_messages.scrollToPosition(adapter.itemCount - 1) //take us down all the way to the last message in order to stay up to date
             }
         }
     }
 
+    override fun onInit(status: Int) {
+        if (status == TextToSpeech.SUCCESS) {
+            // set US English as language for tts
+            val result = tts!!.setLanguage(Locale.getDefault())
+
+            if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                Log.e("TTS","The Language specified is not supported!")
+            }
+        } else {
+            Log.e("TTS", "Initilization Failed!")
+        }
+
+    }
 
     fun navigate(whatDo : String){
         val addActivityIntent = Intent(this, AddTaskActivity::class.java)
         val settingsIntent = Intent(this, SettingsActivity::class.java)
-        val taskIntent = Intent(this, CurrentTaskActivity::class.java)
-
+        val taskIntent = Intent(this, MainActivity::class.java)
+        taskIntent.putExtra("Task", "current")
 
         if (whatDo == "add_task") {
             startActivity(addActivityIntent)
