@@ -4,29 +4,41 @@ import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
-import java.util.*
 import android.speech.tts.TextToSpeech
-
+import android.util.Log
 import android.widget.ImageButton
+import androidx.activity.result.contract.ActivityResultContracts
+//import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.altri.adapters.MessagingAdapter
 import com.example.altri.data.Message
 import com.example.altri.utils.BotResponse
 import com.example.altri.utils.Constants
+import com.example.altri.utils.Constants.ADD_TASK
 import com.example.altri.utils.Time
 import kotlinx.android.synthetic.main.activity_chat_bot.*
 import kotlinx.coroutines.*
+import java.util.*
+import java.util.logging.Handler
 
 
 class ChatbotActivity : Activity(), TextToSpeech.OnInitListener{
     private var tts: TextToSpeech? = null
     private lateinit var adapter: MessagingAdapter
     private val botlist = listOf("Altri")
+
+    val ADD_TASK_INTENT = Intent(this, AddTaskActivity::class.java)
+    val SETTINGS_INTENT = Intent(this, SettingsActivity::class.java) // need for functionality for settings page
+    val CURRENT_TASK_INTENT = Intent(this, AddTaskActivity::class.java) //maybe needs to be adjusted testing...
+    //var timer: Timer? = null
+    //timer = new Timer()
+    //val background: ConstraintLayout = findViewById(R.id.mainScreen)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat_bot)
         val btnBack = findViewById<ImageButton>(R.id.imageButton)
+
+
+
 
         tts = TextToSpeech(this, this)
         recyclerView()
@@ -36,22 +48,34 @@ class ChatbotActivity : Activity(), TextToSpeech.OnInitListener{
 
         btn_send.setOnClickListener(){
             sendMessage()
+
+
         }
+
+
+
 
 
         btnBack.setOnClickListener{
             val intent = Intent(this,ChatbotMenu::class.java)
             startActivity(intent)
         }
+
+
     }
 
     private fun speak(text: String) {
         tts!!.speak(text, TextToSpeech.QUEUE_FLUSH, null, "")
+
+
     }
+
 
     private fun clickEvents() {
         btn_send.setOnClickListener(){
-            sendMessage()
+           sendMessage()
+
+
         }
         et_message.setOnClickListener{
             GlobalScope.launch {
@@ -100,16 +124,35 @@ class ChatbotActivity : Activity(), TextToSpeech.OnInitListener{
 
                 when(response){
                     Constants.OPEN_GOOGLE ->{
+                        delay(2000)
+                        setContentView(R.layout.warning_page) //grab warning page to display
+                        delay(2000)
                         val site = Intent(Intent.ACTION_VIEW)
                         site.data = Uri.parse("https://www.google.com/")
                         startActivity(site)
                     }
                     Constants.OPEN_SEARCH ->{
+                        delay(2000)
+                        setContentView(R.layout.warning_page) //grab warning page to display
+                        delay(2000)
                         val site = Intent(Intent.ACTION_VIEW)
                         val searchTerm: String? = message.substringAfter("Search")
                         site.data = Uri.parse("https://www.google.com/search?&q=$searchTerm")
                         startActivity(site)
                     }
+
+                    Constants.ADD_TASK ->{ //only takes u to the page without the functionalities same with settings wip
+                        delay(2000)
+                        setContentView(R.layout.activity_add_task)
+
+                    }
+
+                    Constants.SETTINGS_NAV ->{
+                        delay(2000)
+                        setContentView(R.layout.activity_settings)
+                    }
+
+
                 }
             }
         }

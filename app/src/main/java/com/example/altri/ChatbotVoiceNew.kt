@@ -5,20 +5,24 @@ import android.content.Intent
 import android.os.Bundle
 import android.speech.RecognizerIntent
 import android.speech.SpeechRecognizer
+import android.text.Editable
 import android.widget.Toast
+import androidx.databinding.adapters.TextViewBindingAdapter.setText
 import kotlinx.android.synthetic.main.activity_chat_voice_2.*
 import java.util.*
 import android.net.Uri
 import com.example.altri.data.Message
+import android.util.Log
 import android.widget.ImageButton
+import androidx.constraintlayout.motion.utils.Oscillator
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.altri.adapters.MessagingAdapter
 import com.example.altri.utils.BotResponse
 import com.example.altri.utils.Constants.OPEN_GOOGLE
 import com.example.altri.utils.Constants.OPEN_SEARCH
 import com.example.altri.utils.Constants.RECEIVE_ID
 import com.example.altri.utils.Constants.SEND_ID
 import com.example.altri.utils.Time
+import kotlinx.android.synthetic.main.activity_chat_bot.*
 import kotlinx.android.synthetic.main.activity_chat_voice_2.et_message
 import kotlinx.android.synthetic.main.activity_chat_voice_2.rv_messages
 import kotlinx.coroutines.*
@@ -49,11 +53,11 @@ class ChatbotVoiceNew : Activity() {
             sendMessage()
         }
 
-        btnBack.setOnClickListener{
-            val intent = Intent(this,ChatbotMenu::class.java)
-            startActivity(intent)
-        }
+        //btn_send.setOnClickListener(){
+          //  sendMessage()
 
+
+       // }
 
     }
 
@@ -82,9 +86,9 @@ class ChatbotVoiceNew : Activity() {
     }
 
     private fun clickEvents() {
-       // btn_speak.setOnClickListener(){
-          //  sendMessage()
-      //  }
+        // btn_speak.setOnClickListener(){
+        //  sendMessage()
+        //  }
         et_message.setOnClickListener{
             GlobalScope.launch {
                 delay(1000)
@@ -129,11 +133,17 @@ class ChatbotVoiceNew : Activity() {
 
                 when(response){
                     OPEN_GOOGLE ->{
+                        delay(2000)
+                        setContentView(R.layout.warning_page) //grab warning page to display
+                        delay(2000)
                         val site = Intent(Intent.ACTION_VIEW)
                         site.data = Uri.parse("https://www.google.com/")
                         startActivity(site)
                     }
                     OPEN_SEARCH ->{
+                        delay(2000)
+                        setContentView(R.layout.warning_page) //grab warning page to display
+                        delay(2000)
                         val site = Intent(Intent.ACTION_VIEW)
                         val searchTerm: String? = message.substringAfter("search")
                         site.data = Uri.parse("https://www.google.com/search?&q=$searchTerm")

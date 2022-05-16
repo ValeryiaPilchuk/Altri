@@ -1,8 +1,16 @@
 package com.example.altri.utils
 
+import android.content.Intent
 import com.codepalace.chatbot.utils.SolveMath
+import com.example.altri.AddTaskActivity
+import com.example.altri.ChatbotActivity
 import com.example.altri.utils.Constants.OPEN_GOOGLE
 import com.example.altri.utils.Constants.OPEN_SEARCH
+import com.example.altri.utils.Constants.ADD_TASK
+import com.example.altri.utils.Constants.SETTINGS_NAV
+import com.example.altri.utils.Constants.TASK_NAV
+
+
 import java.lang.Exception
 
 object BotResponse {
@@ -15,7 +23,7 @@ object BotResponse {
         return when {
 
             //Hello
-            message.contains("hello") -> {
+            message.contains("hello") ||  message.contains("hi") || message.contains("hey")-> {
                 when (random){
                     0 -> "Hello There"
                     1 -> "Hi!"
@@ -26,7 +34,7 @@ object BotResponse {
             }
 
             //when message contains how are you
-            message.contains("how are you?") -> {
+            message.contains("how are you") -> {
                 when (random){
                     0 -> "I'm doing fine, thanks for asking!"
                     1 -> "I'm feeling kind of hungry..."
@@ -69,6 +77,21 @@ object BotResponse {
             message.contains("search") ->{
                 OPEN_SEARCH
             }
+
+            message.contains("add") && message.contains("task")->{
+                ADD_TASK
+                //"what is the name of your task?"
+               // val task_name: String? = message
+
+            }
+            (message.contains("show") || message.contains("what") ) && message.contains("tasks") ->{
+                TASK_NAV
+            }
+
+            message.contains("settings") ->{
+                SETTINGS_NAV
+            }
+
 
 
             else -> {
